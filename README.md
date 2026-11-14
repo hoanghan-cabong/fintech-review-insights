@@ -61,7 +61,9 @@ python3 -m venv .venv && .venv/bin/pip install google-play-scraper
 .venv/bin/python src/classify_corpus.py && .venv/bin/python src/s1_subtype.py && .venv/bin/python src/analyze.py && .venv/bin/python src/build_explorer.py
 ```
 
-Agent gọi Claude qua Claude Code CLI (`claude -p`), nên cần đăng nhập `claude` bằng tài khoản có gói phù hợp. `data/raw/` và `data/clean/` không đưa lên GitHub.
+Agent gọi Claude qua Claude Code CLI (`claude -p`), nên cần đăng nhập `claude` bằng tài khoản có gói phù hợp.
+
+**Không có trong repo:** dữ liệu thô (`data/raw/`, `data/clean/`) và nguyên văn toàn bộ review trong mẫu (`data/corpus/sample.csv`, `explorer/data.json`), theo nguyên tắc không đăng lại dữ liệu thô ở [PRD §8](docs/PRD.md). Chạy lại 4 lệnh trên để tạo lại. Repo vẫn giữ **tập đáp án đã gắn nhãn** (`data/labels/`) và **kết quả phân loại** (`data/preds/`, `data/corpus/preds_*.jsonl`) để kiểm chứng lại được kết quả eval.
 
 ## Gắn nhãn tay
 

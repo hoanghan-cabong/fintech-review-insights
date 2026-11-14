@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Where e-wallet users lose money — case study · Hoang Han</title>
+<meta name="description" content="A self-initiated fintech case study: an AI agent grades 2,339 public reviews of four Vietnamese e-wallets by financial risk, with a blind test set, a keyword baseline and an honest account of what it gets wrong.">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="preload" href="../../assets/fonts/be-vietnam-pro-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/site.css?v=5">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<style>
+/* ── Quiet theme: one case, one accent, no display serif. Fintech restraint. ────── */
+.theme-quiet{
+  --bg:#FFFFFF; --bg-2:#F5F5F7; --surface:#FFFFFF; --ink:#1D1D1F; --ink-2:#424245; --muted:#6E6E73;
+  --line:#E8E8ED; --line-2:#D2D2D7;
+  --blue:#0071E3; --blue-ink:#0071E3; --blue-soft:#EDF5FE;
+  --pink:#C7372A; --pink-soft:#FCEDEB;
+  --yellow:#B26B00; --yellow-soft:#FFF6E5;
+  --green:#1D7A4C; --green-soft:#E9F5EE;
+  --chart-1:#0071E3; --chart-2:#C7372A; --chart-3:#AEAEB2; --chart-grid:#EDEDF0;
+  --serif:var(--sans);
+  --radius:16px; --radius-lg:20px;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 14px 34px -20px rgba(0,0,0,.22);
+  background:var(--bg); color:var(--ink);
+}
+:root[data-theme="dark"] .theme-quiet{
+  --bg:#000000; --bg-2:#1C1C1E; --surface:#1C1C1E; --ink:#F5F5F7; --ink-2:#D1D1D6; --muted:#98989D;
+  --line:#2C2C2E; --line-2:#3A3A3C;
+  --blue:#0A84FF; --blue-ink:#4DA3FF; --blue-soft:#132A44;
+  --pink:#FF6B5C; --pink-soft:#36201D; --yellow:#F0A33A; --yellow-soft:#33280F;
+  --green:#45C98A; --green-soft:#12301F; --chart-3:#636366; --chart-grid:#2C2C2E;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-quiet{
+  --bg:#000000; --bg-2:#1C1C1E; --surface:#1C1C1E; --ink:#F5F5F7; --ink-2:#D1D1D6; --muted:#98989D;
+  --line:#2C2C2E; --line-2:#3A3A3C;
+  --blue:#0A84FF; --blue-ink:#4DA3FF; --blue-soft:#132A44;
+  --pink:#FF6B5C; --pink-soft:#36201D; --yellow:#F0A33A; --yellow-soft:#33280F;
+  --green:#45C98A; --green-soft:#12301F; --chart-3:#636366; --chart-grid:#2C2C2E;
+}}
+/* Chrome goes quiet too, so the whole page reads as one piece */
+.theme-quiet .site-header{background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--line);backdrop-filter:saturate(1.6) blur(16px);-webkit-backdrop-filter:saturate(1.6) blur(16px)}
+.theme-quiet .site-header .brand,.theme-quiet .site-header .nav a{color:var(--ink)}
+.theme-quiet .site-header .nav a:hover{background:var(--bg-2);color:var(--ink)}
+.theme-quiet .site-header .nav a.btn,.theme-quiet .brand-mark{background:var(--blue);border-color:var(--blue);color:#fff}
+.theme-quiet .site-header .nav a.btn:hover{background:var(--ink);border-color:var(--ink)}
+.theme-quiet .brand{font-weight:600;letter-spacing:-.02em}
+/* Typography: tight, large, sans only */
+.theme-quiet h1,.theme-quiet h2,.theme-quiet h3,.theme-quiet .tldr b,.theme-quiet .kpis b,.theme-quiet .next h3{font-family:var(--sans);letter-spacing:-.03em}
+.theme-quiet h1{font-weight:600}
+.theme-quiet h2,.theme-quiet .chapter h2,.theme-quiet h3{color:var(--ink);font-weight:600;letter-spacing:-.025em}
+.theme-quiet .chapter > .eyebrow{color:var(--blue)}
+.theme-quiet .chapter h2{max-width:20ch}
+.theme-quiet .summary60{border-color:var(--line-2);background:var(--bg-2)}
+.theme-quiet .summary60 .tag60{background:var(--ink);color:var(--bg)}
+.theme-quiet .summary60 dt{color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-size:11px}
+.theme-quiet .summary60 dd{color:var(--ink-2)}
+.theme-quiet .summary60 dd b{color:var(--ink)}
+.theme-quiet .tldr b,.theme-quiet .kpis b{font-weight:600;letter-spacing:-.03em}
+.theme-quiet .case-hero{background:var(--bg);color:var(--ink);border-bottom:1px solid var(--line);padding-top:clamp(40px,7vw,88px);padding-bottom:clamp(36px,5vw,64px)}
+.theme-quiet .case-hero h1{color:var(--ink);max-width:16ch;margin-bottom:26px}
+.theme-quiet .case-hero .eyebrow{color:var(--blue)}
+.theme-quiet .case-hero .lead{color:var(--ink-2);font-size:clamp(18px,2.1vw,22px);max-width:62ch}
+.theme-quiet .case-hero .crumb{color:var(--muted)}
+.theme-quiet .case-hero .crumb:hover{color:var(--ink)}
+.theme-quiet .case-hero .facts{border-top-color:var(--line-2)}
+.theme-quiet .case-hero .facts > div + div{border-left-color:var(--line)}
+.theme-quiet .case-hero .facts dt{color:var(--muted)}
+.theme-quiet .case-hero .facts dd{color:var(--ink)}
+.theme-quiet .case-hero .tldr > div{background:var(--bg-2);border-color:var(--bg-2)}
+.theme-quiet .case-hero .tldr b{color:var(--ink)}
+.theme-quiet .case-hero .tldr span{color:var(--muted)}
+.theme-quiet .tldr b.risk{color:var(--pink)}
+/* Components, quieted */
+.theme-quiet .box,.theme-quiet .kpis div,.theme-quiet .fig,.theme-quiet .chart-box{background:var(--bg-2);border-color:var(--bg-2)}
+.theme-quiet .box.dark{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.theme-quiet .box.dark .k,.theme-quiet .box.dark h4,.theme-quiet .box.dark p{color:var(--bg)}
+.theme-quiet .box.blue{background:var(--blue-soft);border-color:var(--blue-soft)}
+.theme-quiet .callout{border-left-color:var(--ink);background:var(--bg-2);border-radius:0 var(--radius) var(--radius) 0}
+.theme-quiet .callout.blue{border-left-color:var(--blue);background:var(--blue-soft)}
+.theme-quiet .next{border-color:var(--line-2);border-radius:var(--radius-lg)}
+.theme-quiet .next:hover{background:var(--bg-2)}
+.theme-quiet .toc a:hover{color:var(--blue)}
+.theme-quiet .dtable th{border-bottom-color:var(--line-2)}
+.theme-quiet .dtable td.n{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.theme-quiet .dtable th.n{text-align:right}
+.theme-quiet .dtable td .hi{color:var(--pink);font-weight:600}
+.theme-quiet .tag{border-color:var(--line-2);background:var(--bg-2)}
+/* Stat row under the hero */
+.q-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;margin:30px 0 8px}
+.q-strip div{background:var(--bg);padding:22px 20px}
+.q-strip b{display:block;font:600 clamp(28px,3.6vw,40px)/1.05 var(--sans);letter-spacing:-.035em;color:var(--ink)}
+.q-strip b.risk{color:var(--pink)}
+.q-strip span{display:block;margin-top:8px;font-size:14.5px;line-height:1.45;color:var(--muted)}
+@media (max-width:720px){.q-strip{grid-template-columns:1fr}}
+/* Legend for the stacked chart */
+.q-legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin:4px 0 14px;font-size:13.5px;color:var(--muted)}
+.q-legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:7px;vertical-align:-1px}
+.q-chart text{font:500 12.5px var(--sans);fill:var(--muted)}
+.q-chart text.app{font-weight:600;fill:var(--ink);font-size:13.5px}
+.q-chart text.inbar{fill:#fff;font-weight:600}
+/* Links out */
+.q-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.q-note{font-size:13.5px;color:var(--muted);margin-top:10px}
+</style>
+</head>
+<body class="theme-quiet">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html" aria-label="Hoang Han — home"><span class="brand-mark" aria-hidden="true">HH</span><span>Hoang Han</span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span class="bars" aria-hidden="true"></span><span class="label">Menu</span></button>
+    <nav id="site-nav" class="nav" aria-label="Main">
+      <a href="../../index.html#work">Work</a><a href="../../index.html#approach">How I work</a><a href="../../index.html#about">About</a><a href="../../more/index.html">Beyond work</a>
+      <a class="btn sm" href="#contact">Let’s talk</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<header class="case-hero">
+  <div class="wrap">
+    <a class="crumb" href="../../index.html#work">← All work</a>
+    <p class="eyebrow">Self-initiated · Fintech · AI product work</p>
+    <h1>Where e-wallet users actually lose money.</h1>
+    <p class="lead">Product teams grade complaints by star rating, so the loudest problem wins. I built an AI agent that grades public app-store reviews by <em>financial risk</em> instead, ran it across four Vietnamese e-wallets, and then spent most of my time checking how often it was wrong.</p>
+    <dl class="facts">
+      <div><dt>My role</dt><dd>Everything: problem framing, taxonomy, labelling, evaluation, analysis, the product proposal</dd></div>
+      <div><dt>Context</dt><dd>Self-initiated. Public Google Play reviews, no insider data</dd></div>
+      <div><dt>When</dt><dd>Nov 2026 · reviews from 14 Aug – 12 Nov 2026</dd></div>
+      <div><dt>Scope</dt><dd>MoMo, ZaloPay, ShopeePay, Viettel Money · Android only</dd></div>
+    </dl>
+    <div class="q-strip">
+      <div><b class="risk">49%</b><span>of money-loss complaints come from being charged <em>without agreeing to it</em> — not from failed transactions</span></div>
+      <div><b>7/7</b><span>money-loss cases caught by the agent on a blind test set. A keyword baseline caught 2</span></div>
+      <div><b>2,339</b><span>reviews classified in 33 minutes, at roughly $9.60 per thousand</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap case-layout">
+  <aside class="toc" aria-label="On this page"><p>On this page</p><ol>
+    <li><a href="#problem">The problem</a></li>
+    <li><a href="#severity">Grading by risk</a></li>
+    <li><a href="#evidence">Does this need AI?</a></li>
+    <li><a href="#findings">What the reviews say</a></li>
+    <li><a href="#wrong">Three times I was wrong</a></li>
+    <li><a href="#decision">The product decision</a></li>
+    <li><a href="#limits">What this doesn’t show</a></li>
+  </ol></aside>
+
+  <article>
+
+  <div class="summary60">
+    <span class="tag60">60-second summary</span>
+    <dl>
+      <dt>Problem</dt><dd>A product manager at one wallet knows their own users well, but has no systematic read on anyone else’s. And counting reviews by star rating hides the complaints that actually cost users money.</dd>
+      <dt>Approach</dt><dd>A severity scale built on financial consequence (S1 = money lost or at risk), an AI agent to apply it at scale, and a blind test set labelled before the model ever ran.</dd>
+      <dt>Finding</dt><dd><b>Unauthorised debits are the number one way users lose money</b> — 49% of S1 cases, present at all four wallets. Auto-renewing subscriptions, linked bank accounts charged without OTP, services pre-ticked at checkout.</dd>
+      <dt>Decision</dt><dd>A one-page proposal for an <b>Autopay Centre</b>: notify before every charge, list every recurring debit in one place, confirm the first charge from any new merchant.</dd>
+      <dt>Honesty</dt><dd>I logged 27 decisions, including three where I got it wrong — once because I graded complaints by emotion, exactly the mistake the project exists to fix.</dd>
+    </dl>
+  </div>
+
+  <section class="chapter" id="problem" aria-labelledby="problem-h">
+    <span class="eyebrow">01 · The problem</span>
+    <h2 id="problem-h">Internal data tells you about your users. It tells you nothing about theirs.</h2>
+    <p>A product manager at an e-wallet has support tickets, in-app analytics and a voice-of-customer tool. What they don’t have is any systematic read on how a competitor’s users are doing. So the strategic questions get answered by instinct: which flow is the competition weakest on, and where are we quietly falling behind?</p>
+    <p>Public app-store reviews are the one competitor signal anyone can reach. The problem is how teams read them. Both common methods fail in the same direction:</p>
+    <div class="grid-3">
+      <div class="box"><span class="k">Counting stars</span><p>A 1-star “the UI is ugly” and a 1-star “money left my account and never arrived” score identically.</p></div>
+      <div class="box"><span class="k">Counting volume</span><p>A hundred complaints about lag look bigger than five about a failed transfer. One of those is a trust problem.</p></div>
+      <div class="box dark"><span class="k">What I did instead</span><h4>Grade by consequence</h4><p>How much financial harm does this review describe? Nothing else decides the score.</p></div>
+    </div>
+    <p class="muted small" style="margin-top:14px">One more trap I only found in the data: ZaloPay’s review volume jumped from about 120 to about 3,000 a week in October, with 5-star share going from 35% to 96%, while 1–2 star counts barely moved. Any metric with “total reviews” as its denominator would have made ZaloPay look like it fixed everything. So every comparison on this page is computed <em>within complaints</em>, never over all reviews.</p>
+  </section>
+
+  <section class="chapter" id="severity" aria-labelledby="severity-h">
+    <span class="eyebrow">02 · The instrument</span>
+    <h2 id="severity-h">Four severity levels, decided by one question asked in order.</h2>
+    <p>The scale had to be sharp enough that two people — or a person and a model — would land on the same answer. So it’s a decision tree, not a vibe. You stop at the first “yes”.</p>
+    <div class="table-wrap"><table class="dtable">
+      <thead><tr><th>Ask</th><th>Level</th><th>Example from the data</th></tr></thead>
+      <tbody>
+        <tr><td>Has money been lost, held, or put at risk?</td><td><b style="color:var(--pink)">S1 · Critical</b></td><td>“Money was taken but the recipient never got it, five days and no refund”</td></tr>
+        <tr><td>Can they not do a core job — sign up, log in, pay, transfer, cash out?</td><td><b>S2 · High</b></td><td>“OTP never arrives, I haven’t been able to log in for two days”</td></tr>
+        <tr><td>Are they annoyed but still able to use it?</td><td><b>S3 · Medium</b></td><td>“The voucher wouldn’t apply, frustrating”</td></tr>
+        <tr><td>Anything else — suggestions, vague criticism, praise</td><td><b>S4 · Low</b></td><td>“The colours could be nicer”</td></tr>
+      </tbody>
+    </table></div>
+    <p>Three rules carry most of the weight, and all three came from arguing with real edge cases rather than from theory:</p>
+    <ul class="checklist">
+      <li><div><b>Star ratings, swearing and “scam!” never raise the level.</b><span>Only the consequence described in the text counts. A 5-star review that mentions an unrefunded charge is still S1.</span></div></li>
+      <li><div><b>A published fee someone finds expensive is S3. Money taken without agreement is S1.</b><span>This single distinction turned out to be the centre of the whole finding.</span></div></li>
+      <li><div><b>Support complaints inherit the severity of the problem underneath.</b><span>“Can’t reach anyone” about a stuck transfer is S1, not a service gripe.</span></div></li>
+    </ul>
+    <p style="margin-top:22px">The pipeline is deliberately boring where it needs to be reliable, and only uses a model where judgement is actually required.</p>
+    <div class="pipeline">
+      <div class="pl-step"><span>01</span><b>Collect</b><small>29,078 public reviews, 90 days</small></div>
+      <div class="pl-step"><span>02</span><b>Anonymise</b><small>Phone numbers, emails, account numbers masked</small></div>
+      <div class="pl-step hot"><span>03</span><b>Classify</b><small>Agent assigns problem, flow, severity and a verbatim quote</small></div>
+      <div class="pl-gate"><div class="diamond"><b>S1?</b></div><ul><li class="go">auto</li><li class="pause">human</li></ul></div>
+      <div class="pl-step"><span>04</span><b>Weight</b><small>Stratified sample corrected back to the real mix</small></div>
+      <div class="pl-step"><span>05</span><b>Compare</b><small>Shares within complaints, with 95% intervals</small></div>
+      <div class="pl-step"><span>06</span><b>Decide</b><small>Priorities, then a written proposal</small></div>
+    </div>
+    <p class="muted small">The gate matters more than it looks. Every predicted S1, and every case where the model and the keyword baseline disagree about S1, is routed to a person — 11% of reviews on the test set. An agent that quietly decides what counts as “someone lost money” is not a system I would put in front of a team.</p>
+  </section>
+
+  <section class="chapter" id="evidence" aria-labelledby="evidence-h">
+    <span class="eyebrow">03 · Does this need AI?</span>
+    <h2 id="evidence-h">I tried to make the cheap option win first.</h2>
+    <p>Before claiming an AI system is worth building, I wanted the opposite result to be possible. So I wrote a keyword-and-star-rating classifier — a few dozen lines, no model — and set a failure condition up front: <b>if the baseline reaches 90% of the agent’s quality, the honest conclusion is that this doesn’t need a language model.</b></p>
+    <p>Then I made the comparison hard to fake. The 157 reviews I used while tuning prompts became a development set and were never used for the final number. A separate <b>80-review test set was labelled by hand before the model ran on it even once</b>, scored once, and never revised afterwards.</p>
+    <div class="kpis">
+      <div><b style="color:var(--pink)">7 / 7</b><span>money-loss cases found by the agent</span></div>
+      <div><b>2 / 7</b><span>found by the keyword baseline</span></div>
+      <div><b>88%</b><span>agent precision on S1 — few false alarms</span></div>
+      <div><b>85%</b><span>problem-type accuracy, vs 56% baseline</span></div>
+    </div>
+    <p style="margin-top:22px">Two of the six evaluation questions I wrote don’t test accuracy at all. One asks about a group with very few examples, where the right answer is to flag the uncertainty. One asks something the data simply cannot answer — “which wallet has the most users?” — where the right answer is to refuse. For an analysis tool a product team will act on, knowing when to stop is a feature, not a nicety.</p>
+    <div class="callout blue"><b>The model choice was a product decision too.</b> Classification needs fine judgement, so it runs on the strongest model. The chat agent on the live demo only orchestrates — every number it reports is computed in code, not by the model — so it runs on a cheaper tier. Picking the most capable model everywhere is a cost decision disguised as a quality one.</div>
+  </section>
+
+  <section class="chapter" id="findings" aria-labelledby="findings-h">
+    <span class="eyebrow">04 · What the reviews say</span>
+    <h2 id="findings-h">Half of all money-loss complaints are about charges nobody agreed to.</h2>
+    <p>Across 435 S1 reviews, the single biggest mechanism isn’t the one product teams usually build for. It isn’t the payment that failed. It’s the payment that succeeded when the user never asked for it.</p>
+    <figure class="fig">
+      <p class="fig-title">How users lose money, by wallet</p>
+      <p class="fig-sub">Share of S1 (money lost or at risk) reviews · n = 435</p>
+      <div class="q-legend">
+        <span><i style="background:#C7372A"></i>Charged without agreeing</span>
+        <span><i style="background:#0071E3"></i>Transaction failed, money taken</span>
+        <span><i style="background:#8E8E93"></i>Account frozen, money stuck</span>
+        <span><i style="background:#C7C7CC"></i>Refund never arrived</span>
+        <span><i style="background:#E5E5EA"></i>Other</span>
+      </div>
+      <div class="chart-box">
+        <svg class="chart q-chart" viewBox="0 0 720 250" role="img" aria-label="Charged without agreeing is the largest mechanism at every wallet: Viettel Money 55 percent, ZaloPay 54 percent, ShopeePay 49 percent, MoMo 42 percent. Failed transactions where money was taken come second everywhere except MoMo, where they lead at 47 percent.">
+          <text class="app" x="0" y="42">MoMo</text><text x="0" y="60">n=123</text>
+          <rect x="110" y="22" width="243.6" height="32" fill="#C7372A"/><text class="inbar" x="122" y="43">42%</text>
+          <rect x="353.6" y="22" width="272.6" height="32" fill="#0071E3"/><text class="inbar" x="365.6" y="43">47%</text>
+          <rect x="626.2" y="22" width="11.6" height="32" fill="#8E8E93"/>
+          <rect x="637.8" y="22" width="52.2" height="32" fill="#E5E5EA"/>
+
+          <text class="app" x="0" y="100">ZaloPay</text><text x="0" y="118">n=175</text>
+          <rect x="110" y="80" width="313.2" height="32" fill="#C7372A"/><text class="inbar" x="122" y="101">54%</text>
+          <rect x="423.2" y="80" width="168.2" height="32" fill="#0071E3"/><text class="inbar" x="435.2" y="101">29%</text>
+          <rect x="591.4" y="80" width="40.6" height="32" fill="#8E8E93"/>
+          <rect x="632" y="80" width="17.4" height="32" fill="#C7C7CC"/>
+          <rect x="649.4" y="80" width="40.6" height="32" fill="#E5E5EA"/>
+
+          <text class="app" x="0" y="158">ShopeePay</text><text x="0" y="176">n=75</text>
+          <rect x="110" y="138" width="284.2" height="32" fill="#C7372A"/><text class="inbar" x="122" y="159">49%</text>
+          <rect x="394.2" y="138" width="133.4" height="32" fill="#0071E3"/><text class="inbar" x="406.2" y="159">23%</text>
+          <rect x="527.6" y="138" width="69.6" height="32" fill="#8E8E93"/>
+          <rect x="597.2" y="138" width="52.2" height="32" fill="#C7C7CC"/>
+          <rect x="649.4" y="138" width="40.6" height="32" fill="#E5E5EA"/>
+
+          <text class="app" x="0" y="216">Viettel Money</text><text x="0" y="234">n=62</text>
+          <rect x="110" y="196" width="319" height="32" fill="#C7372A"/><text class="inbar" x="122" y="217">55%</text>
+          <rect x="429" y="196" width="179.8" height="32" fill="#0071E3"/><text class="inbar" x="441" y="217">31%</text>
+          <rect x="608.8" y="196" width="34.8" height="32" fill="#8E8E93"/>
+          <rect x="643.6" y="196" width="11.6" height="32" fill="#C7C7CC"/>
+          <rect x="655.2" y="196" width="34.8" height="32" fill="#E5E5EA"/>
+        </svg>
+      </div>
+      <figcaption>Market-wide, charges nobody agreed to account for 49% of money-loss reviews (95% CI 44–54%). MoMo is the only wallet where failed transactions lead instead.</figcaption>
+    </figure>
+    <p>What users describe, in their own words: a subscription that renewed by itself, a linked bank account debited without an OTP or a fingerprint, insurance pre-ticked into a bill payment, a maintenance fee that appeared with no notice.</p>
+    <div class="callout"><b>“This app automatically linked my bank account and then took money.”</b><br><span class="muted small">Representative of 217 reviews in this group. Quotes are verbatim and anonymised; the agent is required to cite the exact text it classified on, and 100% of its citations on the development set matched the source word for word.</span></div>
+    <p>Underneath the shared problem, each wallet has a distinct weak spot. The figures below are shares within each wallet’s own complaints, so a larger review base doesn’t inflate them.</p>
+    <div class="table-wrap"><table class="dtable">
+      <thead><tr><th>Share of complaints</th><th class="n">MoMo</th><th class="n">ZaloPay</th><th class="n">ShopeePay</th><th class="n">Viettel Money</th></tr></thead>
+      <tbody>
+        <tr><td>Transaction failures</td><td class="n"><span class="hi">39%</span></td><td class="n"><span class="hi">37%</span></td><td class="n">25%</td><td class="n">22%</td></tr>
+        <tr><td>Fees &amp; limits</td><td class="n">10%</td><td class="n">11%</td><td class="n">1%</td><td class="n"><span class="hi">25%</span></td></tr>
+        <tr><td>Sign-up &amp; identity check</td><td class="n">5%</td><td class="n">12%</td><td class="n"><span class="hi">17%</span></td><td class="n">9%</td></tr>
+        <tr><td>Promotions &amp; rewards</td><td class="n">7%</td><td class="n">10%</td><td class="n"><span class="hi">17%</span></td><td class="n">2%</td></tr>
+        <tr><td>Login &amp; access</td><td class="n">10%</td><td class="n">13%</td><td class="n">19%</td><td class="n">15%</td></tr>
+      </tbody>
+    </table></div>
+    <p class="q-note">Read down a column, not across a row. Viettel Money’s fee share is 18 points above the average of the other three, almost entirely road-toll account maintenance. ShopeePay’s referral bonuses and its face-verification step are its two loudest failures.</p>
+
+    <h3 style="margin-top:38px">A fast reply is not the same as help</h3>
+    <p>Developer response rates looked like a clean quality signal until I checked how similar the replies were to each other. Then the metric changed meaning entirely.</p>
+    <div class="table-wrap"><table class="dtable">
+      <thead><tr><th></th><th class="n">MoMo</th><th class="n">ZaloPay</th><th class="n">ShopeePay</th><th class="n">Viettel Money</th></tr></thead>
+      <tbody>
+        <tr><td>Replies to complaints</td><td class="n">86%</td><td class="n">75%</td><td class="n">98%</td><td class="n">48%</td></tr>
+        <tr><td>Median time to reply</td><td class="n">24 min</td><td class="n">23 hrs</td><td class="n">40 hrs</td><td class="n">3.1 hrs</td></tr>
+        <tr><td>Replies that are boilerplate</td><td class="n">100%</td><td class="n">94%</td><td class="n">100%</td><td class="n">69%</td></tr>
+        <tr><td>Distinct openings used</td><td class="n">7 of 400</td><td class="n">19 of 353</td><td class="n">2 of 384</td><td class="n">48 of 182</td></tr>
+      </tbody>
+    </table></div>
+    <p class="q-note">ShopeePay answers almost every complaint using two templates. So this table measures automation coverage, not care — and I report it that way rather than as a customer-service ranking.</p>
+  </section>
+
+  <section class="chapter" id="wrong" aria-labelledby="wrong-h">
+    <span class="eyebrow">05 · What went wrong</span>
+    <h2 id="wrong-h">Three times I was wrong, and what each one cost.</h2>
+    <p>The decision log has 27 entries. These three changed the design.</p>
+    <div class="grid-3" style="align-items:stretch">
+      <div class="box"><span class="k">01 · Over-engineered</span><h4>I designed a taxonomy nobody could use</h4><p>Thirteen categories, nine fields per review, 160 reviews to label — around nine hours of work before a single result. I cut it to nine categories and two required fields. Detail that doesn’t change a decision isn’t rigour, it’s cost.</p></div>
+      <div class="box"><span class="k">02 · Graded on feeling</span><h4>I made the exact mistake the project exists to fix</h4><p>My first labelling pass marked 36% of reviews as S1 and produced no S3 at all: I was scoring anger, not consequence. On the re-label, my two passes agreed on only 15 of 53 complaints. That gap is the strongest evidence I have for why a written decision tree is needed.</p></div>
+      <div class="box"><span class="k">03 · Trusted the model</span><h4>My review of the model’s errors drifted toward the model</h4><p>Checking 31 disagreements, I changed 26 labels — 25 of them to whatever the model said. That’s automation bias, and it quietly inflates the score. It’s why the final number comes from a separate test set I labelled blind, and why I report both figures.</p></div>
+    </div>
+    <div class="callout"><b>What I would do differently:</b> have a second person label 30 reviews independently. Every integrity check here is one person checking themselves, which catches carelessness but not a consistent blind spot.</div>
+  </section>
+
+  <section class="chapter" id="decision" aria-labelledby="decision-h">
+    <span class="eyebrow">06 · The decision</span>
+    <h2 id="decision-h">From a finding to something a team could actually build.</h2>
+    <p>An analysis that stops at a chart isn’t product work. The finding points at three gaps, and each one has an obvious counterpart in the product.</p>
+    <div class="table-wrap"><table class="dtable">
+      <thead><tr><th>Gap</th><th>What users say</th><th>Proposed feature</th></tr></thead>
+      <tbody>
+        <tr><td>No warning</td><td>Money leaves with no heads-up</td><td>Notify 24 hours before any recurring charge, with a one-tap cancel</td></tr>
+        <tr><td>No overview</td><td>No way to see what can charge you</td><td>One Autopay screen: every merchant, every linked account, last and next charge</td></tr>
+        <tr><td>No explicit consent</td><td>First charge from a new merchant needs no confirmation</td><td>OTP or biometrics on the first charge from any new merchant, or above a user-set limit</td></tr>
+      </tbody>
+    </table></div>
+    <p>The part I care most about is the measurement plan. The north-star metric is <b>the share of S1 reviews of the unauthorised-charge type</b> — measured monthly by rerunning this same agent. The guardrail is payment success rate and recurring revenue, because adding a confirmation step can suppress legitimate charges, and a feature that protects users by breaking payments is not a win.</p>
+    <p>Step zero in the proposal is deliberately not “build it”. It’s two weeks of checking the finding against internal support tickets. Public reviews are a biased sample; if this group isn’t at least a tenth of money-related tickets, the priority is wrong and the proposal should lose.</p>
+    <div class="q-links">
+      <a class="btn" href="https://claude.ai/artifact/DGZwuTtJ9oaWwiB2x7A8iP" target="_blank" rel="noopener">Open the live data explorer <span aria-hidden="true">↗</span></a>
+      <a class="btn ghost" href="https://github.com/hoanghan-cabong/fintech-review-insights" target="_blank" rel="noopener">Code, taxonomy &amp; 27 decisions on GitHub <span aria-hidden="true">↗</span></a>
+    </div>
+    <p class="q-note">The explorer includes a chat agent that answers questions about this dataset using tools, citing the individual reviews behind every number. It runs on the reader’s own Claude account, so it may ask for permission the first time.</p>
+  </section>
+
+  <section class="chapter" id="limits" aria-labelledby="limits-h">
+    <span class="eyebrow">07 · Limits</span>
+    <h2 id="limits-h">What this evidence does not show.</h2>
+    <ul class="checklist">
+      <li><div><b>Android only, and a self-selected sample.</b><span>People who hit a problem write reviews more often. These numbers compare wallets against each other; they don’t measure satisfaction.</span></div></li>
+      <li><div><b>Seven S1 cases in the test set is a small number.</b><span>Catching 7 of 7 gives a 95% interval of 65–100%. Consistent with the development set, but not proof of a 95% catch rate.</span></div></li>
+      <li><div><b>Nothing here speaks to scams where users are tricked into paying.</b><span>I searched 242 candidate reviews and found no clear case. In reviews, “scam” is almost always an expression of anger, or shorthand for an unauthorised charge. That question needs support tickets, not public reviews.</span></div></li>
+      <li><div><b>The money-loss mechanism labels are a secondary pass without their own test set.</b><span>Checked by reading 23 random cases, 22 correct. Treated as directional, which is why the headline number carries an interval.</span></div></li>
+      <li><div><b>I describe what changed, not why.</b><span>ZaloPay’s review surge is reported as an observation. I don’t speculate about what caused it inside the company.</span></div></li>
+    </ul>
+    <p class="muted small" style="margin-top:18px">Personal research using public, anonymised data. Not affiliated with, and not representing, any of the companies named.</p>
+  </section>
+
+  <a class="next" href="../zalo-game-center/index.html">
+    <div><p class="eyebrow">Next case</p><h3>Zalo Game Center</h3><p class="muted" style="margin:6px 0 0">Four platform features, from a 16-platform benchmark to limited rollout</p></div>
+    <span class="btn">Read case <span class="arrow" aria-hidden="true">→</span></span>
+  </a>
+  </article>
+</div>
+</main>
+<section class="contact section" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <p class="eyebrow">Open to Associate Product Owner roles · fintech &amp; mobile products · full-time</p>
+    <h2 id="contact-title">Let’s build what users <em>come back to.</em></h2>
+    <p class="lead" style="max-width:620px;margin-top:20px">If you’re hiring for product work where user behaviour, clear trade-offs and measurable outcomes matter, I’d love to talk.</p>
+    <div class="copy-row"><span class="email-text">hanhoueh2005@gmail.com</span><button class="copy-btn" type="button" data-copy="hanhoueh2005@gmail.com">Copy email</button></div>
+    <div class="contact-links">
+      <a class="btn" href="mailto:hanhoueh2005@gmail.com">Write an email <span class="arrow" aria-hidden="true">→</span></a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/han-ho-928779363/" target="_blank" rel="noopener">LinkedIn <span class="sr-only">(opens in a new tab)</span><span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Hoang Han · Ho Chi Minh City</span>
+    <a href="#main">Back to top ↑</a>
+  </div>
+</footer>
+<script src="../../assets/site.js?v=5" defer></script>
+</body>
+</html>

@@ -6,6 +6,8 @@ Agent AI phân tích review công khai trên Google Play của 4 ví điện t�
 
 **Trang insight có chat hỏi đáp dữ liệu:** https://claude.ai/artifact/DGZwuTtJ9oaWwiB2x7A8iP (hiện ở chế độ riêng tư)
 
+**Repo:** https://github.com/hoanghan-cabong/fintech-review-insights
+
 Điểm khác biệt:
 - **Chấm theo rủi ro tài chính**, không theo số sao: S1 = đã mất tiền hoặc có rủi ro mất tiền.
 - **Chứng minh có cần AI:** trên tập kiểm tra gắn nhãn trước, bộ lọc từ khoá bắt 2/7 ca mất tiền, agent bắt 7/7 (precision 88%), chi phí quy đổi khoảng $9,6 / 1.000 review.

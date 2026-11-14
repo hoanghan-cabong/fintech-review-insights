@@ -1,0 +1,254 @@
+{
+  "random": {
+    "agent_v1_haiku": {
+      "n": 100,
+      "category": [
+        88,
+        100
+      ],
+      "severity": [
+        87,
+        100
+      ],
+      "severity_pm1": [
+        96,
+        100
+      ],
+      "s1_recall": [
+        9,
+        9
+      ],
+      "s1_precision": [
+        9,
+        12
+      ],
+      "flow": [
+        13,
+        15
+      ],
+      "evidence": [
+        56,
+        57
+      ]
+    },
+    "agent_v1_opus": {
+      "n": 100,
+      "category": [
+        88,
+        100
+      ],
+      "severity": [
+        93,
+        100
+      ],
+      "severity_pm1": [
+        99,
+        100
+      ],
+      "s1_recall": [
+        9,
+        9
+      ],
+      "s1_precision": [
+        9,
+        10
+      ],
+      "flow": [
+        13,
+        13
+      ],
+      "evidence": [
+        57,
+        57
+      ]
+    },
+    "agent_v2_opus": {
+      "n": 100,
+      "category": [
+        87,
+        100
+      ],
+      "severity": [
+        92,
+        100
+      ],
+      "severity_pm1": [
+        99,
+        100
+      ],
+      "s1_recall": [
+        9,
+        9
+      ],
+      "s1_precision": [
+        9,
+        10
+      ],
+      "flow": [
+        13,
+        13
+      ],
+      "evidence": [
+        56,
+        56
+      ]
+    },
+    "baseline": {
+      "n": 100,
+      "category": [
+        61,
+        100
+      ],
+      "severity": [
+        64,
+        100
+      ],
+      "severity_pm1": [
+        91,
+        100
+      ],
+      "s1_recall": [
+        6,
+        9
+      ],
+      "s1_precision": [
+        6,
+        8
+      ],
+      "flow": [
+        10,
+        11
+      ],
+      "evidence": [
+        0,
+        0
+      ]
+    }
+  },
+  "hard": {
+    "agent_v1_haiku": {
+      "n": 57,
+      "category": [
+        51,
+        57
+      ],
+      "severity": [
+        54,
+        57
+      ],
+      "severity_pm1": [
+        56,
+        57
+      ],
+      "s1_recall": [
+        19,
+        20
+      ],
+      "s1_precision": [
+        19,
+        20
+      ],
+      "flow": [
+        11,
+        18
+      ],
+      "evidence": [
+        39,
+        40
+      ]
+    },
+    "agent_v1_opus": {
+      "n": 57,
+      "category": [
+        49,
+        57
+      ],
+      "severity": [
+        54,
+        57
+      ],
+      "severity_pm1": [
+        57,
+        57
+      ],
+      "s1_recall": [
+        20,
+        20
+      ],
+      "s1_precision": [
+        20,
+        20
+      ],
+      "flow": [
+        13,
+        19
+      ],
+      "evidence": [
+        41,
+        41
+      ]
+    },
+    "agent_v2_opus": {
+      "n": 57,
+      "category": [
+        50,
+        57
+      ],
+      "severity": [
+        54,
+        57
+      ],
+      "severity_pm1": [
+        57,
+        57
+      ],
+      "s1_recall": [
+        19,
+        20
+      ],
+      "s1_precision": [
+        19,
+        19
+      ],
+      "flow": [
+        12,
+        18
+      ],
+      "evidence": [
+        39,
+        40
+      ]
+    },
+    "baseline": {
+      "n": 57,
+      "category": [
+        39,
+        57
+      ],
+      "severity": [
+        32,
+        57
+      ],
+      "severity_pm1": [
+        46,
+        57
+      ],
+      "s1_recall": [
+        14,
+        20
+      ],
+      "s1_precision": [
+        14,
+        21
+      ],
+      "flow": [
+        9,
+        17
+      ],
+      "evidence": [
+        0,
+        0
+      ]
+    }
+  }
+}

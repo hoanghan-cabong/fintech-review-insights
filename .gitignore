@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+.DS_Store
+
+# Dữ liệu thô không đưa lên GitHub (D-rủi ro: không đăng lại dữ liệu thô)
+data/raw/
+data/clean/
+data/cache/
+
+# Nguyên văn toàn bộ review trong mẫu: không đăng lại dữ liệu thô (PRD §8).
+# Tạo lại bằng: src/scrape.py → src/anonymize.py → src/classify_corpus.py → src/build_explorer.py
+data/corpus/sample.csv
+explorer/data.json

@@ -1,0 +1,33 @@
+{
+  "thesis": "Gần một nửa số ca người dùng mất tiền không đến từ giao dịch lỗi, mà từ việc bị trừ tiền khi họ không đồng ý.",
+  "items": [
+    {
+      "title": "Bị trừ tiền không đồng ý là cơ chế mất tiền số 1.",
+      "body": "Chiếm 49% số review S1 trên cả thị trường (khoảng tin cậy 44–54%): Viettel Money 55%, ZaloPay 54%, ShopeePay 49%, MoMo 42%. Các kiểu thường gặp: gói dịch vụ tự gia hạn, thanh toán tự động qua ngân hàng liên kết mà không hỏi OTP hay sinh trắc học, dịch vụ bị chèn thêm khi thanh toán hoá đơn."
+    },
+    {
+      "title": "MoMo và ZaloPay: giao dịch lỗi chiếm gần 40% phàn nàn.",
+      "body": "MoMo 39%, ZaloPay 37%, so với ShopeePay 25% và Viettel Money 22%. MoMo là ví duy nhất mà trong các ca mất tiền, giao dịch lỗi đã bị trừ tiền (47%) nhiều hơn bị trừ không đồng ý (42%)."
+    },
+    {
+      "title": "Mỗi ví có một điểm nghẽn riêng.",
+      "body": "Viettel Money: phí chiếm 25% phàn nàn, cao hơn 18 điểm so với 3 ví còn lại, chủ yếu là phí quản lý và duy trì ePass. ShopeePay: khuyến mãi (17%, phần lớn là thưởng mời bạn không về) và đăng ký / eKYC (17%, app văng ở bước xác minh khuôn mặt)."
+    },
+    {
+      "title": "Phản hồi nhanh không có nghĩa là được hỗ trợ.",
+      "body": "69–100% phản hồi của đội phát triển là văn mẫu. ShopeePay phản hồi 98% review phàn nàn nhưng chỉ dùng 2 kiểu mở đầu, trung vị sau 40 giờ; MoMo phản hồi sau 24 phút, 100% văn mẫu. Viettel Money cá nhân hoá nhiều hơn nhưng chỉ phản hồi khoảng một nửa."
+    },
+    {
+      "title": "Bài toán này cần AI.",
+      "body": "Trên tập kiểm tra gắn nhãn trước, bộ lọc từ khoá và số sao chỉ bắt được 2/7 review mất tiền; agent bắt được 7/7 với precision 88%, chi phí quy đổi khoảng $9,6 cho 1.000 review."
+    }
+  ],
+  "method": [
+    "Dữ liệu: review công khai trên Google Play, 14/08–12/11/2026, đã ẩn danh. Mẫu 2.339 review từ 5 từ trở lên, lấy phân tầng theo ví và nhóm sao (tối đa 450 review 1–3 sao và 150 review 4–5 sao mỗi ví), có trọng số khi tính tỷ lệ.",
+    "Mọi tỷ lệ so sánh tính trong nhóm review phàn nàn, vì ZaloPay có đợt tăng đột biến review khen từ đầu tháng 10/2026 làm lệch tổng số review.",
+    "Phân loại bằng Claude Opus với bộ phân loại 9 vấn đề và thang rủi ro S1–S4. Kiểm chứng trên 80 review gắn nhãn tay trước khi chạy model: category 85%, recall S1 7/7, precision S1 88%.",
+    "Cơ chế mất tiền của review S1 do một bước phân loại phụ gán; bước này không có tập đáp án riêng, được kiểm tra bằng cách đọc ngẫu nhiên 23 ca (22 ca đúng).",
+    "Giới hạn: chỉ Android; người gặp sự cố có xu hướng viết review nhiều hơn nên chỉ dùng để so sánh tương đối; review dưới 5 từ bị loại; nhãn tay do một người gắn; không có kết luận về lừa đảo kiểu thao túng tâm lý vì gần như không xuất hiện trong review.",
+    "Phân tích cá nhân phục vụ portfolio, không đại diện cho quan điểm của doanh nghiệp nào."
+  ]
+}

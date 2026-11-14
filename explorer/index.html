@@ -1,0 +1,373 @@
+<meta charset="utf-8">
+<title>Radar phàn nàn ví điện tử</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: một cột đọc được, bảng so sánh 4 ví làm xương sống, chat là công cụ đặt cuối trang */
+:root{
+  --bg:#f6f7f8; --surface:#ffffff; --ink:#14212b; --muted:#5b6a75; --line:#dde3e7;
+  --accent:#0f6a73; --accent-soft:#e0eff0;
+  --s1:#c0392b; --s2:#d4811e; --s3:#b59b1a; --s4:#7d8c96;
+  --font-body:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f161b; --surface:#172129; --ink:#e6edf1; --muted:#93a3ae; --line:#2a3842;
+  --accent:#5cc2c9; --accent-soft:#18363b;
+  --s1:#ef7565; --s2:#f0a656; --s3:#d8c255; --s4:#8fa1ad; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#0f161b; --surface:#172129; --ink:#e6edf1; --muted:#93a3ae; --line:#2a3842;
+  --accent:#5cc2c9; --accent-soft:#18363b;
+  --s1:#ef7565; --s2:#f0a656; --s3:#d8c255; --s4:#8fa1ad; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--font-body);margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:36px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.25}
+h1{font-size:clamp(26px,4vw,36px);font-weight:700;letter-spacing:-.01em}
+h2{font-size:20px;font-weight:600}
+h3{font-size:15px;font-weight:600}
+p{margin:0}
+.eyebrow{font:500 12px/1 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.lede{font-size:17px;color:var(--muted);max-width:68ch}
+.thesis{font-size:clamp(18px,2.4vw,22px);font-weight:600;max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;font:13px var(--font-mono);color:var(--muted)}
+.hero{display:grid;gap:14px}
+section{display:grid;gap:14px;min-width:0}
+.note{font-size:13px;color:var(--muted);max-width:75ch}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:900px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.tiles{grid-template-columns:1fr}}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:grid;gap:10px;min-width:0}
+.tile .app{font-weight:600}
+.kv{display:flex;justify-content:space-between;gap:8px;font-size:13px;color:var(--muted)}
+.kv b{color:var(--ink);font:500 14px var(--font-mono);font-variant-numeric:tabular-nums;text-align:right}
+.kv b.s1{color:var(--s1)}
+.findings{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.findings li{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:12px 14px}
+.findings li b{display:block;margin-bottom:2px}
+.scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:620px}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-weight:600;font-size:13px;color:var(--muted)}
+td.num{font:13px var(--font-mono);font-variant-numeric:tabular-nums}
+td.heat{position:relative}
+td.heat span{position:relative}
+td.heat::before{content:"";position:absolute;inset:4px;border-radius:5px;background:var(--accent);opacity:var(--o,0)}
+td.gap-up{box-shadow:inset 0 -2px 0 var(--s1)}
+tr:last-child td{border-bottom:0}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.bars{display:grid;gap:10px}
+.bar-row{display:grid;grid-template-columns:120px 1fr 54px;gap:12px;align-items:center;font-size:14px}
+.bar{display:flex;height:18px;border-radius:4px;overflow:hidden;background:var(--line)}
+.bar span{height:100%}
+.bar-row .n{font:12px var(--font-mono);color:var(--muted);text-align:right}
+@media (max-width:560px){.bar-row{grid-template-columns:1fr;gap:4px}.bar-row .n{text-align:left}}
+/* chat */
+.chat{background:var(--surface);border:1px solid var(--line);border-radius:12px;display:grid;grid-template-rows:auto 1fr auto;min-height:440px;overflow:hidden}
+.chat-head{padding:14px 16px;border-bottom:1px solid var(--line);display:grid;gap:4px}
+.log{padding:16px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:520px}
+.msg{max-width:80ch;padding:10px 14px;border-radius:10px;white-space:pre-wrap;word-break:break-word}
+.msg.user{align-self:flex-end;background:var(--accent);color:var(--surface)}
+.msg.bot{align-self:flex-start;background:var(--bg);border:1px solid var(--line);white-space:normal}
+.msg.bot ul{margin:6px 0;padding-left:20px}
+.msg.bot p+p{margin-top:8px}
+.msg .trace{font:12px var(--font-mono);color:var(--muted);margin-top:6px;white-space:pre-wrap}
+.cite{font:12px var(--font-mono);background:var(--accent-soft);color:var(--accent);border:0;border-radius:4px;padding:0 5px;cursor:pointer}
+.cite:focus-visible,button:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:13px var(--font-body);background:var(--accent-soft);color:var(--ink);border:1px solid transparent;border-radius:999px;padding:5px 12px;cursor:pointer}
+.chip:hover{border-color:var(--accent)}
+form.ask{display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--line);align-items:flex-end}
+form.ask textarea{flex:1;min-width:0;resize:none;font:15px var(--font-body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 12px;min-height:42px;max-height:140px}
+.btn{font:600 14px var(--font-body);border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:var(--surface);padding:9px 16px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn:disabled{opacity:.5;cursor:default}
+.drawer{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:6px}
+.drawer .id{font:12px var(--font-mono);color:var(--muted)}
+.sev{display:inline-block;font:600 11px var(--font-mono);padding:1px 6px;border-radius:4px;color:var(--surface)}
+.sev.S1{background:var(--s1)}.sev.S2{background:var(--s2)}.sev.S3{background:var(--s3)}.sev.S4{background:var(--s4)}
+.unavailable{font-size:14px;color:var(--muted);padding:16px}
+footer{font-size:13px;color:var(--muted);display:grid;gap:8px;border-top:1px solid var(--line);padding-top:20px}
+footer ul{margin:0;padding-left:18px;display:grid;gap:4px}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="eyebrow">Phân tích review công khai · Google Play</span>
+    <h1>Người dùng ví điện tử đang mất tiền ở đâu?</h1>
+    <p class="thesis" id="thesis">Đang tải dữ liệu…</p>
+    <p class="lede">So sánh MoMo, ZaloPay, ShopeePay và Viettel Money qua review của người dùng. Mỗi review được một agent AI phân loại theo vấn đề và theo <b>mức rủi ro tài chính</b>: S1 là đã mất tiền hoặc có rủi ro mất tiền, S2 là không làm được việc chính, S3 là phiền, S4 là còn lại.</p>
+    <div class="meta" id="meta"></div>
+  </header>
+
+  <section>
+    <h2>Phát hiện chính</h2>
+    <ul class="findings" id="findings"></ul>
+  </section>
+
+  <section>
+    <h2>Bức tranh từng ví</h2>
+    <p class="note">Tỷ lệ tính trong nhóm review phàn nàn, có trọng số theo cách lấy mẫu. Không so tổng số review vì ZaloPay có đợt tăng đột biến review khen từ tháng 10.</p>
+    <div class="tiles" id="tiles"></div>
+  </section>
+
+  <section>
+    <h2>Khi phàn nàn, người dùng phàn nàn về điều gì?</h2>
+    <p class="note">Tỷ trọng từng vấn đề trong review phàn nàn của mỗi ví. Gạch đỏ dưới ô: cao hơn trung bình 3 ví còn lại từ 5 điểm trở lên.</p>
+    <div class="scroll"><table id="heat"></table></div>
+  </section>
+
+  <section id="s1-section">
+    <h2>Ca mất tiền (S1) xảy ra theo cơ chế nào?</h2>
+    <div class="legend" id="s1-legend"></div>
+    <div class="bars" id="s1-bars"></div>
+    <p class="note" id="s1-note"></p>
+  </section>
+
+  <section>
+    <h2>Đội phát triển phản hồi review phàn nàn thế nào?</h2>
+    <p class="note">"Văn mẫu": phản hồi có 70 ký tự đầu trùng với ít nhất 5 phản hồi khác của cùng ví. Tỷ lệ và tốc độ phản hồi vì vậy chủ yếu đo mức tự động hoá.</p>
+    <div class="scroll"><table id="reply"></table></div>
+  </section>
+
+  <section>
+    <h2>Hỏi dữ liệu</h2>
+    <p class="note">Agent trả lời bằng cách tra cứu chính dữ liệu trên trang này, có trích dẫn review. Câu hỏi chạy bằng tài khoản Claude của bạn; lần đầu Claude sẽ hỏi bạn có cho phép không.</p>
+    <div class="chat" id="chat">
+      <div class="chat-head">
+        <div class="chips" id="chips"></div>
+      </div>
+      <div class="log" id="log" aria-live="polite"></div>
+      <form class="ask" id="ask">
+        <label for="q" class="sr" hidden>Câu hỏi</label>
+        <textarea id="q" rows="1" placeholder="Ví dụ: ShopeePay hay bị phàn nàn về luồng nào?"></textarea>
+        <button class="btn ghost" type="button" id="stop" hidden>Dừng</button>
+        <button class="btn" type="submit" id="send">Hỏi</button>
+      </form>
+    </div>
+    <div class="drawer" id="drawer" hidden></div>
+  </section>
+
+  <footer>
+    <b>Phương pháp và giới hạn</b>
+    <ul id="method"></ul>
+  </footer>
+</div>
+
+<script>
+const APP = {momo:"MoMo", zalopay:"ZaloPay", shopeepay:"ShopeePay", viettelmoney:"Viettel Money"};
+const APPS = Object.keys(APP);
+const CAT = {TXN_FAILURE:"Giao dịch lỗi", AUTH_ACCESS:"Đăng nhập / truy cập", ONBOARD_EKYC:"Đăng ký / eKYC",
+  FRAUD_SECURITY:"Lừa đảo / bảo mật", FEES_LIMITS:"Phí / hạn mức", SUPPORT:"Chăm sóc khách hàng",
+  PROMO_REWARDS:"Khuyến mãi", APP_EXPERIENCE:"Trải nghiệm app", NON_ISSUE:"Không phải vấn đề"};
+const S1T = {unauthorized_debit:"Bị trừ tiền không đồng ý", failed_txn_money_lost:"Giao dịch lỗi, đã bị trừ tiền",
+  refund_delay:"Chậm hoàn tiền", account_frozen:"Tài khoản bị khoá, kẹt tiền", account_takeover:"Bị chiếm tài khoản",
+  scam:"Bị lừa tự chuyển tiền", other:"Khác"};
+const S1C = {unauthorized_debit:"var(--s1)", failed_txn_money_lost:"var(--s2)", refund_delay:"var(--s3)",
+  account_frozen:"var(--accent)", account_takeover:"#8e5bb5", scam:"#b5577a", other:"var(--s4)"};
+const FLOW = {transfer:"Chuyển tiền", payment:"Thanh toán", topup_withdraw:"Nạp / rút / liên kết", credit_bnpl:"Trả sau / vay", unknown:"Không rõ"};
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const pc = p => (p == null || isNaN(p)) ? "–" : Math.round(p * 100) + "%";
+let D = null, byId = {};
+
+// ---------- static report ----------
+function render(){
+  const S = D.summary;
+  $("thesis").textContent = D.findings?.thesis || "";
+  $("meta").innerHTML = [
+    `${D.reviews.length.toLocaleString("vi-VN")} review trong mẫu`, `${D.period}`,
+    `Phân loại bằng Claude Opus`, `Kiểm chứng: bắt ${D.eval.agent.s1_recall[0]}/${D.eval.agent.s1_recall[1]} ca S1 (bộ lọc từ khoá: ${D.eval.baseline.s1_recall[0]}/${D.eval.baseline.s1_recall[1]})`
+  ].map(esc).join("<span aria-hidden='true'>·</span>");
+  $("findings").innerHTML = (D.findings?.items || []).map(f => `<li><b>${esc(f.title)}</b>${esc(f.body)}</li>`).join("");
+
+  $("tiles").innerHTML = APPS.map(a => {
+    const x = S.apps[a];
+    const g = Object.entries(x.gaps || {}).sort((p, q) => q[1] - p[1])[0];
+    const weak = g && g[1] >= .05 ? `${CAT[g[0]]} +${Math.round(g[1] * 100)} điểm` : "Không nổi bật";
+    return `<div class="tile"><span class="app">${APP[a]}</span>
+      <div class="kv">Review phàn nàn trong mẫu <b>${x.n_complaints}</b></div>
+      <div class="kv">Tỷ trọng S1 <b class="s1">${pc(rowShare(a, r => r.sev === "S1"))}</b></div>
+      <div class="kv">Phản hồi review S1 <b>${pc(x.reply_rate_S1?.[0])}</b></div>
+      <div class="kv">Điểm yếu nổi bật <b>${esc(weak)}</b></div></div>`;
+  }).join("");
+
+  const cats = S.categories;
+  let h = `<thead><tr><th>Vấn đề</th>${APPS.map(a => `<th>${APP[a]}</th>`).join("")}</tr></thead><tbody>`;
+  for (const c of cats){
+    h += `<tr><td>${CAT[c]}</td>` + APPS.map(a => {
+      const p = S.apps[a].category_share[c][0], g = S.apps[a].gaps[c];
+      return `<td class="heat num${g >= .05 ? " gap-up" : ""}" style="--o:${Math.min(.5, p * 1.4).toFixed(2)}"><span>${pc(p)}</span></td>`;
+    }).join("") + "</tr>";
+  }
+  $("heat").innerHTML = h + "</tbody>";
+
+  const types = Object.keys(S1T).filter(t => APPS.some(a => (S.apps[a].s1_type_share?.[t]?.[0] || 0) > 0));
+  if (!types.length){ $("s1-section").hidden = true; }
+  else {
+    $("s1-legend").innerHTML = types.map(t => `<span><i style="background:${S1C[t]}"></i>${S1T[t]}</span>`).join("");
+    $("s1-bars").innerHTML = APPS.map(a => {
+      const n = D.reviews.filter(r => r.app === a && r.sev === "S1").length;
+      const segs = types.map(t => {
+        const p = S.apps[a].s1_type_share?.[t]?.[0] || 0;
+        return p > 0 ? `<span title="${S1T[t]}: ${pc(p)}" style="width:${(p * 100).toFixed(1)}%;background:${S1C[t]}"></span>` : "";
+      }).join("");
+      return `<div class="bar-row"><span>${APP[a]}</span><div class="bar" role="img" aria-label="${APP[a]}: ${types.map(t => S1T[t] + " " + pc(S.apps[a].s1_type_share?.[t]?.[0] || 0)).join(", ")}">${segs}</div><span class="n">n=${n}</span></div>`;
+    }).join("");
+    $("s1-note").textContent = "Cơ chế mất tiền được một bước phân loại phụ gán cho các review S1; bước này không có tập đáp án riêng.";
+  }
+
+  const rows = [["Tỷ lệ phản hồi, mọi mức", a => pc(S.apps[a].reply_rate_all?.[0])],
+                ["Tỷ lệ phản hồi, chỉ S1", a => pc(S.apps[a].reply_rate_S1?.[0])],
+                ["Trung vị giờ phản hồi, mọi mức", a => fmtH(S.apps[a].reply_hours_all)],
+                ["Trung vị giờ phản hồi, chỉ S1", a => fmtH(S.apps[a].reply_hours_S1)],
+                ["Phản hồi là văn mẫu", a => pc(S.apps[a].reply_template_share)]];
+  $("reply").innerHTML = `<thead><tr><th></th>${APPS.map(a => `<th>${APP[a]}</th>`).join("")}</tr></thead><tbody>` +
+    rows.map(([l, f]) => `<tr><td>${l}</td>${APPS.map(a => `<td class="num">${f(a)}</td>`).join("")}</tr>`).join("") + "</tbody>";
+
+  $("method").innerHTML = (D.findings?.method || []).map(m => `<li>${esc(m)}</li>`).join("");
+}
+const fmtH = h => (h == null || isNaN(h)) ? "–" : (h < 1 ? Math.round(h * 60) + " phút" : h < 48 ? h.toFixed(1).replace(".", ",") + " giờ" : (h / 24).toFixed(1).replace(".", ",") + " ngày");
+function rowShare(app, pred, base = r => r.cat !== "NON_ISSUE"){
+  const rs = D.reviews.filter(r => r.app === app && base(r));
+  const sw = rs.reduce((s, r) => s + r.w, 0);
+  return sw ? rs.filter(pred).reduce((s, r) => s + r.w, 0) / sw : null;
+}
+
+// ---------- data tools for the chat agent ----------
+const fold = s => String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d");
+function matcher(q = {}){
+  const kw = q.keyword ? fold(q.keyword) : null;
+  return r => (!q.app || r.app === q.app) && (!q.category || r.cat === q.category) && (!q.severity || r.sev === q.severity)
+    && (!q.flow || r.flow === q.flow) && (!q.s1_type || r.s1 === q.s1_type) && (!kw || fold(r.text).includes(kw));
+}
+function clean(q){ const o = {}; for (const k of ["app","category","severity","flow","s1_type","keyword"]) if (q?.[k]) o[k] = String(q[k]); return o; }
+function weighted(rs, pred){
+  const sw = rs.reduce((s, r) => s + r.w, 0), sw2 = rs.reduce((s, r) => s + r.w * r.w, 0);
+  if (!sw) return {share: null, n: 0};
+  const p = rs.filter(pred).reduce((s, r) => s + r.w, 0) / sw, ne = sw * sw / sw2, z = 1.96;
+  const d = 1 + z * z / ne, c = (p + z * z / (2 * ne)) / d, h = z * Math.sqrt(p * (1 - p) / ne + z * z / (4 * ne * ne)) / d;
+  return {share: +p.toFixed(3), ci95: [+Math.max(0, c - h).toFixed(3), +Math.min(1, c + h).toFixed(3)], n_matching: rs.filter(pred).length, n_base: rs.length};
+}
+const TOOLS = [
+  {name: "get_overview",
+   description: "Số liệu tổng hợp cho từng ví (momo, zalopay, shopeepay, viettelmoney): số review phàn nàn, tỷ trọng từng category và S1 trong review phàn nàn, cơ chế S1, tỷ lệ và thời gian phản hồi, top vấn đề ưu tiên, các phát hiện chính. Gọi đầu tiên cho câu hỏi tổng quát.",
+   execute: () => {
+     const S = D.summary, out = {period: D.period, findings: D.findings?.items?.map(f => f.title + ": " + f.body), apps: {}};
+     for (const a of APPS){ const x = S.apps[a];
+       out.apps[a] = {name: APP[a], n_complaints_in_sample: x.n_complaints,
+         s1_share: rowShare(a, r => r.sev === "S1")?.toFixed(3),
+         category_share: Object.fromEntries(Object.entries(x.category_share).map(([k, v]) => [k, +v[0].toFixed(3)])),
+         s1_type_share: x.s1_type_share ? Object.fromEntries(Object.entries(x.s1_type_share).map(([k, v]) => [k, +v[0].toFixed(3)])) : null,
+         reply_rate_all: x.reply_rate_all?.[0]?.toFixed(3), reply_rate_S1: x.reply_rate_S1?.[0]?.toFixed(3),
+         reply_hours_median_all: x.reply_hours_all, reply_hours_median_S1: x.reply_hours_S1,
+         top_priorities: Object.keys(x.priority || {}).slice(0, 3)}; }
+     return out; }},
+  {name: "compare_apps",
+   description: "So sánh 4 ví theo một bộ lọc: trả về, cho từng ví, tỷ trọng có trọng số (kèm khoảng tin cậy 95%) của các review phàn nàn khớp bộ lọc, trên tổng review phàn nàn của ví đó. Dùng cho câu hỏi 'ví nào bị ... nhiều hơn'.",
+   inputSchema: {type: "object", properties: {
+     category: {type: "string", enum: Object.keys(CAT)}, severity: {type: "string", enum: ["S1","S2","S3","S4"]},
+     flow: {type: "string", enum: Object.keys(FLOW)}, s1_type: {type: "string", enum: Object.keys(S1T)},
+     keyword: {type: "string", description: "Từ khoá tìm trong nội dung review, không phân biệt dấu"}}},
+   execute: (q) => { const m = matcher(clean(q)), out = {filter: clean(q), base: "review phàn nàn của từng ví", apps: {}};
+     for (const a of APPS) out.apps[a] = weighted(D.reviews.filter(r => r.app === a && r.cat !== "NON_ISSUE"), m);
+     return out; }},
+  {name: "search_reviews",
+   description: "Tìm review trong mẫu theo bộ lọc và trả về tối đa `limit` (mặc định 6, tối đa 10) review kèm id, ví, ngày, số sao, category, mức, cơ chế S1 và nội dung đã cắt ngắn, cùng tổng số review khớp. Dùng để lấy ví dụ và trích dẫn.",
+   inputSchema: {type: "object", properties: {
+     app: {type: "string", enum: APPS}, category: {type: "string", enum: Object.keys(CAT)},
+     severity: {type: "string", enum: ["S1","S2","S3","S4"]}, flow: {type: "string", enum: Object.keys(FLOW)},
+     s1_type: {type: "string", enum: Object.keys(S1T)}, keyword: {type: "string"}, limit: {type: "integer", minimum: 1, maximum: 10}}},
+   execute: (q) => { const f = clean(q), rs = D.reviews.filter(matcher(f));
+     const lim = Math.min(10, Math.max(1, parseInt(q?.limit) || 6));
+     const pick = [...rs].sort((a, b) => (b.sev === "S1") - (a.sev === "S1") || b.text.length - a.text.length).slice(0, lim);
+     return {filter: f, total_matching: rs.length, reviews: pick.map(r => ({id: r.id, app: r.app, date: r.date, stars: r.stars,
+       category: r.cat, severity: r.sev, s1_type: r.s1, text: r.text.slice(0, 260)}))}; }},
+];
+const RULES = `Bạn là trợ lý phân tích dữ liệu cho một trang so sánh review của 4 ví điện tử Việt Nam (momo, zalopay, shopeepay, viettelmoney), dữ liệu Google Play ${"{PERIOD}"}.
+Dữ liệu: mẫu khoảng 2.300 review (≥ 5 từ), mỗi review đã được phân loại: category (${Object.keys(CAT).join(", ")}), mức S1 (đã mất tiền / có rủi ro mất tiền), S2 (không làm được việc chính), S3 (phiền), S4 (còn lại), flow cho giao dịch lỗi, và cơ chế mất tiền cho review S1 (${Object.keys(S1T).join(", ")}).
+Quy tắc trả lời:
+- Luôn dùng công cụ để lấy số liệu; KHÔNG tự bịa số. Tỷ lệ là tỷ trọng có trọng số TRONG REVIEW PHÀN NÀN của từng ví.
+- Khi nêu ví dụ, trích dẫn bằng id dạng [gp_momo_00123] đúng như công cụ trả về.
+- Nếu số review khớp nhỏ (dưới khoảng 20) hoặc khoảng tin cậy rộng, nói rõ là chưa chắc chắn.
+- Không xếp hạng "ví nào tốt nhất" tổng thể; chỉ nói về vấn đề cụ thể. Không suy đoán nguyên nhân nội bộ của doanh nghiệp.
+- Câu hỏi nằm ngoài dữ liệu: nói thẳng là dữ liệu không trả lời được.
+- Trả lời ngắn gọn (tối đa khoảng 150 chữ), dùng gạch đầu dòng khi liệt kê, bằng ngôn ngữ của người hỏi.`;
+
+// ---------- chat UI ----------
+const SUGGEST = ["Vấn đề mất tiền phổ biến nhất của MoMo là gì?", "So sánh tỷ trọng bị trừ tiền không đồng ý giữa 4 ví",
+  "ShopeePay phản hồi review S1 nhanh không?", "Cho tôi 3 review về eKYC của Viettel Money"];
+let sample = null, ctl = null, turns = [];
+function md(s){
+  const lines = esc(s).split("\n"); let html = "", inList = false;
+  for (const ln of lines){
+    const li = ln.match(/^\s*[-*•]\s+(.*)/);
+    if (li){ if (!inList){ html += "<ul>"; inList = true; } html += `<li>${inline(li[1])}</li>`; continue; }
+    if (inList){ html += "</ul>"; inList = false; }
+    if (ln.trim()) html += `<p>${inline(ln)}</p>`;
+  }
+  return html + (inList ? "</ul>" : "");
+}
+const inline = s => s.replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\[(gp_[a-z]+_\d{5})\]/g, (m, id) => byId[id] ? `<button class="cite" data-id="${id}">${id}</button>` : m);
+function addMsg(role, html){ const d = document.createElement("div"); d.className = "msg " + role; d.innerHTML = html; $("log").append(d); $("log").scrollTop = $("log").scrollHeight; return d; }
+const ERR = {not_granted:"Bạn chưa cho phép trang dùng Claude, nên không thể hỏi.", rate_limited:"Đang có quá nhiều câu hỏi hoặc tài khoản đã chạm giới hạn. Thử lại sau ít phút.",
+  session_expired:"Phiên đăng nhập đã hết hạn. Đăng nhập lại Claude rồi thử lại.", prompt_too_large:"Cuộc trò chuyện quá dài. Tải lại trang để bắt đầu lại.",
+  refused:"Claude không trả lời câu hỏi này. Thử hỏi theo cách khác.", empty_completion:"Không có câu trả lời. Thử hỏi cụ thể hơn."};
+async function ask(question){
+  if (!sample || !question.trim()) return;
+  addMsg("user", esc(question));
+  const bot = addMsg("bot", "<p>Đang suy nghĩ…</p>"); const trace = document.createElement("div"); trace.className = "trace";
+  turns.push({role: "user", content: question});
+  const recent = turns.slice(-7);
+  if (recent[0].role !== "user") recent.shift();
+  ctl = new AbortController(); setBusy(true);
+  const traced = TOOLS.map(t => ({...t, execute: (inp, c) => { trace.textContent += `tra cứu: ${t.name}(${JSON.stringify(clean(inp))})\n`; if (!trace.isConnected) bot.append(trace); return t.execute(inp, c); }}));
+  try {
+    const {text, truncated} = await sample([{role: "user", content: RULES.replace("{PERIOD}", D.period)}, ...recent],
+      {tools: traced, signal: ctl.signal, onText: ({text}) => { bot.innerHTML = md(text); bot.append(trace); }});
+    bot.innerHTML = md(text) + (truncated ? "<p class='note'>Câu trả lời bị cắt ngắn.</p>" : ""); bot.append(trace);
+    turns.push({role: "assistant", content: text});
+  } catch (e) {
+    if (["not_granted","sampling_disabled","capability_disabled","not_declared","tools_unavailable"].includes(e.code)){ disableChat(ERR[e.code] || "Thanh chat không dùng được trong chế độ xem này."); bot.remove(); }
+    else if (e.code === "cancelled"){ bot.innerHTML = e.text ? md(e.text) + "<p class='note'>Đã dừng.</p>" : "<p class='note'>Đã dừng.</p>"; }
+    else { bot.innerHTML = (e.text ? md(e.text) : "") + `<p class="note">${esc(ERR[e.code] || "Có lỗi kết nối. Thử hỏi lại.")}</p>`; }
+    turns.pop();
+  } finally { setBusy(false); }
+}
+function setBusy(b){ $("send").disabled = b; $("stop").hidden = !b; $("q").disabled = b; document.querySelectorAll(".chip").forEach(c => c.disabled = b); }
+function disableChat(msg){ $("chat").innerHTML = `<div class="unavailable">${esc(msg)} Phần số liệu phía trên vẫn đầy đủ.</div>`; }
+function showReview(id){
+  const r = byId[id]; if (!r) return;
+  const d = $("drawer"); d.hidden = false;
+  d.innerHTML = `<span class="id">${esc(r.id)} · ${APP[r.app]} · ${esc(r.date)} · ${"★".repeat(r.stars)}${"☆".repeat(5 - r.stars)}</span>
+    <div><span class="sev ${r.sev}">${r.sev}</span> ${esc(CAT[r.cat])}${r.flow ? " · " + esc(FLOW[r.flow] || r.flow) : ""}${r.s1 ? " · " + esc(S1T[r.s1]) : ""}</div>
+    <p>${esc(r.text)}</p>`;
+  d.scrollIntoView({block: "nearest", behavior: "smooth"});
+}
+$("log").addEventListener("click", e => { const b = e.target.closest(".cite"); if (b) showReview(b.dataset.id); });
+$("ask").addEventListener("submit", e => { e.preventDefault(); const q = $("q").value; $("q").value = ""; ask(q); });
+$("q").addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey){ e.preventDefault(); $("ask").requestSubmit(); } });
+$("stop").addEventListener("click", () => ctl?.abort());
+$("chips").innerHTML = SUGGEST.map(s => `<button type="button" class="chip">${esc(s)}</button>`).join("");
+$("chips").addEventListener("click", e => { const c = e.target.closest(".chip"); if (c) ask(c.textContent); });
+
+// ---------- boot ----------
+fetch("data.json").then(r => r.json()).then(d => {
+  D = d; D.reviews.forEach(r => byId[r.id] = r); render();
+}).catch(() => { $("thesis").textContent = "Không tải được dữ liệu của trang."; });
+setBusy(true);
+(async () => {
+  try {
+    sample = window.claude ? await window.claude.use("sample") : null;
+    const lim = sample ? await sample.limits().catch(() => null) : null;
+    if (!sample || (lim && !lim.tools)) { disableChat("Thanh chat cần mở trang trong Claude với tài khoản cho phép trang dùng Claude."); return; }
+    addMsg("bot", "<p>Hỏi bất kỳ điều gì về dữ liệu trên trang. Mình sẽ tra cứu và trả lời kèm trích dẫn review.</p>");
+    setBusy(false);
+  } catch { disableChat("Thanh chat không dùng được trong chế độ xem này."); }
+})();
+</script>

@@ -1,0 +1,201 @@
+﻿pick,review_id,app,score,content,hint_money,hint_no_diacritics,hint_star_mismatch,category,severity,flow,social_engineering,note,seconds
+1,gp_momo_00841,momo,1,ứng dụng tiếp tay lừa đảo,1,0,0,FRAUD_SECURITY,S1,,false,,30
+1,gp_viettelmoney_00737,viettelmoney,1,app tệ. bắt chụp cccd rồi khi chụp lên thì báo không hợp lệ. hợp lệ cái ₫** gì?,0,0,0,ONBOARD_EKYC,S2,,,,13
+1,gp_momo_00541,momo,1,"bảo qua 24h sẽ lập tức hoàn tiền lại nhưng không thấy gì, giao dịch vẫn đang ở trạng thái ""đang xử lý"", chat với nhân viên cskh thì lúc nào cũng ở vị trí thứ #5 trong hàng chờ, chờ mãi không thấy ai. ngâm tiền của tôi để làm gì vậy?",1,0,0,TXN_FAILURE,S1,payment,,,22
+1,gp_momo_01174,momo,1,"CỰC KỲ TỆ, KHÔNG THỂ ĐĂNG NHẬP MẤT TIỀN !",1,0,0,TXN_FAILURE,S1,unknown,,,12
+1,gp_viettelmoney_00744,viettelmoney,3,Hay bị lỗi chuyển tiền dạo gần đây. Tiện nhưng bất cập quá,0,0,0,TXN_FAILURE,S2,transfer,,,9
+1,gp_shopeepay_00074,shopeepay,1,đăng nhập ko được bắt phải thêm sdt mới bấm thêm thì bảo thất bại mà sdt đó rõ ràng đã đk Shopeepay vs Shopee vs NH liên kết rồi quá thất vọng,0,0,0,AUTH_ACCESS,S2,,,,99
+1,gp_zalopay_12783,zalopay,5,suốt ngày nó cứ báo căn cước công dân đã làm rồi mà nó lại sai Chán thật đấy mọi người chỉ tôi với🤨🤨,0,0,1,ONBOARD_EKYC,S2,,,,10
+1,gp_momo_00757,momo,1,NÊN NHỚ TẮT TỰ ĐỘNG THANH TOÁN BẰNG TÀI KHOẢN NGÂN HÀNG. Kinh nghiệm từ 1 người bị trừ tiền từ tài khoản ngân hàng lúc 3h sáng mà ko có 1 thông báo hay yêu cầu xác nhận nào,1,0,0,TXN_FAILURE,S1,payment,,,9
+1,gp_momo_01681,momo,1,"kêu thanh toán ví trả sau sẽ hoàn 20k nhưng nó tính phí 33k 1 tháng, rất dễ đánh lừa người dùng. quá ngu ngục cái app momo. không ngờ 1 ví điện tử lớn nhất nhì cái VN này lại chơi tiểu xảo tiểu nhân",1,0,0,PROMO_REWARDS,S3,,,,10
+1,gp_momo_01590,momo,5,không hiểu sao từ tphô HCM về An Giang là momo bị lỗi miết khg mở được heo đất luôn,0,0,1,APP_EXPERIENCE,S3,,,,14
+1,gp_shopeepay_01522,shopeepay,4,"5zz, 6566, very 6c CT, 4t555 to,,4456 day and 6th t 565,6",0,1,0,NON_ISSUE,S4,,,,5
+1,gp_momo_00982,momo,5,ok lam ne cac ban oi,0,1,0,NON_ISSUE,S4,,,,2
+1,gp_zalopay_11686,zalopay,5,zalo dùng rất tiện lợi và lợi ích,0,0,0,NON_ISSUE,S4,,,,2
+1,gp_zalopay_05809,zalopay,5,"tiện lợi, nhiều ưu đãi",0,0,0,NON_ISSUE,S4,,,,1
+1,gp_shopeepay_00317,shopeepay,1,Quảng cáo gây khó chịu,0,0,0,APP_EXPERIENCE,S3,,,,3
+1,gp_momo_00089,momo,1,Dịch vụ Ví trả sau tự ý trừ tiền dịch vụ cho bên thứ 3 không thông báo cho chủ tài khoản. Hỗ trợ thì chỉ cho chat với AI mà không xử lý vấn đề.,1,0,0,TXN_FAILURE,S1,payment,,,11
+1,gp_shopeepay_01252,shopeepay,1,app gi co lúc mất tiểu muc điểm dành hàng ngay tuot,0,0,0,APP_EXPERIENCE,S3,,,,17
+1,gp_momo_01858,momo,2,yêu câu bên dịch vụ của r app lm ăn nhanh hơn tí chứ lm cái tk mà cứ nghĩ đang chờ ng nhà đi đang giặc về k á lâu vcl,0,0,0,APP_EXPERIENCE,S3,,,,5
+1,gp_zalopay_21489,zalopay,1,"Tự ý thanh toán dịch vụ, tự trừ tiền từ TK ngân hàng liên kết mà không yêu cầu cung cấp mã otp xác thực",1,0,0,TXN_FAILURE,S1,payment,,,12
+1,gp_viettelmoney_01315,viettelmoney,1,"Toàn lỗi , chờ trong ít phút mà spam tin nhắn nợ hóa đơn tiển điện , app lừa đảo nha anh em",1,0,0,APP_EXPERIENCE,S3,,,,14
+1,gp_momo_00307,momo,1,làm theo các bước thanh toán spotify khi ở ngoài thì ghi là sau khi liên kết sẽ thanh toán 32500đ/ 3 tháng nhưng khi thanh toán thì lại phải trả 65000đ/1 tháng. nếu như spotify đang không trong giai đoạn giảm giá thì momo hãy làm ơn ghi là 65000đ/1 tháng chứ ko thì ko khác gì lừa dối khách hàng,1,0,0,PROMO_REWARDS,S3,,,,6
+1,gp_shopeepay_01257,shopeepay,5,"đã giải quyết được lỗi, thanks",0,0,1,NON_ISSUE,S4,,,,2
+1,gp_viettelmoney_00253,viettelmoney,1,"App nâng cấp lên toàn lỗi vs lỗi thanh toán tiền cũng báo lỗi đợi hơn 1 tiếng ms thanh toán đc, rất bức xúc r đấy",0,0,0,APP_EXPERIENCE,S3,,,,6
+1,gp_shopeepay_00867,shopeepay,5,"Khi kẹt cần 9tr5 gõ trang tên mình, vô đúng trang có miễn lải tháng 9 nha",0,0,0,NON_ISSUE,S4,,,,4
+1,gp_zalopay_00191,zalopay,1,lừa đảo tự trừ tiền,1,0,0,FRAUD_SECURITY,S1,,false,,10
+1,gp_zalopay_19270,zalopay,5,"ứng dụng tốt, tiện ích",0,0,0,NON_ISSUE,S4,,,,7
+1,gp_momo_00662,momo,4,"đi một ngày đàng ...nói chúng là ok .vừa tiếp nhận vừa học hỏi,có nhiều cái mới chưa được va chạm và tiếp cận tôi cũng thấy rất bỡ ngỡ ,rồi một vài bữa cũng ổn thôi.",0,0,0,NON_ISSUE,S4,,,,12
+1,gp_zalopay_07328,zalopay,5,"Sao mình xác thực CCCD hoài không được, chụp hình cũng rõ nét mà app cứ bảo là ""Cần chụp căn cước công dân gốc có gắn chip"" 😿",0,0,1,ONBOARD_EKYC,S2,,,,4
+1,gp_zalopay_05929,zalopay,5,Đang sử dụng Zalopay. Cảm giác an toàn và linh hoạt.,0,0,0,NON_ISSUE,S4,,,,3
+1,gp_zalopay_09679,zalopay,5,qua ok nhưng vô trang khác hơi châm nên khac phuc,0,0,0,NON_ISSUE,S4,,,,2
+1,gp_shopeepay_01555,shopeepay,1,ứng dụng lộ thông tin người dùng. mọi người đừng dùng. tôi đã bị trừ hơn 522k trong tài khoản ngân hàng sacombank do liên kết với ứng dụng Shopee pay này. ứng dụng lừa đảo,1,0,0,FRAUD_SECURITY,S1,,false,,9
+1,gp_zalopay_00387,zalopay,1,gọi tổng đài để liên hệ bộ phận hỗ trợ quá tệ đợi hoài mà vẫn ko có ai thêm con zalo pay support nữa tệ không kém gì luôn,0,0,0,SUPPORT,S3,,,,8
+1,gp_viettelmoney_00561,viettelmoney,5,sử dụng Viettel money thật sự tiện lợi dễ sử dụng nhiều khuyến mãi giảm giá ưu đãi tôi rất hài lòng về ứng dụng. OK 10 điểm,0,0,1,NON_ISSUE,S4,,,,3
+1,gp_zalopay_11768,zalopay,5,Tốt nhưng nó cứ bị lỗi khi chuyển khoản,0,0,1,NON_ISSUE,S4,,,,4
+1,gp_zalopay_16233,zalopay,1,"Mình đăng ký dùng thử miễn phí Alarmy, nhưng sau khi hết hạn, thẻ ngân hàng bị trừ 1.086.667 đồng. Mình đã cố gắng hủy nhưng không tìm thấy gói thuê bao trên Google Play. Mình gửi yêu cầu hoàn tiền nhưng bị Google từ chối. Đây là số tiền rất lớn đối với mình. Mình mong Alarmy xem xét lại và hỗ trợ hoàn tiền. Mọi người hãy kiểm tra kỹ điều khoản, giá và thời hạn dùng thử trước khi đăng ký nhé!",1,0,0,TXN_FAILURE,S1,payment,,,8
+1,gp_viettelmoney_01246,viettelmoney,1,"dùng bất tiện, app lỗi liên tục",0,0,0,APP_EXPERIENCE,S3,,,,6
+1,gp_shopeepay_00938,shopeepay,5,thí nghiệm và kiến thức,0,0,0,NON_ISSUE,S4,,,,2
+1,gp_momo_01188,momo,1,quên hủy gói plus chatgpt. trong momo ko có tiền cái tự rút tiền từ ngân hàng tự thanh toán trừ tiền như thật🙂? đell xài lần 2,1,0,0,TXN_FAILURE,S1,payment,,,9
+1,gp_zalopay_05006,zalopay,5,ứng dụng tốt khá nhiều ưu đãi mọi người nếu có thể thì nên thử nha 👀,0,0,0,NON_ISSUE,S4,,,,3
+1,gp_viettelmoney_01272,viettelmoney,5,10 điểm xài quá tuyệt vời bài rất tuyệt vời quá quá ưng ý của anh rồi,0,0,0,NON_ISSUE,S4,,,,2
+1,gp_zalopay_18716,zalopay,1,tự khoá tài khoản của khách hàng xong bắt khách đi giải quyết ??? gọi hotline giải quyết thì toàn bot trả lời để khách hàng mất tiền. Không vận hành được app thì xoá app đi lũ súc vật,1,0,0,SUPPORT,S3,,,,19
+1,gp_viettelmoney_00409,viettelmoney,5,phim rat hay toi rat thich phi tong tai . va the loai phim ai⁷,0,1,0,NON_ISSUE,S4,,,,1
+1,gp_shopeepay_00137,shopeepay,1,xác minh cccd nhưng ko thể vào được nick,0,0,0,ONBOARD_EKYC,S2,,,,3
+1,gp_viettelmoney_00203,viettelmoney,1,"Trước còn để ít tiền trong ví Viettel money để đi đâu hay chi tiêu lặt vặt. Giờ ra chính sách trừ tiền với tk liên kết epass nên đã rút hết tiền trong ví, bao tiền mọi người để trong ví đã được lãi rồi mà còn bày ra trò thu phí, phản đối.",1,0,0,FEES_LIMITS,S3,,,,10
+,gp_zalopay_21171,zalopay,5,"Ai đang muốn tìm một lựa chọn mới thì thử TinChac nha, tải về xem chương trình kiếm tiền rồi cân nhắc dựa trên thời gian và điều kiện của mình.",0,0,0,,,,,,26
+,gp_zalopay_15439,zalopay,5,thấy cx đc chx gặp sự cố j,0,0,0,,,,,,4
+1,gp_momo_00761,momo,1,dit cai lon me tui may,0,1,0,NON_ISSUE,S4,,,,30
+1,gp_shopeepay_00600,shopeepay,2,bực mih thật sự tự dưng bên shop giao sai đơn mà bây h mih ko xài shoppe pay mà shop nó ko chịu nó cứ ép mih hoàn = sp pay bh mih qua sp pay mih đky tknh mih thì ko đky đc vậy bh tiền mih nó hoàn như nào rồi sao mih sử dụng đây?,0,0,0,TXN_FAILURE,S1,credit_bnpl,,,59
+,gp_zalopay_01140,zalopay,5,rất nhiều lợi ích cho mọi người,0,0,0,,,,,,2
+,gp_viettelmoney_01184,viettelmoney,1,1 cái app thừa thãi,0,0,0,,,,,,1
+1,gp_zalopay_18862,zalopay,1,Tự động trừ tiền trong khi ko có mật khẩu hay gì của người tiêu dùng? Ko sử dụng vân tay hay mk gì luôn đấy ? mất dạy nó vừa vừa th,1,0,0,AUTH_ACCESS,S2,,,,13
+,gp_shopeepay_00182,shopeepay,1,"App cực kì tệ, ra game cho người chơi xong tới lúc đổi quà thì app toàn lỗi. Liên tục 10 đến 20phút k đổi được quà. Lúc đổi được thì hết quà là sao??????????",0,0,0,,,,,,16
+,gp_momo_01944,momo,1,ko hài lòng vì ck mất phí áp ngu,0,0,0,,,,,,4
+1,gp_shopeepay_00154,shopeepay,1,ứng dụng càng càng tuệ người ta k có thẻ ngân hàng cũng bắt liên kết ngân hàng mới cho mua hàng còn đặt hàng bộ tạo để cho thế giới nhà giàu Sài hay gì thì cả tháng mới chịu gởi lâu VL thua cả Tittot làm ăn càng ngày càng tuệ,0,0,0,,,,,,10
+1,gp_shopeepay_00491,shopeepay,1,"chạy quang cao thì k bỏ qua đc , vô app thì treo k thoát được , thay vì làm mấy cái trò câu quảng cáo bẩn đấy sao k cải thiện chất lượng app?",1,0,0,,,,,,3
+1,gp_viettelmoney_00834,viettelmoney,1,"Bảo hiểm ẩn tự đăng ký , không hài lòng với cách làm lừa lọc này",1,0,0,,,,,,5
+1,gp_shopeepay_02096,shopeepay,5,thằng lol Spay Later dell cho hỗ trợ thanh toán,0,0,1,,,,,,2
+1,gp_viettelmoney_00262,viettelmoney,4,đang lỗi sao mà mua thẻ nạp với mua data ko được,0,0,1,,,,,,2
+1,gp_viettelmoney_00448,viettelmoney,1,"Quên mật khẩu bắt mang cccd ra tận cửa hàng, phiền phức",0,0,0,,,,,,1
+1,gp_viettelmoney_00186,viettelmoney,1,tôi đã chuyển hết tiền khỏi ứng dụng này vì thu phí quản lý ứng dụng epass cho doanh nghiệp sẽ là 66.000 đ/ tháng. Không nói đắt hay rẻ nhưng ngay sự cào bằng dn có 1 xe và có 1.000 xe như nhau là phi lý và khokng thể chấp nhận.,0,0,0,,,,,,10
+,gp_viettelmoney_00007,viettelmoney,5,"VietCredit - Vay tiêu dùng khá hợp với người muốn tự kiểm tra thông tin trước á. Không cần mất quá lâu để làm quen, phần kiểm tra đơn nhìn cũng khá rõ ràng nha.",0,0,1,,,,,,1
+,gp_momo_00039,momo,5,"cải thiện animation cho android đã chỉnh chu hơn rồi, trải nghiệm hằng ngày cx rất liền mạch",0,0,0,,,,,,1
+,gp_momo_00912,momo,5,ung dung live thinh vuong,0,1,0,,,,,,1
+1,gp_momo_01337,momo,1,"giao dịch bị chậm, đang đông mà còn gặp giao dịch chậm xong bị lỗi làm chuyển 2 lần 80k mất tiền ạ ?",1,0,0,TXN_FAILURE,S1,transfer,,,10
+,gp_shopeepay_00017,shopeepay,5,bảo mở sppay cho vcher 150k mà mở xong ăn mất hả m 🙂,0,0,1,,,,,,3
+,gp_zalopay_11620,zalopay,5,"quá tiện lợi, nhiều tính năng hiện đại, có tích xu đổi điểm, dễ giao dịch, ai chưa có ngân hàng thì có thể đk zlpay",0,0,0,,,,,,1
+,gp_viettelmoney_01181,viettelmoney,5,xep hang ung dung viettel mey dang online onlai van tay CTLH 09227 Viettel telecom,0,1,1,,,,,,1
+,gp_viettelmoney_00604,viettelmoney,1,1 trải nghiệm cực tệ,0,0,0,,,,,,1
+1,gp_momo_00648,momo,5,sua loi dum e voj e tai ve ðieu bi loi,0,1,1,,,,,,2
+1,gp_momo_00578,momo,1,"Chuyển tiền cho tài khoản MB, momo đã ghi nhận giao dịch thành công, MB không nhận được tiền. Ngân hàng MB phản hồi rằng trong ngày tôi chuyển, tài khoản thụ hưởng không phát sinh bất cứ giao dịch nào, yêu cầu Momo cung cấp giấy báo có,... Momo rất lâu vẫn không có hướng giải quyết, giải quyết vòng vo. cuối cùng lại bảo chuyển vào Viettelmoney hoặc Viettel Pay. Trong khi, người thụ hưởng không nhận được. Hết bảo chuyển MB rồi giờ lại bảo chuyển sang Viettelmoney hoặc Viettel Pay ????",1,0,0,TXN_FAILURE,S1,transfer,,,15
+1,gp_viettelmoney_00488,viettelmoney,2,áp này sao nó cữ một tháng cữ bị trừ tiền vậy,1,0,0,TXN_FAILURE,S1,transfer,,,9
+1,gp_shopeepay_01189,shopeepay,1,app đb gì đcm tự động nạp tiền từ ngân hàng qua ví shoppeePay là sao dù tao không được nạp mà đăng nhập lại đẽo đc.app giải thích hộ bố mày cái bọn mày định đớp không tiền của tao hay gì đcm app cc,0,0,0,TXN_FAILURE,S1,topup_withdraw,,,11
+1,gp_shopeepay_00933,shopeepay,1,hoàn tiền hẹn ngày này qua ngày nọ không có hướng giải quyết,1,0,0,TXN_FAILURE,S1,payment,,,13
+,gp_shopeepay_00067,shopeepay,5,hay đc nói trung và nói riêng thì quá ok,0,0,0,,,,,,1
+,gp_viettelmoney_00457,viettelmoney,1,bọn lừa đảo đê hèn,1,0,0,,,,,,1
+,gp_viettelmoney_00701,viettelmoney,5,Ứng dụng viettel mini là ngân hàng số hoặc là ví của người việt tôi mong sao bên mình sẽ đưa ra cái tính năng biến động số dư bằng giọng nói khi ra khi vào điều báo bằng giọng nói ý tôi là khi chuyển tiền vào cũng nói lên bằng giọng nói khi mình chi tiêu nó cũng báo lên bằng giọng nói khi mình hoàn tất giao dịch,0,0,1,,,,,,1
+,gp_momo_00493,momo,1,vô thanh toán hóa đơn mà cứ xoay vòng vòng...,0,0,0,,,,,,2
+,gp_momo_00232,momo,1,"kh nhận được thưởng, yêu cầu hỗ trợ đợi rất lâu, chuyển tiền không được là sao",0,0,0,,,,,,3
+,gp_shopeepay_01178,shopeepay,1,mời mà ko nhận được 80k lừa,1,0,0,,,,,,2
+,gp_viettelmoney_00846,viettelmoney,4,ViettetlMoney để nhận tin nhắn rõ ràng phải thế hơn với nhé đệ ai tạm thời gây phiền nhiều lần cần đến khó nhận tin nhắn 😊,0,0,1,,,,,,1
+,gp_viettelmoney_00311,viettelmoney,1,app làm ăn treo đầu heo bán thịt chó. làm cái lỗ hổng ăn gian tiền khuyến mãi. cho 1* ko bao h dùng tới nữa,1,0,0,,,,,,1
+1,gp_viettelmoney_00358,viettelmoney,1,"chuyển tiền hơn 90tr sang tài khoản techcombank mà lệnh bị treo, hạn mức chuyển tiền chỉ 100tr 1 tháng, làm mình bị treo tiền trong app không cách nào rút ra được. rất bực mình",1,0,0,TXN_FAILURE,S1,topup_withdraw,,,14
+1,gp_momo_01633,momo,1,sao cứ tự động trừ tiền của máy cái app vạy ko Sài mà cứ trừ trực tiếp vào vi tra sau là sao chục lần r đó dm,1,0,0,TXN_FAILURE,S1,credit_bnpl,,,15
+,gp_viettelmoney_00638,viettelmoney,5,"Good app. Ai vay 9tr gõ trang tên mình, có miễn lải tháng nay đúng là pm của viettel cái nào cũng lag, sài thì khó nhìn thì rối, vô đc cái ứng dụng tải 7749 lần vào đc bên trong bấm đợi nửa cuộc đời chưa xong 😂",0,0,1,,,,,,1
+,gp_zalopay_14929,zalopay,1,"app cặc, dm nhập đúng số đth vẫn ko gửi mã OTP, đã thế vô lại còn bắt nhập mk quần què j ko, dm app bú cặc ngựa",0,0,0,,,,,,1
+,gp_zalopay_09008,zalopay,5,"sài ngon ,nhiều cái tích hợp nên dễ dùng",0,0,0,,,,,,1
+,gp_zalopay_08581,zalopay,5,Tuyệt vời rất thân thiện,0,0,0,,,,,,
+,gp_viettelmoney_00923,viettelmoney,1,"CSKH có như không, bị trừ tiền do hệ thống, kêu chờ 2 ngày vẫn chả thấy hoàn tiền. Nhắn thì cứ kêu chụp giao dịch rồi xử lý thì chả thấy xử lý cái gì.",1,0,0,,,,,,2
+,gp_momo_00433,momo,1,"Sao tôi không thể vào gia hạn được Bảo hiểm y tế vậy, dù tôi nhập đúng thông tin: Mã số bảo hiểm, họ & tên, ngày sinh. Nhưng nó không vẫn không vào được và nó hiển thị lỗi 48",0,0,0,,,,,,2
+,gp_viettelmoney_00500,viettelmoney,5,"Ví dụ cần vay bạn vô chính xác trang tên mình, có 9tr tốt phí bèo chuyển tiền hơn 90tr sang tài khoản techcombank mà lệnh bị treo, hạn mức chuyển tiền chỉ 100tr 1 tháng, làm mình bị treo tiền trong app không cách nào rút ra được. rất bực mình",1,0,1,,,,,,1
+,gp_zalopay_06969,zalopay,5,Bạn cho mình xin 1 quả 8,0,0,0,,,,,,1
+,gp_viettelmoney_01172,viettelmoney,1,Lag không chuyển được qua 1 số QR,0,0,0,,,,,,
+,gp_zalopay_03592,zalopay,1,app gì dùng chuyển thì thông báo trừ còn người nhận thì không có thông báo bị rất nhiều lần nhá gửi hỗ trợ thì không thấy làm được gì cứ nuốt tiền của người khác hoài xem sửa lỗi đi chứ trời thiếu thốn đi nuốt tiền người khác hoài,0,0,0,,,,,,7
+,gp_viettelmoney_01018,viettelmoney,1,"lỗi apps , lỗi otp đăng nhập không được , làm cái apps như cái qq",0,0,0,,,,,,5
+,gp_viettelmoney_00082,viettelmoney,1,Thu phí epass vô lý,0,0,0,,,,,,
+1,gp_momo_01361,momo,1,Thanh toán giữa bách hoá xanh và Momo bị lỗi tôi bị trừ tiền xác nhận thành công rồi nhưng cửa hàng không nhận được làm tôi rất mất thời gian,1,0,0,TXN_FAILURE,S1,payment,,,7
+1,gp_momo_01049,momo,1,"quét qr chuyển khoản nhận tiền hoàn mà 2 lần quét kh thấy tiền đâu, hỏi thì trả lời vào kiểm tra lại, kiểm tra cũng có thấy đếch đâu, vừa tốn xu mua voucher hoàn tiền mà nó nuốt luôn, KHÔNG NÊN TẢI NHA",1,0,0,TXN_FAILURE,S1,payment,,,7
+,gp_momo_00122,momo,1,mã nhận tiền thì không quét đc ngta đã không có ngân hàng rồi cứ bắt liên kết ngân hàng,0,0,0,,,,,,3
+1,gp_momo_00948,momo,1,"sử dụng rất tệ , tôi đã chọn nạp gói 4g cho số điện thoại khác , xong lỡ ấn nhầm qua gói dịch vụ combo thì lại bị nhảy về số điện thoại của tôi , sao không tự động lưu số điện thoại khi chuyển cách nạp vậy ? sao tự động chuyển về số vậy rất dễ bị nạp nhầm mất tiền oan . . . quá sức là tệ hại.",1,0,0,TXN_FAILURE,S1,topup_withdraw,,,18
+,gp_shopeepay_00329,shopeepay,1,Không liên kết ngân hàng được,0,0,0,,,,,,1
+,gp_zalopay_09920,zalopay,5,"app 5 sao thanh toán được nhiều apo ứng dụng, giao dịên đẹp",0,0,0,,,,,,1
+,gp_zalopay_11275,zalopay,5,ứng dụng rất hữu dụng tiện lợi,0,0,0,,,,,,4
+,gp_shopeepay_00183,shopeepay,1,"Ra sự kiện như hành hạ người chơi. Mỗi ngày nhả một ít lượt để cho ngta ngày nào cũng phải thức 0h canh đổi xu. Mà đổi đc liền cũng đỡ, lỗi kết nối lỗi kết nối, xong hết lượt luôn. Ác hơn cái chữ ác, chưa thấy cái ứng dụng nào hành hạ người dùng như này",0,0,0,,,,,,2
+,gp_momo_01880,momo,1,"Hồi đó mình có xài momo nhưng sau thời gian không còn xài nữa nhưng đôi khi lại bị trừ tiền, cũng đã tắt thanh toán bằng ví trả sau nhưng vẫn bị trừ nhưng thường. Hỏi nhân viên thì cũng trả lời cho qua.",1,0,0,,,,,,9
+,gp_zalopay_04059,zalopay,5,app thanh toán tiện lợi rất nên dùng chuyển khoảng rất nhanh,0,0,0,,,,,,
+,gp_momo_00504,momo,1,khiếp ví trả sau còn đến tận 5 ngày mà gọi mãi luôn ngày cả chục cuộc mà nợ có 50k thôi á. đồng ý là nhắc nhỡ khách hàng nhưng ngày 2 cuộc là được rồi làm cái gì mã dữ quá app thì ko thấy thông báo,0,0,0,,,,,,
+,gp_momo_00023,momo,4,mất khẩu của Momo quá yếu khi chỉ cho thiết lập 6 ký tự là số. Đề nghị ad tăng tính bảo mật cao hơn.,0,0,1,,,,,,
+,gp_viettelmoney_00111,viettelmoney,1,1 sao do thu phí,0,0,0,,,,,,
+,gp_viettelmoney_00813,viettelmoney,1,"không có thông báo gián đoạn dịch vụ, khóc thét luôn. 2h sáng ngày 14/7/2026 update: 2h sáng ngày 17/7, lần này đã login được nhưng vẫn không chuyển được do""nguồn tiền đang bảo trì"". các bên khác tôi sử dụng đều thông báo gián đoạn trước ít nhất 12h. 16h28p 5/10/2026, có trừ tiền, đánh dấu thành công, nhưng 20p sau bên kia mới nhận đc tiền.",1,0,0,,,,,,
+,gp_shopeepay_00427,shopeepay,1,app hoàn tiền nhưng ko cho liên kết momo rút ra,1,0,0,,,,,,
+,gp_zalopay_08085,zalopay,5,tốt lâu lâu hay lỗi,0,0,1,,,,,,
+,gp_zalopay_13836,zalopay,1,tự nhiên bị mất tiền í??,1,0,0,,,,,,
+,gp_shopeepay_00252,shopeepay,1,"dùng shoppe food trong shoppe, thời gian để giao hàng tiêu chuẩn là khoảng.hơn một tiếng sau khi đặt, xong cũng chưa ai nhận đơn cũng k cho hủy. rất mất thời gian, ship thì ghép đơn lâu ơi là lâu, nhiều hôm phải tiếng rưỡi mới có đồ ăn, muốn hủy cũng k đk",0,0,0,,,,,,
+,gp_momo_01258,momo,1,"lừa đảo nha, không có robux free 😠😠😈😈😈😈🍆🍆🍆👅🐦",1,0,0,,,,,,
+,gp_shopeepay_01044,shopeepay,1,"đg xác nhận khuôn mặt tự nhiên thoát, làm lại vẫn thế ???",0,0,0,,,,,,
+,gp_momo_01240,momo,1,để cái khuyến mãi tặng 50k khi ấy cái gì cho ngkh đó thấy có tặng đâu lừa bịp ngta,1,0,0,,,,,,
+,gp_viettelmoney_01215,viettelmoney,5,Viettel tốt tiện ích ứng dụng thanh toán rất tốt tiện lợi cho người dùng cảm ơn Viettel,0,0,1,,,,,,
+,gp_zalopay_08226,zalopay,5,"Ứng dụng tốt tiện lợi trong giao dịch, mỏi ngày vào còn được nhận xu nữa, quá tuyệt vời.",0,0,0,,,,,,
+,gp_viettelmoney_01372,viettelmoney,5,"Mấy ngày nay không đăng nhập được ứng dụng, bị lỗi cứ nhấn vào bị văng ra, cần khắc phục kịp thời",0,0,1,,,,,,
+,gp_shopeepay_01633,shopeepay,5,"dùng spay khá lâu r và luôn nhớ lịch là 15 hàng tháng là hạn cuối thanh toán, có lúc cũng để sát lịch mới ttoan cơ mà còn 5 mới đến hạn mà nhắn tin gọi điện giục, lại giục vào m1 nữa, mất khách nhé shop",0,0,1,,,,,,
+,gp_shopeepay_00360,shopeepay,5,ok ung dung tot ok,0,1,0,,,,,,
+,gp_shopeepay_00159,shopeepay,1,mua hàng. 6h sáng nạp 20k tiền việt theo. không thấy tiền về. hoàn tiền lâu vậy. lo mãi. tiền về r. phần mềm lag,1,0,0,,,,,,
+,gp_shopeepay_00186,shopeepay,1,app báo lỗi .nó lác đơ .,0,0,0,,,,,,
+,gp_zalopay_12620,zalopay,5,tài khoản dùng rất tốt,0,0,0,,,,,,
+,gp_shopeepay_00605,shopeepay,1,mời bạn đc 60k con mẹ mời từ 26/8 bây h 6/9 vẫn đ hoàn tiền vô tài khoản. nhắm làm ưu đãi được k?,1,0,0,,,,,,
+,gp_shopeepay_02165,shopeepay,1,ko cho quét nfc app rác mất tiền oan,1,0,0,,,,,,
+,gp_viettelmoney_01239,viettelmoney,5,rất tốt rất hài lòng,0,0,0,,,,,,
+,gp_zalopay_06520,zalopay,5,mong có thêm lịch sử chuyển khoản,0,0,0,,,,,,
+,gp_zalopay_10498,zalopay,5,rất okk ck tiện lợi nhanh gọn,0,0,0,,,,,,
+,gp_zalopay_09976,zalopay,1,sao mình chuyển cho bạn 10k mà mất 20k? từ 30k xuống còn 10k? mất tiền oan à ?,1,0,0,,,,,,
+,gp_zalopay_16754,zalopay,5,"tạm ổn , chuyển tiền nhanh , nhưng lắm lúc vẫn còn lỗi",0,0,1,,,,,,
+,gp_shopeepay_01288,shopeepay,5,mua nhanh tra hang nhanh chong,0,1,0,,,,,,
+,gp_zalopay_06231,zalopay,4,"Tuyệt vời và thật tiện lợi ! Tuy nhiên hơi gây phiền hà cho người sử dụng khi đã nắm thông tin cá nhân nhưng Zalo Pay cứ lặp đi lặp lại kêu gọi "" có sẳn nguồn tiền..."" rồi sau đó lại sorry vì "" quý khách không đủ tiêu chuẩn "" !?",0,0,0,,,,,,
+,gp_zalopay_04911,zalopay,5,phù hợp với thanh thiếu niên đã làm cccd,0,0,0,,,,,,
+,gp_shopeepay_02355,shopeepay,1,"apps spam quảng cáo không giới hạn thời gian, không có nút tắt, sản phẩm lừa đảo, nội dung khiêu dâm, đồng tính, bệnh hoạn. Có những nhãn hàng cũng định mua nhưng vì quảng cáo trên này sẽ không bao giờ mua nữa. lũ súc vật shopee",1,0,0,,,,,,
+,gp_momo_00172,momo,1,phí chậm trả ăn cướp 15 ngày 21%,0,0,0,,,,,,
+,gp_momo_02833,momo,5,xin cảm ơn rất hữu ích cho cộng đồng,0,0,0,,,,,,
+,gp_momo_00106,momo,1,"+ Ví trả sau không hiện giới hạn giao dịch, làm thanh toán ví trả sau và mất phí nhiều hơn giá trị đơn hàng. + Mua hàng hoàn tiền từ Shopee đã thanh toán nhưng không nhận được tiền hoàn, hiện giao dịch thất bại. RÁC.",1,0,0,,,,,,
+,gp_momo_01261,momo,1,"mở ví nạp đth có 44k mà thanh toán dự nợ lên tận 77k, lãi 75% 1 lần v chịu chết",0,0,0,,,,,,
+,gp_zalopay_06103,zalopay,1,tự động trừ tiền tài khoản ko cần sự sát nhận của người dùng,1,0,0,,,,,,
+,gp_momo_00231,momo,5,chưa hoàng thiện như ban đầu,1,0,0,,,,,,
+,gp_momo_00295,momo,1,"Quá tệ. không bảo mật cho khách hàng, tạo cơ hội liên kết cho link độc hại tự động trừ tiền trong tài khoản.",1,0,0,,,,,,
+,gp_shopeepay_00995,shopeepay,5,lâu lâu ko nhận hàn,0,0,0,,,,,,
+,gp_viettelmoney_00068,viettelmoney,5,"VietCredit - Vay tiêu dùng khá hợp với người bận rộn đó nha. Muốn xem nhanh thông tin hay kiểm tra đơn đều khá dễ, không phải mất nhiều thời gian mò mẫm.",0,0,1,,,,,,
+,gp_zalopay_18569,zalopay,5,"thao tác nhanh gọn,chuyển tiền nhanh",0,0,0,,,,,,
+,gp_viettelmoney_01126,viettelmoney,5,tiện lợi dễ sử dụng,0,0,0,,,,,,
+,gp_momo_00092,momo,1,"cái gì cũng OK ( nhưng mua esim trừ tiền xong vẫn ở trạng thái xử lý từ ngày 14/8 đến 18/7 vẫn trong trạng thái xử lý cây ở chỗ liên hệ hỗ trợ trực tuyến thì chả thấy gì , cũng chả back lại tiền được, đỉnh quá momo à",1,0,0,,,,,,
+,gp_viettelmoney_01180,viettelmoney,1,"mạng viettel lag lòi không dùng được,nên đổi nhà mạng khác",0,0,0,,,,,,
+,gp_zalopay_18342,zalopay,5,thuận tiện phù hợp người dưới tuổi để làm tk ngân hàng,0,0,0,,,,,,
+,gp_momo_00992,momo,1,sác thực cccd ko được xoá luôn,0,0,0,,,,,,
+,gp_shopeepay_00752,shopeepay,1,không dùng vẫn bị báo trừ tiền dù không đặt gì,1,0,0,,,,,,
+,gp_momo_00224,momo,2,ứng dụng gì mà mấy hôm nay quét mã thanh toán treo liên tục ở load ngân hàng. làm ăn gì kỳ cục,1,0,0,,,,,,
+,gp_viettelmoney_00316,viettelmoney,1,"cập nhật lên song mã otp không gởi về app cứ gởi về số đt, phiền phức",0,0,0,,,,,,
+,gp_viettelmoney_00781,viettelmoney,1,làm sao thoát cái bảng quảng cáo ra,0,0,0,,,,,,
+,gp_viettelmoney_00332,viettelmoney,1,Có ai bị thu phí quản lý tài khoản không? Đùng cái thu 70k. Chả có cái thông báo nào là mất phí cả. Tận thu à,0,0,0,,,,,,
+,gp_viettelmoney_00811,viettelmoney,1,khi thanh toán tiền điện nước bị dính ấn đăng ký bảo hiểm mạng bị trừ 5k.gọi tổng đài tư vấn bảo mình ấn đăng ký.mọi người cần thận nhá.mọi lần mình thanh toán ko để ý.nên bị trên 10 lần.đáng giá quá tệ.,1,0,0,,,,,,
+,gp_viettelmoney_00393,viettelmoney,1,trừ tiền vô tội vạ,1,0,0,,,,,,
+,gp_momo_01603,momo,1,"Giao dịch xảy ra lỗi việc đầu tiên Momo làm là bắt khách hàng mình tự đi thương lượng với người nhận, mặc dù đã chờ 30 phút và giao dịch thông báo sẽ trả kết quả trễ nhất trước 5 ngày, liệu bạn đi mua hàng bạn sẽ đứng chờ giao dịch đến khi thành công mặc dù không biết khi nào giao dịch sẽ thông báo thành công sao?, tôi đã liên hệ trực tiếp và gửi yêu cầu hủy giao dịch để hoàn tiền lại ngay sau khi trục trặc xảy ra, và chờ thêm 30 phút nữa để xem giao dịch có thành công không mới chuyển tiền lại",1,0,0,,,,,,
+,gp_shopeepay_00123,shopeepay,1,"Số điện thoại của mình bị liên kết với gmail lạ nhưng cskh không hỗ trợ. thật sự mình rất cần dùng app nhưng không được, rất phiền",0,0,0,,,,,,
+,gp_shopeepay_01616,shopeepay,1,máy mã nạp đt 50% ko áp dụng đc bố láo,0,0,0,,,,,,
+,gp_momo_02289,momo,5,App momo bị lỗi kết nối mạng không ổn định nên đăng nhập vào không được để chuyển tiền,0,0,1,,,,,,
+,gp_momo_01765,momo,1,"cứ quét qr là bị đứng, chịu rồi",0,0,0,,,,,,
+,gp_zalopay_05533,zalopay,5,sử dụng tốt. Lâu lâu hơi lỗi,0,0,1,,,,,,
+,gp_shopeepay_01020,shopeepay,2,"Rất bực mình, việc phải nhập mật khẩu rồi chuyển sang xác minh khuôn mặt rất tốn thời gian. Rõ ràng là ví điện tử để thanh toán nhanh hơn mà lại bắt xác minh nhiều thứ. Mới đây tôi đi mua một quả trứng giá 5K ở Circle, một hàng dài phía sau tôi mà tôi đứng gần 5p cho việc phải xác thực để chuyển tiền. Nghĩ xem có tức ko chứ. Khuyên thật là nếu bộ phận phát triển app thấy đc lời này của tôi thì hãy làm xác thực đơn giản lại, 1 bước thôi để tiếp kiệm thời gian",0,0,0,,,,,,
+,gp_viettelmoney_01008,viettelmoney,1,app như C.Khi vào app suốt ngày treo giao dịch cũ. Xong khi tạo lại giao dịch mới thì lại lag vì giao dịch cũ. xong phải thoát ra. hên thì chuyển khoản đc. xui thì treo app. Chán chẳng có gì để tả,1,0,0,,,,,,
+,gp_shopeepay_00939,shopeepay,5,hay và vô cùng là tuyệt vời,0,0,0,,,,,,
+,gp_shopeepay_02248,shopeepay,1,"thứ nhất shopee bất lợi đang xem phim nổi quảng cáo chạm dấu (×) tắt thì nhảy dô mở aap shoppe bấm dấu trở về trên điện thoại thoát ra cở nào cũng không được. - Thứ 2 khi có nhu cầu vào aap tra cứu mua sắm thì âm lượng điện giảm xuống còn 15% âm lượng, mổi lần vào aap thoát ra phải chỉnh tăng âm lượng lại cứ vậy mà nhiều lần là bực bội. - Thứ 3 nhà quảng cáo treo đầu dê bán thịt chó, thấy quảng cáo sản phẩm ưng ý chọn đặt hàng khi shoppe giao hàng nhận hàng thì hàng ko giống y như quảng cáo.",1,0,0,,,,,,
+,gp_shopeepay_01919,shopeepay,4,"tốt tiện lợi, tại vẫn mất phí khi chuyển tiền còn lại Sài đc",0,0,1,,,,,,
+,gp_viettelmoney_00182,viettelmoney,1,"ứng dụng rối rắm mà hở tí là đòi thu phí, nay lại đòi thu phí liên kết epass. Momo có thu phí đâu.",0,0,0,,,,,,
+,gp_zalopay_00090,zalopay,5,chuyển tiền mà bị lác k chuyển đc 2 ngày sau mới thông báo lại tiền chuyển đi k nhận lại đc nx quá tệ😮‍💨,0,0,1,,,,,,
+,gp_zalopay_17841,zalopay,5,app tiện lợi uy tín nhanh gọn,0,0,0,,,,,,
+,gp_momo_01330,momo,1,để giao dịch thất bại xong bị trừ tiền 2 lần làm ăn kiểu gì vậy CSKH thì toàn AI trả lời dẹp mẹ cái app đi,1,0,0,,,,,,
+,gp_zalopay_03089,zalopay,5,trải nghiệm dc 2ngay chx dùng xu k bt tốt k,0,0,0,,,,,,
+,gp_shopeepay_00275,shopeepay,4,đôi lúc giật lag nhưng tất có nhiều ưu đãi bị lỗi thì nhân viên cũng làm rất là chuyên nghiệp cảm ơn,0,0,1,,,,,,
+,gp_momo_01141,momo,1,"quét mã vân tay và nhập mã pin thì cứ báo lỗi kết nối hoặc mất kết nối mặc dù đã thử đổi mạng, dùng 4G v.v mà vẫn báo lỗi. Giờ k mở xem vé metro được rồi cũng chẳng thể ra ngoài được",0,0,0,,,,,,
+,gp_shopeepay_00619,shopeepay,2,100k xu thì nhận 60k tiền thì không nhận,0,0,0,,,,,,
+,gp_zalopay_00319,zalopay,1,lừa kêu cho 2.000.000 app lon,1,0,0,,,,,,
+,gp_viettelmoney_01363,viettelmoney,5,"Viettel Money rất hữu ít,mình cho 5 sao vì chất lượt dịch vụ,3G và 4G phủ sóng 63 tỉnh thành trong đó có Thị Xã Tân Châu An Giang dù góc kẹt nhất của con hẻm và vòng sâu vùng xa cũng truy cập được.",0,0,1,,,,,,
+,gp_zalopay_00333,zalopay,1,trừ tiền mà không giao dịch không thành công,1,0,0,,,,,,
+,gp_shopeepay_00973,shopeepay,1,Trừ tiền lỗi mà ko trả,1,0,0,,,,,,
+,gp_viettelmoney_00481,viettelmoney,1,"Tôi Quá thất vọng. App này rất thiếu chuyên nghiệp và thật sự tồi tệ. Xử lý lổi quá lâu, lổ hổng quá lớn. 1 app của viettel mà lại như vậy quá thất vọng. Nhân viên hổ trợ thiếu chuyên nghiệp cứ hẹn hết hôm nay rồi hết ngày mai. Trong khi tôi không biết họ có thực sự giải quyết vấn đề 1 cách chú tâm hay không? Họ Bắt khách hàng phải đợi chờ. Trong khi tiền người ta treo trên hệ thống dc cả tuần rồi. Thật sự đến thời điểm hiện tại tôi Quá đổi thất vọng khi biết đến và sử dụng app này. 😩",1,0,0,,,,,,
+,gp_shopeepay_00868,shopeepay,1,"trải nghiệm cực tệ khách hàng bị gây khó dễ vòi thêm tiền , nhân viên thông báo cho có lệ , đơn lạnh ngắt không lấy thì khóa giới hạn tài khoản dùng 2 năm , xóa chuyển sang be vẫn chưa xóa vì tiền hoàn đơn cũ chưa hoàn",1,0,0,,,,,,
+,gp_shopeepay_00170,shopeepay,1,treo đầu dê bán thịt chó là cách làm việc của shopee,1,0,0,,,,,,
+,gp_shopeepay_01064,shopeepay,1,"tự dưng ap nợ 30k trong khi không mua trc trả sau mọi người cẩn thận nhé tôi liên hệ bộ phận cskh thì nó bảo để nó check,xong 1 tháng sau tăng nợ lên 60k ??, rồi còn bảo nợ xấu trong tương lai nếu không thanh toán",0,0,0,,,,,,
+,gp_zalopay_16664,zalopay,5,vậy mà vẫn cứ phải nói lại thì thấy có lẽ sẽ có những cái khác nhau mà thôi kệ nó chứ đừng có mà đầy ra đó mà có khi nào nó ra cái này thì có lẽ là một người mẫu này là của ai cả đâu mà nói thật chứ mình không có tiền lẻ của t là bt r rx chịu bố mệ nói đi nói xấu người ta nói đúng đấy chứ có phải ai cũng biết đâu mà mò mẫm mãi mới có được cái gì đó,0,0,0,,,,,,
+,gp_momo_01910,momo,1,"lũ súc sinh lừa đảo,tự động liếm tiền ví trả sau,làm tao phải trả nợ 500k",1,0,0,,,,,,
+,gp_viettelmoney_01365,viettelmoney,5,"ok, nhanh tiện lợi giải quyết nhanh. tuy nhiên khi trừ tiền phí nên báo trước cho khách hàng được biết. nếu trừ phí thì khi có tiền vào tài khoản nên thông náo để khách hàng cập nhật và nắm bắt kịp thời.",1,0,0,,,,,,
+,gp_shopeepay_01055,shopeepay,1,Kh lm rì mà tự dưng bị khóa tk luôn🥰,0,0,0,,,,,,
+,gp_zalopay_17357,zalopay,5,Zalo pay như b nhưl,0,0,0,,,,,,
+,gp_momo_00181,momo,1,"tôi nói là momo tệ hết sức. Cái lúc tôi sử dụng ví trả sau á. Đang sài ngon cái nó nâng cấp thành 2 3 triệu. Không biết sao nhưng chắc do trả đúng hạn nên nó nâng lên như vậy. Đến lúc thanh toán hạn thì mới biết đó là số tiền vay nhanh. Vậy mà không để ghi chú, chú thích tự động chuyển ví trả sau sang vay nhanh mà không thông báo hay gì hết đó. Coi có sôi máu não không, nó tự chuyển qua dố tiền vay nhanh mà không cho biết thông tin gì vì giao diện vẫn ở ví trả sau. Đúng là quân lừa đảo",1,0,0,,,,,,
+,gp_viettelmoney_00552,viettelmoney,1,bị khóa không lấy lại được mật khẩu bắt ra điểm giao dịch những không hỗ trợ,0,0,0,,,,,,
+,gp_shopeepay_01214,shopeepay,5,ung dung tot tui dung thay hay va tuyet voi va tui dang ky shopee vip bang cach dung shopee pay day 1 thang day😄,0,1,0,,,,,,
+,gp_momo_01360,momo,1,mình đang dùng và có nạp tiền 1 đến 2 vào game giải trí nhưng bị trừ tiền 4 đến 5 lần nhưng chưa tầm 1-2tr đồng chưa có vật phẩm trong game và chưa có phản hồi từ momo,1,0,0,,,,,,
+,gp_shopeepay_01015,shopeepay,1,"app bị lỗi rồi, đăng ký không được",0,0,0,,,,,,
+,gp_momo_01649,momo,1,"tự động trừ tiền gia hạn locket gold trong khi t không hề quét vân tay xác nhận giao dịch (ví momo không đủ tiền nên rút từ tài khoản BIDV của t về), thậm chí trong phần gói thuê bao của t còn không có phần đăng ký locket gold, momo làm ăn thế này à ?",1,0,0,,,,,,
+,gp_shopeepay_01465,shopeepay,1,":))) lúc t khiếu nại trả hàng thì thông báo là shipper sẽ tới lấy trong từng này ngày, tới khi hết hạn gửi hàng r thì đơn khiếu nại t bị hủy và t k thể khiếu nại lần nữa. T ch từng thấy một cuộc gọi nào từ shipper bên đơn vị vận chyển mà shoppe báo cho t luôn",0,0,0,,,,,,
+,gp_viettelmoney_00381,viettelmoney,1,Ứng dụng quá tệ. Có cái liết kết vietlot sms thôi mà cũng bị lỗi nữa. Quá tệ. tự ý đăng ký bảo hiểm để chiếm dụng tiền của người dân. quá tệ,1,0,0,,,,,,
+,gp_zalopay_12592,zalopay,5,"ok dễ sử dụng, nhiều ưu đãi, tui mới 14 nên sử dụng nè",0,0,0,,,,,,
+,gp_viettelmoney_00170,viettelmoney,1,Tại sao lại thu phí vô lý vậy?,0,0,0,,,,,,
+,gp_zalopay_20421,zalopay,5,rất tốt mọi người nên dùng thử xem,0,0,0,,,,,,

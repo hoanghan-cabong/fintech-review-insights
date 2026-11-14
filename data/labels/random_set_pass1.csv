@@ -1,0 +1,101 @@
+﻿review_id,app,score,content,category,severity,flow,social_engineering,note,seconds
+gp_momo_00627,momo,1,mới vào app mà ko cần nhập mật khẩu chịu đó bảo mật quá kém như này ai dám dùng,FRAUD_SECURITY,S1,,false,,29
+gp_momo_00353,momo,2,2026 cài lại momo. thêm mấy lỗi ức chế: 1. quét qr chuyển tiền xong ko cho lưu số tài khoản 2. muốn lưu số tài khoản bằng nhập tay mà ko tìm thấy chỗ lưu. như mò kim đáy biến nản. nhưng vẫn dùng. nếu sửa được thì báo mình để mình tăng sao nhé,APP_EXPERIENCE,S2,,,,18
+gp_momo_01937,momo,1,momo bị lỗi suốt 1 tuần nay không thanh toán được gì hết wifi hay 3G đều không được nản,APP_EXPERIENCE,S2,,,,12
+gp_momo_01096,momo,1,"App nô lệ loài người! Bao giờ dưới 5Mb và giao dịch dưới 0,8s thì dùng!",TXN_FAILURE,S2,,,,23
+gp_momo_00836,momo,1,"đã làm đúng theo các bước để nhận các ưu đãi cho người mới nhưng lại báo không đủ điều kiện,nhắn để hỗ trợ thì đợi lâu mãi không thấy đâu.",SUPPORT,S2,,,,21
+gp_momo_01518,momo,1,hệ thống đang xử lý yêu cầu của bạn gì mà lâu thế,SUPPORT,S2,,,,5
+gp_momo_01319,momo,3,nhân 800k về tk nha mọi người,NON_ISSUE,S4,,,,4
+gp_momo_01803,momo,5,thanh toán hóa đơn tạm giám đoạn . chờ vài phút hoài . khi nào mới hết lỗi đó,TXN_FAILURE,S2,payment,,,11
+gp_momo_02807,momo,5,Game chơi vui và có quà,NON_ISSUE,S4,,,,7
+gp_momo_00687,momo,5,tôi muốn yêu tài chinh của toi,NON_ISSUE,S4,,,,3
+gp_momo_01130,momo,1,lần 1: Tự động trừ phí khi chuyển tiền. lần 2: Lúc khách nạp tiền data thì app báo lỗi nhưng âm thầm trừ tiền của khách mà không thông báo khiến cho 1 gói cước mà tốn tiền 2 lần. Cũng không đòi lại tiền được Xóa app thôi. Quá tệ hại,TXN_FAILURE,S1,payment,,,12
+gp_momo_00350,momo,3,tôi nghi là app giả tạo lắm 3* thôi 🤔,NON_ISSUE,S4,,,,5
+gp_momo_01102,momo,1,tại sao hay tự gia hạn quá z????,APP_EXPERIENCE,S2,,,,9
+gp_momo_01617,momo,2,làm hỏng việc đăng nhập vneid,APP_EXPERIENCE,S4,,,,6
+gp_momo_02075,momo,1,lúc mới sử dụng OK bây lỗi này kia chuyển tiền thì chậm như rùa,APP_EXPERIENCE,S2,,,,7
+gp_momo_01825,momo,5,Mo mo là ngăn hàng gắt tinh cải,NON_ISSUE,S4,,,,4
+gp_momo_01464,momo,1,lag k up dc ảnh,APP_EXPERIENCE,S2,,,,4
+gp_momo_00943,momo,1,"Cập Nhật quài phiền phức, moi lần cập nhật hỏi tk goggles phiền",APP_EXPERIENCE,S2,,,,4
+gp_momo_00629,momo,1,đổi sổ điện thoại rồi vẫn gửi mã otp về số cũ không liên kết ngân hàng được,ONBOARD_EKYC,S1,,,,7
+gp_momo_00848,momo,1,"Quá tệ có 0 sao t cho 0 sao liền, cc xóa app luôn khỏi sài nữa bảo trì gì mà bảo trì cả tháng trời v hả",AUTH_ACCESS,S2,,,,9
+gp_momo_00989,momo,1,app bị cái gì v chuyển tiền mãi k được mà tính năng dùng bấm vào xg bấm quay lại k đc bấm hỗ trợ cx k đc,TXN_FAILURE,S1,transfer,,,6
+gp_momo_01143,momo,1,app gì suốt ngày lỗi không đăng nhập hoài vậy tiền thì gửi momo tới lúc cần vô rút thì app lỗi,TXN_FAILURE,S1,topup_withdraw,,,11
+gp_momo_00927,momo,5,tại dúng được tiền không có ai đúng được với có tiền momo,NON_ISSUE,S4,,,,3
+gp_momo_02386,momo,5,hỗ trợ tài khoản ngân hàng,NON_ISSUE,S4,,,,3
+gp_momo_01231,momo,1,tự nhiên tôi bị đánh dấu lừa đảo ko rút đc tiền,FRAUD_SECURITY,S1,,false,,8
+gp_zalopay_18390,zalopay,5,rất phù hợp với các lứa tuổi hc sinh,NON_ISSUE,S4,,,,3
+gp_zalopay_03195,zalopay,5,"tốt, tiện, sinh lời lãi ok.",NON_ISSUE,S4,,,,2
+gp_zalopay_21348,zalopay,5,nên cho nhiều mã giảm giá nạp tiền điện thoại hơn,NON_ISSUE,S4,,,,4
+gp_zalopay_01076,zalopay,5,điểm danh nhận xu đổi ra vuocher rất dễ sử dụng...,NON_ISSUE,S4,,,,2
+gp_zalopay_07184,zalopay,5,"Tín nâng rất hoàn hảo, phục vụ rất tốt, tôi rất thích zalopay này !",NON_ISSUE,S4,,,,4
+gp_zalopay_19124,zalopay,5,cảm ơn vì 1k xu,NON_ISSUE,S4,,,,3
+gp_zalopay_00119,zalopay,5,"Mình chủ yếu dùng tính năng Số dư sinh lời. Mình để làm nguồn tiền chính luôn ai chuyển tiền cho là tự vào trong đó luôn. lúc đi ăn, mua đồ hay chuyển tiền cho bạn bè thì dùng luôn. Khá tiện vì tiền trong Số dư sinh lời có thể dùng trực tiếp. Mình thích nhất điểm này, kiểu tiền vừa có thể sinh lời mà lúc cần tiêu vẫn dùng ngay đc 😄 Có 1 cái mình thấy hơi bất tiện là hiện tại muốn nạp thêm tiền thì phải chuyển khoản. Nếu có thể nạp trực tiếp từ thẻ ngân hàng đã liên kết thì sẽ tiện lợi hơn nhiều",TXN_FAILURE,S4,topup_withdraw,,,15
+gp_zalopay_15201,zalopay,5,xài OK tốt nhanh chóng và hiệu quả,NON_ISSUE,S4,,,,3
+gp_zalopay_10550,zalopay,5,ứng dụng tốt.ok cho 5 sao,NON_ISSUE,S4,,,,3
+gp_zalopay_03448,zalopay,5,"tốt, đa dạng thanh toán",NON_ISSUE,S4,,,,3
+gp_zalopay_20745,zalopay,5,"tốt, thanh toán nhanh, hữu ích",NON_ISSUE,S4,,,,1
+gp_zalopay_00539,zalopay,1,không nhận dc otp để đăng ký tk,ONBOARD_EKYC,S1,,,,3
+gp_zalopay_12264,zalopay,5,trải nghiệm thực sự khá tốt nch là tiên mọi mặt đổ xăng hay gửi xe còn hạn chế đôi khi k có nhưng đa phần mik càm giác rất ổn,NON_ISSUE,S4,,,,3
+gp_zalopay_12121,zalopay,5,ko có j để nói,NON_ISSUE,S4,,,,2
+gp_zalopay_07173,zalopay,5,gửi tiếp kiệm lời alm,NON_ISSUE,S4,,,,1
+gp_zalopay_16559,zalopay,5,"Lần mình cần khoảng 2tr thì có thử K Vay và trường hợp của mình được duyệt. Mọi người đang cần vay nên đọc kỹ lãi, phí, kỳ hạn rồi mới quyết định.",NON_ISSUE,S4,,,,4
+gp_zalopay_07713,zalopay,5,tốt nha có rất nhiều ưu đãi á,NON_ISSUE,S4,,,,1
+gp_zalopay_02770,zalopay,5,Con mik 13 tủi v xài đc,NON_ISSUE,S4,,,,2
+gp_zalopay_21380,zalopay,5,rất tiện lợi và hữu ich,NON_ISSUE,S4,,,,1
+gp_zalopay_07771,zalopay,1,tự động thanh toán khi người dùng không sử dụng dịch vụ. làm cho người dùng mất tiền với dịch vụ không sử dụng nữa,TXN_FAILURE,S1,payment,,,10
+gp_zalopay_03633,zalopay,5,"10 điểm chuyển nhanh chóng rút tiền nhanh, lâu lâu bị lỗi",NON_ISSUE,S4,,,,3
+gp_zalopay_04632,zalopay,5,Ứng dụng khá tiện ích,NON_ISSUE,S4,,,,2
+gp_zalopay_09191,zalopay,1,Phiền phức Nạp tiền vào thì đx rút ra đech đx ko biết tạo để làm gì Rút ra cứ báo rút tối thiểu 2nghìn đồ đien và còn ko chuyển khoản đx kB bị gì,TXN_FAILURE,S1,topup_withdraw,,,8
+gp_zalopay_00171,zalopay,1,"lỗi , lag ,scam tiền thưởng mở tk",FRAUD_SECURITY,S1,,false,,11
+gp_zalopay_04709,zalopay,5,ỨNG DỤNG ZALOPAY RẤT THUẬN TIỆN VỚI NGƯỜI TIÊU DÙNG.,NON_ISSUE,S4,,,,4
+gp_shopeepay_01382,shopeepay,3,mong có phương thức xác thực thay thế nfc vì không phải tất cả đt đề có nfc để quét chip cccd MONG TIẾP THU Ý KHIẾN !!!,APP_EXPERIENCE,S2,,,,10
+gp_shopeepay_00439,shopeepay,1,"tôi ko hề mua ứng dụng của Al photo Edito gì cả tại sao shopeepay lại trừ tiền oan uổng của tôi quá vậy, tổng tiền trừ là 791.111đ của tôi, tôi yêu cầu shopeepay hoàn tiền cho tôi lại 🤨🤨",TXN_FAILURE,S1,payment,,,6
+gp_shopeepay_01213,shopeepay,1,"vào toàn đơ,không vào được bất cứ mục nào",AUTH_ACCESS,S1,,,,7
+gp_shopeepay_01393,shopeepay,1,dcm app dell cho xác minh đăng nhập app bị n.g.u à🤬,ONBOARD_EKYC,S1,,,,4
+gp_shopeepay_02306,shopeepay,1,toàn tự động thanh toán không qua sinh trắc học làm mất 700k của t,TXN_FAILURE,S1,payment,,,7
+gp_shopeepay_00816,shopeepay,4,nhưng tôi ko có tiền có ai đó chuyển cho tôi,NON_ISSUE,S4,,,,2
+gp_shopeepay_01347,shopeepay,1,"làm ăn vớ vẩn không cho đăng nhập tk trc đó,đã vậy còn không cho xác minh tk trên thiết bị cũ???đăng nhập quét mặt vs cccd làm gì xong đến lúc ngta đăng nhập lại thì k cho cả sđt cx vậy làm ăn thế à??",ONBOARD_EKYC,S1,,,,7
+gp_shopeepay_00284,shopeepay,1,úng dụng mua sắm bày đặt ép tải .ứng dụng ngân hàng đầy đủ việc j phải tải cái này cho nặng máy,APP_EXPERIENCE,S1,,,,10
+gp_shopeepay_00536,shopeepay,1,"sao bảo tặng 60k???? 60k đâu bảo trog 5 ngày 60k sẽ đc chuyển vào ví cơ mà,đâu??? m lừa bọn t à?",PROMO_REWARDS,S1,,,,11
+gp_shopeepay_00850,shopeepay,1,khi liên kết ch play tự động trừ tiền mà không yêu cầu xác minh. yêu cầu shopee xem xét lại vấn đề bảo mật.,FRAUD_SECURITY,S1,,true,,9
+gp_shopeepay_01092,shopeepay,1,shipper ko giao hàng cho tôi mong shopper làm việc dùm cảm ơn nhiều,APP_EXPERIENCE,S2,,,,17
+gp_shopeepay_00705,shopeepay,1,"tại sao tự nhiên lại mất tiền vậy,tao không bấm vào ứng dụng nào để mua mà lại mất từ từ còn số tiền 1400000 đó tạo gửi từ ngân hàng qua để dùng mà lại mất tiền không lí do có phải mày lấy không",TXN_FAILURE,S1,transfer,,,11
+gp_shopeepay_01238,shopeepay,1,app đơ lắm vào lag không ấn gi được,APP_EXPERIENCE,S1,,,,5
+gp_shopeepay_00499,shopeepay,1,quảng cáo thẻ garena nạp game,APP_EXPERIENCE,S2,,,,5
+gp_shopeepay_00905,shopeepay,4,Khá tiện ích và nhanh chóng.,NON_ISSUE,S4,,,,2
+gp_shopeepay_00522,shopeepay,1,ứng dụng rác lừa đảo,NON_ISSUE,S2,,,,5
+gp_shopeepay_02127,shopeepay,1,tải chỉ vì xu shoop pi,NON_ISSUE,S4,,,,2
+gp_shopeepay_00105,shopeepay,1,có tài khoản như không có bắt liên kết ngân hàng mãi cho tạo mã mà ngta ko có ngân hàng ngta mới tạo tài khoản chứ không ngta tạo làm gì,ONBOARD_EKYC,S1,,,,4
+gp_shopeepay_01910,shopeepay,5,trải nghiệm tốt rất cóhưu ích,NON_ISSUE,S4,,,,2
+gp_shopeepay_00877,shopeepay,5,"Muốn tìm hiểu chương trình ITR 30K thì nhớ mã 'BKX JJG UW7' nha mọi người, trước khi bắt đầu cứ đọc qua toàn bộ yêu cầu một lượt, tới phần mã giới thiệu thì nhập đúng rồi tiếp tục.",NON_ISSUE,S4,,,,3
+gp_shopeepay_00287,shopeepay,2,liên tục hiện lỗi hệ thống,APP_EXPERIENCE,S1,,,,4
+gp_shopeepay_00770,shopeepay,1,ship toàn quốc mà ko thuận tuyến đường ship ko đi lấy đủ lý do ko liên lạt đc với ng nhận ng nhận chưa chuẩn bị hành trong khi chưa có cuộc gọi nào từ ship mà bảo ko gọi đc sứng đáng 1 sao,NON_ISSUE,S4,,,,6
+gp_shopeepay_00988,shopeepay,5,"quá tuyệt , quá ổn dị thui",NON_ISSUE,S4,,,,40
+gp_shopeepay_00839,shopeepay,5,ok app trai nghiem rat tot,NON_ISSUE,S4,,,,1
+gp_shopeepay_00016,shopeepay,2,không có ngân hàng của tôi nên không thể liên kết ngân hàng,ONBOARD_EKYC,S1,,,,3
+gp_viettelmoney_01309,viettelmoney,1,Hồi truớc đổi điểm trong này luôn mà cứ bắt tải cái ứng dụng khác lằng nhằng ghê vậy,APP_EXPERIENCE,S1,,,,6
+gp_viettelmoney_01354,viettelmoney,5,05.11.26. Tất cả đều nhanh,NON_ISSUE,S4,,,,2
+gp_viettelmoney_00063,viettelmoney,5,"Đang có kế hoạch cá nhân cần thêm tiền á? Trước khi quyết định gì thì cứ tham khảo VietCredit - Vay tiêu dùng nhé. Giao diện dễ dùng, thông tin cũng khá rõ ràng.",NON_ISSUE,S4,,,,1
+gp_viettelmoney_00634,viettelmoney,1,app tào lao nhất từng tải. thực hiện tất cả các bước để vay nhanh tiêu dùng xong báo. tài khoản của quý khách không đủ điều kiện vay,TXN_FAILURE,S1,credit_bnpl,,,12
+gp_viettelmoney_00835,viettelmoney,1,"app bị nhiều hạn chế liên kết với thẻ ngân hàng, chỉ liên kết dc thẻ nội địa",ONBOARD_EKYC,S1,,,,7
+gp_viettelmoney_00266,viettelmoney,1,đăng nhập vào toàn tự động thoát ra trở lại màn hình chính,APP_EXPERIENCE,S2,,,,7
+gp_viettelmoney_01380,viettelmoney,5,Tốt dùng từ 2019 2020 thấy quá tốt,NON_ISSUE,S4,,,,2
+gp_viettelmoney_00107,viettelmoney,1,Tự ý thu phí duy trì thẻ epass một cách vô tội vạ. Nếu không làm được thì dẹp để doanh nghiệp khác làm. Dân đi xe đã nộp thuế phí rồi lại thêm phí chồng phí! Mình hủy luôn Viettel money chuyển sang ứng dụng khác!,FEES_LIMITS,S1,,,,4
+gp_viettelmoney_00192,viettelmoney,1,thu phí dịch vụ 10k????,FEES_LIMITS,S1,,,,3
+gp_viettelmoney_01258,viettelmoney,1,"ảo thật đấy, dùng sim Viettel để vào Viettel money đk mạng, nhưng vào app vẫn cần phải có data mới hài, vào chính app của nhà mạng mà vẫn cần data, đúng là bus tận xương tủy",NON_ISSUE,S2,,,,19
+gp_viettelmoney_01221,viettelmoney,1,Tệ hơn viettel + khi trước nha. Hết mạng muốn vào đổi điểm viettel ++ thì báo ko có mạng quá lỏ,APP_EXPERIENCE,S4,,,,7
+gp_viettelmoney_00297,viettelmoney,1,áp như khỉ chụp ảnh mãi ko phù hợp,APP_EXPERIENCE,S4,,,,5
+gp_viettelmoney_00459,viettelmoney,1,trc đây còn khuyến mãi. giờ hễ xíu là ko để ý là tích vào bảo hiểm vỡ gì đó. Tệ,PROMO_REWARDS,S1,,,,5
+gp_viettelmoney_00012,viettelmoney,5,Phần vay tiền online có tốc độ tải khá ổn. Các thông tin mở nhanh và cách điều hướng giữa các mục khá đơn giản.,NON_ISSUE,S4,,,,4
+gp_viettelmoney_00435,viettelmoney,5,tiện lợi và nhanh chống,NON_ISSUE,S4,,,,2
+gp_viettelmoney_00231,viettelmoney,5,ứng dụng hay rất hữu ích,NON_ISSUE,S4,,,,2
+gp_viettelmoney_00286,viettelmoney,1,"khôg cho thu nhỏ , ghép màn hình",APP_EXPERIENCE,S2,,,,4
+gp_viettelmoney_00092,viettelmoney,1,"top 1 ứng dụng tài chính hút máu người dùng bằng đký gói, ko có ưu đãi, tệ hơn chữ tệ. rate xong gỡ app",FEES_LIMITS,S1,,,,8
+gp_viettelmoney_00526,viettelmoney,2,app cái cc gì đm t đi làm cty cần lấy tiền ra ăn mẹ mua đồ rồi ra tính tiền dell bank được lúc sau lại bảo trì vào lúc nào cũng out ra mới vào lại được mẹ thề delll dùng lại m nx,TXN_FAILURE,S1,payment,,,11
+gp_viettelmoney_01283,viettelmoney,1,"app lỗi , đăng nhập ok, chụp ảnh cc báo lỗi thẻ không được, cc của tôi thì lỗi gì",ONBOARD_EKYC,S1,,,,5
+gp_viettelmoney_00317,viettelmoney,1,vay khó ứng dụng tệ,TXN_FAILURE,S1,credit_bnpl,,,8
+gp_viettelmoney_00610,viettelmoney,1,đã xác thực NFC rồi mỗi lần sử dụng lại phải nfc thua xa momo,APP_EXPERIENCE,S1,,,,10
+gp_viettelmoney_00292,viettelmoney,1,tr ơi vô chuyển tiền thì app cứ tự văng ra ngoài í cảm nhận khá bất tiện khi chuyển tiền,APP_EXPERIENCE,S1,,,,5
+gp_viettelmoney_00156,viettelmoney,5,"VietCredit - Vay tiêu dùng khá ổn cho người muốn tự xem trước thông tin khoản vay nha. Cách trình bày rõ ràng, kiểm tra đơn dễ tìm và thao tác khá đơn giản.",NON_ISSUE,S4,,,,2
+gp_viettelmoney_01300,viettelmoney,1,"vào là bị văng ra ngoài , cập nhật rồi mà vẫn ko vào đc",AUTH_ACCESS,S1,,,,14

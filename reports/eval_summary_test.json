@@ -1,0 +1,97 @@
+{
+  "test": {
+    "agent_v1_opus": {
+      "n": 80,
+      "category": [
+        71,
+        80
+      ],
+      "severity": [
+        66,
+        80
+      ],
+      "severity_pm1": [
+        79,
+        80
+      ],
+      "s1_recall": [
+        7,
+        7
+      ],
+      "s1_precision": [
+        7,
+        10
+      ],
+      "flow": [
+        6,
+        8
+      ],
+      "evidence": [
+        41,
+        41
+      ]
+    },
+    "agent_v2_opus": {
+      "n": 80,
+      "category": [
+        68,
+        80
+      ],
+      "severity": [
+        68,
+        80
+      ],
+      "severity_pm1": [
+        79,
+        80
+      ],
+      "s1_recall": [
+        7,
+        7
+      ],
+      "s1_precision": [
+        7,
+        8
+      ],
+      "flow": [
+        5,
+        7
+      ],
+      "evidence": [
+        38,
+        39
+      ]
+    },
+    "baseline": {
+      "n": 80,
+      "category": [
+        45,
+        80
+      ],
+      "severity": [
+        55,
+        80
+      ],
+      "severity_pm1": [
+        73,
+        80
+      ],
+      "s1_recall": [
+        2,
+        7
+      ],
+      "s1_precision": [
+        2,
+        4
+      ],
+      "flow": [
+        1,
+        5
+      ],
+      "evidence": [
+        0,
+        0
+      ]
+    }
+  }
+}

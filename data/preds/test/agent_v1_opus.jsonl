@@ -1,0 +1,80 @@
+{"review_id": "gp_shopeepay_02318", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "Hoàn hảo"}
+{"review_id": "gp_zalopay_02594", "category": "ONBOARD_EKYC", "flow": null, "severity": "S2", "social_engineering": null, "evidence": "máy kêu cũng bắt sác thực CCCD mà trong khi sử dụng hai số điện thoại khác nhau"}
+{"review_id": "gp_momo_01409", "category": "TXN_FAILURE", "flow": "topup_withdraw", "severity": "S1", "social_engineering": null, "evidence": "chuyển tiền vô áp mà ko nhận đc tiền"}
+{"review_id": "gp_shopeepay_00080", "category": "AUTH_ACCESS", "flow": null, "severity": "S2", "social_engineering": null, "evidence": "không vô được trên app shoppe"}
+{"review_id": "gp_momo_02318", "category": "TXN_FAILURE", "flow": "unknown", "severity": "S1", "social_engineering": null, "evidence": "giao dịch hay bị lỗi trừ tiền nhưng giao dịch không thành công"}
+{"review_id": "gp_zalopay_11544", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "app ngon vl iu vl"}
+{"review_id": "gp_shopeepay_01557", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "chưa giao hàng mà nói giao hàng"}
+{"review_id": "gp_shopeepay_01471", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "hao hành mà lừa đảo"}
+{"review_id": "gp_shopeepay_01031", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "ứng dụng hay. dùng được, rất nhiều ưu đãi, hài lòng"}
+{"review_id": "gp_momo_02022", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "nhiều quà với game mèo vui"}
+{"review_id": "gp_viettelmoney_01326", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "tệ vô cùng mạng chư cứk tró"}
+{"review_id": "gp_viettelmoney_00685", "category": "APP_EXPERIENCE", "flow": null, "severity": "S2", "social_engineering": null, "evidence": "Iphone 18promax ko dùng đc app"}
+{"review_id": "gp_zalopay_19681", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "nhanh ok cũng nhiệt tình"}
+{"review_id": "gp_viettelmoney_01213", "category": "AUTH_ACCESS", "flow": null, "severity": "S2", "social_engineering": null, "evidence": "đang cần chuyển tiền gấp mà không vào được"}
+{"review_id": "gp_momo_01105", "category": "APP_EXPERIENCE", "flow": null, "severity": "S3", "social_engineering": null, "evidence": "ứng dụng rất hay bị đơ"}
+{"review_id": "gp_momo_01918", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "rất tiện và tốt"}
+{"review_id": "gp_momo_00011", "category": "APP_EXPERIENCE", "flow": null, "severity": "S2", "social_engineering": null, "evidence": "thay đổi phiên bản mới để điều hành android 7.0 trở lên mà đây xài 7.1.1 cx hog đc"}
+{"review_id": "gp_shopeepay_01717", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "Sao tôi không bán được vậy shopee"}
+{"review_id": "gp_zalopay_00975", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "quá tuyệt vời rất dễ dùng"}
+{"review_id": "gp_viettelmoney_00635", "category": "FEES_LIMITS", "flow": null, "severity": "S3", "social_engineering": null, "evidence": "giới hạn mức chuyển tiền miễn phí"}
+{"review_id": "gp_viettelmoney_00787", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "Good app"}
+{"review_id": "gp_momo_00376", "category": "SUPPORT", "flow": null, "severity": "S2", "social_engineering": null, "evidence": "gọi tổng đài tốn 20k để xoá tài khoản mà đến nay hơn tháng rồi vẫn chưa xoá"}
+{"review_id": "gp_viettelmoney_00671", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "sim vẫn có sóng, mà không gọi được không sài được 5G"}
+{"review_id": "gp_momo_02159", "category": "SUPPORT", "flow": null, "severity": "S1", "social_engineering": null, "evidence": "Gửi đơn hỗ trợ hoàn tiền 2 lần trong 2 ngày vào giờ hành chính liên tục và không có 1 thông báo nào"}
+{"review_id": "gp_shopeepay_00402", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "ko giúp lien ce hàng hàng"}
+{"review_id": "gp_zalopay_21781", "category": "TXN_FAILURE", "flow": "payment", "severity": "S2", "social_engineering": null, "evidence": "tới lúc bấm thanh toán cái đùng báo lỗi không trả tiền được"}
+{"review_id": "gp_zalopay_11332", "category": "PROMO_REWARDS", "flow": null, "severity": "S3", "social_engineering": null, "evidence": "đánh giá 5 sao được nhận 200 xu mà làm không được"}
+{"review_id": "gp_momo_01647", "category": "TXN_FAILURE", "flow": "payment", "severity": "S1", "social_engineering": null, "evidence": "nó tự động trừ tiền cho Goolgle hổm giờ mình mất cả triệu"}
+{"review_id": "gp_momo_01730", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "rất thích, mong có nhiều khuyến mãi hơn"}
+{"review_id": "gp_shopeepay_01105", "category": "PROMO_REWARDS", "flow": null, "severity": "S3", "social_engineering": null, "evidence": "ra chỉnh sách hoàn lại mã 100k i ạ"}
+{"review_id": "gp_zalopay_01561", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "trái nghiệm chplay tốt"}
+{"review_id": "gp_shopeepay_00889", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "App rất tốt mong nhiu tính năng AI hơn nữa"}
+{"review_id": "gp_zalopay_01158", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "trải nghiệm tốt phù hợp dễ thao tác"}
+{"review_id": "gp_shopeepay_01247", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "hoàn hảo tuyệt vời"}
+{"review_id": "gp_shopeepay_01928", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "Mua hàng thì dễ gặp hàng lỗi trả hàng thì khó"}
+{"review_id": "gp_viettelmoney_00023", "category": "FEES_LIMITS", "flow": null, "severity": "S3", "social_engineering": null, "evidence": "Thu phí dịch vụ, mà hủy phải ra cửa hàng"}
+{"review_id": "gp_viettelmoney_01209", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "Rất tốt rất tốt"}
+{"review_id": "gp_shopeepay_02377", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": ""}
+{"review_id": "gp_shopeepay_01530", "category": "ONBOARD_EKYC", "flow": null, "severity": "S2", "social_engineering": null, "evidence": "không xác định danh tính được thì hủy app luôn đi"}
+{"review_id": "gp_shopeepay_01891", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": ""}
+{"review_id": "gp_viettelmoney_00690", "category": "APP_EXPERIENCE", "flow": null, "severity": "S3", "social_engineering": null, "evidence": "ngày ngày nhận bao nhiêu là thông báo bán bảo hiểm . mà khổ nổi thông báo kg chặn được"}
+{"review_id": "gp_shopeepay_01152", "category": "TXN_FAILURE", "flow": "credit_bnpl", "severity": "S2", "social_engineering": null, "evidence": "đăng ký bằng số điện thoại mới đăng ký lại SPayLater không được"}
+{"review_id": "gp_zalopay_02017", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "dễ dàng và tiện lợi"}
+{"review_id": "gp_zalopay_14581", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "rất tốt.nhiều ưu đãi đặc biệt"}
+{"review_id": "gp_zalopay_15981", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "rất cần thiết tôi dùng nó để nạp game"}
+{"review_id": "gp_viettelmoney_00446", "category": "AUTH_ACCESS", "flow": null, "severity": "S3", "social_engineering": null, "evidence": "có lúc vào ứng dụng phải nhập mật khẩu rất nhiều lần mới vào được ứng dụng"}
+{"review_id": "gp_zalopay_11347", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "app tốt chuyển khoản nhanh rất tuyệt"}
+{"review_id": "gp_viettelmoney_00613", "category": "AUTH_ACCESS", "flow": null, "severity": "S2", "social_engineering": null, "evidence": "vào k cho mật khẩu,quá tệ"}
+{"review_id": "gp_momo_01864", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "Chốt lại cái tên TinChac cho ai đang cần nha"}
+{"review_id": "gp_momo_01702", "category": "APP_EXPERIENCE", "flow": null, "severity": "S2", "social_engineering": null, "evidence": "cứ bắt cap nhật phiên bản mới.. làm mãi o được"}
+{"review_id": "gp_momo_00429", "category": "TXN_FAILURE", "flow": "credit_bnpl", "severity": "S3", "social_engineering": null, "evidence": "ví trả sau quá khốn nạn hủy cho tao"}
+{"review_id": "gp_momo_01477", "category": "FEES_LIMITS", "flow": null, "severity": "S1", "social_engineering": null, "evidence": "mã qr đặt giới hạn nhận tiền mà k báo trc cho t chuẩn bị, bị mất bao nhiêu tiền r"}
+{"review_id": "gp_viettelmoney_00247", "category": "FEES_LIMITS", "flow": null, "severity": "S1", "social_engineering": null, "evidence": "không giao dịch cũng thu tiền 11k mỗi tháng"}
+{"review_id": "gp_momo_01831", "category": "APP_EXPERIENCE", "flow": null, "severity": "S3", "social_engineering": null, "evidence": "khi thoát ứng dụng không dùng được nút Back trên android"}
+{"review_id": "gp_zalopay_12747", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "Zalopay tuyệt vời với ln ý tiện và đa dụng"}
+{"review_id": "gp_zalopay_00133", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "ứng dụng tuyệt vời lắm ad nè"}
+{"review_id": "gp_viettelmoney_00714", "category": "TXN_FAILURE", "flow": "unknown", "severity": "S1", "social_engineering": null, "evidence": "Nuốt mất 5 triệu từ tài khoản BIDV"}
+{"review_id": "gp_zalopay_09513", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "dùng xg đỡ mụn hẳn ạ!"}
+{"review_id": "gp_shopeepay_01940", "category": "TXN_FAILURE", "flow": "payment", "severity": "S1", "social_engineering": null, "evidence": "chả hề đăng ký moẹ gì thì tự nhiên trừ 146k"}
+{"review_id": "gp_viettelmoney_01312", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": "Good app, vào trang mình nếu cần khoảng 8tr đảm bảo"}
+{"review_id": "gp_shopeepay_02400", "category": "ONBOARD_EKYC", "flow": null, "severity": "S2", "social_engineering": null, "evidence": "xác minh sinh học mấy chục lần đều fail hết"}
+{"review_id": "gp_viettelmoney_01122", "category": "PROMO_REWARDS", "flow": null, "severity": "S3", "social_engineering": null, "evidence": "đổi điểm không đổi được cứ bắt cập nhật CCCD"}
+{"review_id": "gp_zalopay_14154", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": ""}
+{"review_id": "gp_zalopay_20034", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": ""}
+{"review_id": "gp_shopeepay_01023", "category": "AUTH_ACCESS", "flow": null, "severity": "S2", "social_engineering": null, "evidence": "cứ đến lúc xác minh tài khoản là tự động thoát , k đăng nhập đc"}
+{"review_id": "gp_zalopay_15024", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": ""}
+{"review_id": "gp_viettelmoney_01280", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": ""}
+{"review_id": "gp_shopeepay_01336", "category": "AUTH_ACCESS", "flow": null, "severity": "S2", "social_engineering": null, "evidence": "đăng nhập hay đăng kí còn chẳng được"}
+{"review_id": "gp_momo_02941", "category": "TXN_FAILURE", "flow": "payment", "severity": "S1", "social_engineering": null, "evidence": "mỗi tháng nó trừ tiền một cách tự động mà ko xin phép"}
+{"review_id": "gp_zalopay_17065", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": ""}
+{"review_id": "gp_viettelmoney_00502", "category": "ONBOARD_EKYC", "flow": null, "severity": "S2", "social_engineering": null, "evidence": "liên kết ngân hàng mà được có 9 cái ngân hàng"}
+{"review_id": "gp_momo_00840", "category": "APP_EXPERIENCE", "flow": null, "severity": "S3", "social_engineering": null, "evidence": "tạo ra qc lặp"}
+{"review_id": "gp_viettelmoney_00115", "category": "FEES_LIMITS", "flow": null, "severity": "S3", "social_engineering": null, "evidence": "thu phí cc"}
+{"review_id": "gp_shopeepay_00246", "category": "AUTH_ACCESS", "flow": null, "severity": "S2", "social_engineering": null, "evidence": "khóa vô cơ"}
+{"review_id": "gp_momo_02849", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": ""}
+{"review_id": "gp_viettelmoney_00865", "category": "AUTH_ACCESS", "flow": null, "severity": "S2", "social_engineering": null, "evidence": "hệ thống OPT lỗi"}
+{"review_id": "gp_momo_00785", "category": "TXN_FAILURE", "flow": "payment", "severity": "S1", "social_engineering": null, "evidence": "nạp tiền đt t mà trừ quài"}
+{"review_id": "gp_momo_01978", "category": "TXN_FAILURE", "flow": "unknown", "severity": "S2", "social_engineering": null, "evidence": "giao dịch lâu gửi hổ trợ thì ko hổ trợ"}
+{"review_id": "gp_zalopay_07333", "category": "NON_ISSUE", "flow": null, "severity": "S4", "social_engineering": null, "evidence": ""}
+{"review_id": "gp_viettelmoney_00492", "category": "AUTH_ACCESS", "flow": null, "severity": "S2", "social_engineering": null, "evidence": "Nhập mk ko hiện mk nhập, sai phải ra CH mới lấy MK dc"}

@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Review Risk Agent — a working tool · Hoang Han</title>
+<meta name="description" content="A live agentic tool: paste an e-wallet review and an AI agent grades it by financial risk next to a keyword baseline, then ask questions about 2,339 classified reviews and get answers with cited evidence.">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../../assets/site.css?v=5">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<style>
+/* ── Tool surface: quiet chrome, instrument panels. One accent, one alarm colour. ── */
+.tool{
+  --bg:#FFFFFF; --bg-2:#F5F5F7; --surface:#FFFFFF; --ink:#1D1D1F; --ink-2:#424245; --muted:#6E6E73;
+  --line:#E8E8ED; --line-2:#D2D2D7;
+  --blue:#0071E3; --blue-ink:#0071E3; --blue-soft:#EDF5FE;
+  --pink:#C7372A; --pink-soft:#FCEDEB; --yellow:#B26B00; --yellow-soft:#FFF6E5;
+  --green:#1D7A4C; --green-soft:#E9F5EE;
+  --s1:#C7372A; --s2:#C2740B; --s3:#857F00; --s4:#8E8E93;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --serif:var(--sans); --radius:14px; --radius-lg:20px;
+  background:var(--bg); color:var(--ink);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tool{
+  --bg:#000; --bg-2:#1C1C1E; --surface:#1C1C1E; --ink:#F5F5F7; --ink-2:#D1D1D6; --muted:#98989D;
+  --line:#2C2C2E; --line-2:#3A3A3C; --blue:#0A84FF; --blue-ink:#4DA3FF; --blue-soft:#132A44;
+  --pink:#FF6B5C; --pink-soft:#36201D; --yellow:#F0A33A; --yellow-soft:#33280F;
+  --green:#45C98A; --green-soft:#12301F;
+  --s1:#FF6B5C; --s2:#F0A33A; --s3:#D8C14F; --s4:#98989D;
+}}
+:root[data-theme="dark"] .tool{
+  --bg:#000; --bg-2:#1C1C1E; --surface:#1C1C1E; --ink:#F5F5F7; --ink-2:#D1D1D6; --muted:#98989D;
+  --line:#2C2C2E; --line-2:#3A3A3C; --blue:#0A84FF; --blue-ink:#4DA3FF; --blue-soft:#132A44;
+  --pink:#FF6B5C; --pink-soft:#36201D; --yellow:#F0A33A; --yellow-soft:#33280F;
+  --green:#45C98A; --green-soft:#12301F;
+  --s1:#FF6B5C; --s2:#F0A33A; --s3:#D8C14F; --s4:#98989D;
+}
+.tool .site-header{background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--line);backdrop-filter:saturate(1.6) blur(16px);-webkit-backdrop-filter:saturate(1.6) blur(16px)}
+.tool .site-header .brand,.tool .site-header .nav a{color:var(--ink)}
+.tool .site-header .nav a:hover{background:var(--bg-2)}
+.tool .site-header .nav a.btn,.tool .brand-mark{background:var(--blue);border-color:var(--blue);color:#fff}
+.tool .site-header .nav a.btn:hover{background:var(--ink);border-color:var(--ink)}
+.tool .brand{font-weight:600;letter-spacing:-.02em}
+.tool h1,.tool h2,.tool h3{font-family:var(--sans);letter-spacing:-.03em;color:var(--ink);font-weight:600}
+.wrap.tl{max-width:1060px}
+
+/* Masthead */
+.tl-top{border-bottom:1px solid var(--line);padding-block:clamp(28px,5vw,52px) clamp(22px,3vw,32px)}
+.tl-top .crumb{color:var(--muted)}.tl-top .crumb:hover{color:var(--ink)}
+.tl-badge{display:inline-flex;align-items:center;gap:8px;font:600 11.5px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--green);background:var(--green-soft);border-radius:999px;padding:7px 12px;margin:16px 0 14px}
+.tl-badge i{width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block}
+.tl-top h1{font-size:clamp(34px,5.2vw,58px);line-height:1.04;margin:0 0 18px;max-width:17ch}
+.tl-top p.lead{color:var(--ink-2);font-size:clamp(17px,2vw,20px);max-width:62ch;margin:0}
+.tl-meta{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:22px;font:500 13.5px/1.4 var(--sans);color:var(--muted)}
+.tl-meta b{color:var(--ink);font-weight:600}
+
+/* Panels */
+.panel{border:1px solid var(--line-2);border-radius:var(--radius-lg);background:var(--surface);overflow:hidden;margin:22px 0}
+.panel-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:15px 20px;border-bottom:1px solid var(--line);background:var(--bg-2)}
+.panel-head h2{font-size:16.5px;margin:0;letter-spacing:-.01em}
+.panel-head span{font:500 12.5px/1.4 var(--sans);color:var(--muted)}
+.panel-body{padding:20px}
+.step-n{font:600 11px/1 var(--mono);letter-spacing:.14em;color:var(--blue);display:block;margin-bottom:26px;text-transform:uppercase}
+.sec-h{font-size:clamp(24px,3vw,32px);margin:0 0 10px}
+.sec-intro{max-width:66ch;color:var(--ink-2);margin:0}
+
+/* Classifier */
+.cls{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+@media (max-width:860px){.cls{grid-template-columns:minmax(0,1fr)}}
+.cls-in{padding:20px;border-right:1px solid var(--line)}
+@media (max-width:860px){.cls-in{border-right:0;border-bottom:1px solid var(--line)}}
+.cls-out{padding:20px;background:var(--bg-2)}
+.lbl{font:600 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px}
+textarea#rv{width:100%;min-height:124px;resize:vertical;font:400 15px/1.55 var(--sans);color:var(--ink);background:var(--bg);border:1px solid var(--line-2);border-radius:12px;padding:12px 14px}
+textarea#rv:focus-visible{outline:2px solid var(--blue);outline-offset:1px;border-color:var(--blue)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 14px}
+.chip{font:500 12.5px/1 var(--sans);background:var(--bg-2);color:var(--ink-2);border:1px solid var(--line-2);border-radius:999px;padding:7px 11px;cursor:pointer}
+.chip:hover{border-color:var(--blue);color:var(--blue)}
+.chip:disabled{opacity:.5;cursor:default}
+.tool .btn.run{background:var(--blue);border-color:var(--blue);color:#fff}
+.tool .btn.run:hover{background:var(--ink);border-color:var(--ink)}
+.tool .btn.run:disabled{opacity:.45;cursor:default}
+.run-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.run-row .note{font-size:12.5px;color:var(--muted)}
+.trace{margin:0 0 16px;padding:0;list-style:none;display:grid;gap:7px;font:500 12.5px/1.4 var(--mono);color:var(--muted)}
+.trace li{display:flex;gap:9px;align-items:flex-start}
+.trace li::before{content:"○";color:var(--line-2)}
+.trace li.on::before{content:"◐";color:var(--blue)}
+.trace li.done::before{content:"●";color:var(--green)}
+.trace li.done,.trace li.on{color:var(--ink-2)}
+.verdicts{display:grid;gap:12px}
+.vd{border:1px solid var(--line-2);border-radius:12px;background:var(--surface);padding:14px 16px}
+.vd.agent{border-color:var(--ink)}
+.vd-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.vd-who{font:600 12px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.vd.agent .vd-who{color:var(--ink)}
+.sev{display:inline-flex;align-items:center;gap:7px;font:600 13px/1 var(--mono);padding:6px 10px;border-radius:7px;color:#fff;background:var(--s4)}
+.sev.S1{background:var(--s1)}.sev.S2{background:var(--s2)}.sev.S3{background:var(--s3)}.sev.S4{background:var(--s4)}
+.vd dl{display:grid;grid-template-columns:92px minmax(0,1fr);gap:5px 14px;margin:0;font-size:14px}
+.vd dt{color:var(--muted);font-size:12.5px}
+.vd dd{margin:0;color:var(--ink)}
+.vd .quote{margin-top:11px;padding:9px 12px;border-left:2px solid var(--blue);background:var(--blue-soft);border-radius:0 8px 8px 0;font-size:13.5px;color:var(--ink-2)}
+.vd .why{margin:10px 0 0;font-size:13.5px;color:var(--ink-2)}
+.verdicts > p.why{margin:0}
+.empty{color:var(--muted);font-size:14px;line-height:1.6;margin:0}
+.err{color:var(--pink);font-size:13.5px;margin-top:10px}
+
+/* Analyst */
+.log{display:flex;flex-direction:column;gap:12px;max-height:440px;overflow-y:auto;padding:4px 2px 2px}
+.msg{max-width:82ch;padding:11px 15px;border-radius:13px;word-break:break-word}
+.msg.user{align-self:flex-end;background:var(--blue);color:#fff}
+.msg.bot{align-self:flex-start;background:var(--bg-2);border:1px solid var(--line)}
+.msg.bot p{margin:0}.msg.bot p+p{margin-top:8px}
+.msg.bot ul{margin:7px 0;padding-left:20px}
+.calls{margin-top:9px;font:500 12px/1.5 var(--mono);color:var(--muted);white-space:pre-wrap;border-top:1px dashed var(--line-2);padding-top:8px}
+.cite{font:600 12px/1 var(--mono);background:var(--blue-soft);color:var(--blue-ink);border:0;border-radius:5px;padding:2px 6px;cursor:pointer}
+form.ask{display:flex;gap:9px;align-items:flex-end;margin-top:14px}
+form.ask textarea{flex:1;min-width:0;resize:none;font:400 15px/1.5 var(--sans);color:var(--ink);background:var(--bg);border:1px solid var(--line-2);border-radius:12px;padding:10px 13px;min-height:44px;max-height:130px}
+.drawer{margin-top:14px;border:1px solid var(--line-2);border-radius:12px;padding:14px 16px;background:var(--bg-2)}
+.drawer .id{font:500 12px/1 var(--mono);color:var(--muted)}
+.off{padding:18px 20px;color:var(--muted);font-size:14px;line-height:1.6;background:var(--bg-2);border-radius:12px}
+
+/* Output */
+.stat-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.stat-row > div{background:var(--surface);padding:18px}
+.stat-row b.risk{display:block;font:600 clamp(26px,3.2vw,34px)/1.05 var(--sans);letter-spacing:-.03em;color:var(--pink)}
+.stat-row span{display:block;margin-top:7px;font-size:13px;line-height:1.45;color:var(--muted)}
+.stat-row span b{color:var(--ink);font-weight:600}
+@media (max-width:860px){.stat-row{grid-template-columns:1fr 1fr}}
+.bars{display:grid;gap:11px;margin-top:6px}
+.bar-row{display:grid;grid-template-columns:104px minmax(0,1fr) 48px;gap:12px;align-items:center;font-size:14px}
+.bar{display:flex;height:22px;border-radius:5px;overflow:hidden;background:var(--line)}
+.bar span{height:100%}
+.bar-row .n{font:500 12px/1 var(--mono);color:var(--muted);text-align:right}
+@media (max-width:620px){.bar-row{grid-template-columns:1fr;gap:5px}.bar-row .n{text-align:left}}
+.legend{display:flex;flex-wrap:wrap;gap:7px 18px;font-size:13px;color:var(--muted);margin-bottom:14px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.tool .dtable td.n,.tool .dtable th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tool .dtable td .hi{color:var(--pink);font-weight:600}
+.tool .dtable th{border-bottom-color:var(--line-2)}
+.findings-list{display:grid;gap:10px;margin:18px 0 0;padding:0;list-style:none}
+.findings-list li{padding:13px 16px;border:1px solid var(--line);border-left:3px solid var(--blue);border-radius:0 10px 10px 0;background:var(--bg-2)}
+.findings-list b{display:block;margin-bottom:3px}
+.foot-note{font-size:13px;color:var(--muted);margin-top:14px;max-width:80ch;line-height:1.55}
+
+/* Method */
+.method{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}
+@media (max-width:860px){.method{grid-template-columns:1fr}}
+.method > div{background:var(--bg-2);border-radius:var(--radius);padding:18px}
+.method .k{font:600 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:9px}
+.method h3{font-size:16px;margin:0 0 7px}
+.method p{margin:0;font-size:14px;color:var(--ink-2);line-height:1.55}
+.honest{margin-top:16px;border-left:3px solid var(--ink);background:var(--bg-2);padding:15px 18px;border-radius:0 10px 10px 0;font-size:14.5px;color:var(--ink-2);max-width:80ch;line-height:1.6}
+.honest b{color:var(--ink)}
+.outlinks{display:flex;flex-wrap:wrap;gap:11px;margin-top:20px}
+.tool .next{border-color:var(--line-2);border-radius:var(--radius-lg);margin-top:44px}
+.tool .next:hover{background:var(--bg-2)}
+</style>
+</head>
+<body class="tool">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html" aria-label="Hoang Han — home"><span class="brand-mark" aria-hidden="true">HH</span><span>Hoang Han</span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span class="bars" aria-hidden="true"></span><span class="label">Menu</span></button>
+    <nav id="site-nav" class="nav" aria-label="Main">
+      <a href="../../index.html#work">Work</a><a href="../../index.html#approach">How I work</a><a href="../../index.html#about">About</a><a href="../../more/index.html">Beyond work</a>
+      <a class="btn sm" href="#contact">Let’s talk</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<header class="tl-top">
+  <div class="wrap tl">
+    <a class="crumb" href="../../index.html#work">← All work</a>
+    <span class="tl-badge"><i aria-hidden="true"></i>Live tool · runs in this page</span>
+    <h1>Review Risk Agent</h1>
+    <p class="lead">An agent that reads e-wallet complaints and grades them by <b>financial risk</b> instead of star rating — then answers questions about what it found, citing the reviews behind every number. Both panels below are working, not screenshots.</p>
+    <div class="tl-meta">
+      <span><b>2,339</b> reviews classified</span>
+      <span><b>4</b> wallets · MoMo, ZaloPay, ShopeePay, Viettel Money</span>
+      <span><b id="m-period">—</b></span>
+      <span>Built, evaluated and written solo · <b>Nov 2026</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap tl">
+
+  <section aria-labelledby="try-h">
+    <span class="step-n" style="margin-top:32px">Tool 01 — the classifier</span>
+    <h2 id="try-h" class="sec-h">Grade a complaint, and watch the keyword filter miss it.</h2>
+    <p class="sec-intro">Paste any Vietnamese e-wallet review, or pick one below. The agent applies a four-level risk scale and has to quote the exact words it decided on. The same review also goes through a keyword-and-star-rating filter — the cheap approach this project had to beat — so you can see where the two disagree.</p>
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Classifier</h2>
+        <span>S1 money lost or at risk · S2 can’t do a core job · S3 annoying · S4 minor</span>
+      </div>
+      <div class="cls">
+        <div class="cls-in">
+          <label class="lbl" for="rv">Review text</label>
+          <textarea id="rv" spellcheck="false"></textarea>
+          <div class="chips" id="examples"></div>
+          <div class="run-row">
+            <button class="btn run" id="go" type="button">Grade this review</button>
+            <span class="note" id="hint">Runs on your own Claude account</span>
+          </div>
+          <p class="err" id="cls-err" hidden></p>
+        </div>
+        <div class="cls-out">
+          <span class="lbl">Result</span>
+          <ul class="trace" id="trace" hidden>
+            <li data-s="read">Reading the review</li>
+            <li data-s="tree">Walking the severity decision tree</li>
+            <li data-s="quote">Extracting a verbatim quote as evidence</li>
+          </ul>
+          <div class="verdicts" id="verdicts">
+            <p class="empty">Pick an example or paste a review, then press <b>Grade this review</b>. The agent’s verdict and the keyword baseline’s verdict appear side by side.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="ask-h">
+    <span class="step-n" style="margin-top:44px">Tool 02 — the analyst</span>
+    <h2 id="ask-h" class="sec-h">Ask the dataset a question.</h2>
+    <p class="sec-intro">This agent has three tools over the classified corpus: an overview, a weighted comparison across wallets, and a review search. It decides which to call, and every figure it reports is computed in code — the model never does the arithmetic. Its tool calls are printed under each answer, and review IDs are clickable.</p>
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Analyst</h2>
+        <span id="chat-status">Connecting…</span>
+      </div>
+      <div class="panel-body">
+        <div class="chips" id="suggest"></div>
+        <div class="log" id="log" aria-live="polite"></div>
+        <form class="ask" id="askf">
+          <textarea id="q" rows="1" placeholder="e.g. Which wallet gets the most complaints about fees?"></textarea>
+          <button class="btn ghost" type="button" id="stop" hidden>Stop</button>
+          <button class="btn run" type="submit" id="send">Ask</button>
+        </form>
+        <div class="drawer" id="drawer" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="out-h">
+    <span class="step-n" style="margin-top:44px">Output — what it found</span>
+    <h2 id="out-h" class="sec-h">Half of all money-loss complaints are charges nobody agreed to.</h2>
+    <p class="sec-intro" id="out-intro">—</p>
+    <div class="panel">
+      <div class="panel-head"><h2>Run summary</h2><span id="run-meta">—</span></div>
+      <div class="panel-body">
+        <div class="stat-row" id="stats"></div>
+        <h3 style="font-size:16px;margin:28px 0 4px">How users lose money, by wallet</h3>
+        <p class="sec-intro" style="font-size:13.5px;margin-bottom:12px">Share of S1 reviews · n = 435</p>
+        <div class="legend">
+          <span><i style="background:#C7372A"></i>Charged without agreeing</span>
+          <span><i style="background:#0071E3"></i>Transaction failed, money taken</span>
+          <span><i style="background:#8E8E93"></i>Account frozen</span>
+          <span><i style="background:#C7C7CC"></i>Refund never arrived</span>
+          <span><i style="background:#E5E5EA"></i>Other</span>
+        </div>
+        <div class="bars" id="bars"></div>
+        <h3 style="font-size:16px;margin:30px 0 10px">Each wallet’s own weak spot</h3>
+        <div class="table-wrap"><table class="dtable" id="cat-table"></table></div>
+        <p class="foot-note">Shares are weighted and computed within each wallet’s own complaints, so a bigger review base doesn’t inflate them. ZaloPay’s review volume jumped from about 120 to about 3,000 a week in October, with 5-star share going from 35% to 96% — which is exactly why nothing here uses “total reviews” as a denominator.</p>
+        <h3 style="font-size:16px;margin:30px 0 10px">A fast reply is not the same as help</h3>
+        <div class="table-wrap"><table class="dtable" id="reply-table"></table></div>
+        <p class="foot-note">“Boilerplate” means a reply whose first 70 characters match at least five other replies from the same wallet. ShopeePay answers 98% of complaints using two templates, so this measures automation coverage, not care.</p>
+      </div>
+    </div>
+    <ul class="findings-list" id="findings"></ul>
+  </section>
+
+  <section aria-labelledby="ev-h">
+    <span class="step-n" style="margin-top:44px">Evidence — how I know it works</span>
+    <h2 id="ev-h" class="sec-h">The agent was tested against a cheaper option that could have won.</h2>
+    <p class="sec-intro">157 reviews were used while tuning prompts and never counted towards the result. A separate <b>80-review test set was labelled by hand before the model ran on it once</b>, scored once, and never revised. The failure condition was set in advance: if the keyword baseline reached 90% of the agent’s quality, the honest conclusion was that this doesn’t need a language model.</p>
+    <div class="panel">
+      <div class="panel-head"><h2>Blind test · 80 unseen reviews</h2><span>Counts in brackets</span></div>
+      <div class="panel-body"><div class="table-wrap"><table class="dtable" id="eval-table"></table></div></div>
+    </div>
+    <div class="method">
+      <div><span class="k">Severity, not sentiment</span><h3>One question, asked in order</h3><p>Money lost or at risk → S1. Can’t do a core job → S2. Annoying but usable → S3. Everything else → S4. Star ratings, swearing and the word “scam” never raise the level. A published fee someone finds expensive is S3; money taken without agreement is S1.</p></div>
+      <div><span class="k">Human in the loop</span><h3>The agent doesn’t get the last word on money</h3><p>Every predicted S1, and every case where the agent and the baseline disagree about S1, routes to a person — 11% of reviews. An agent that quietly decides what counts as “someone lost money” is not a system I’d hand to a team.</p></div>
+      <div><span class="k">Model per job</span><h3>The strongest model only where judgement is needed</h3><p>Classification runs on the most capable model. The analyst above only orchestrates, since every number comes from code, so it runs on a cheaper tier. Defaulting to the best model everywhere is a cost decision disguised as a quality one.</p></div>
+    </div>
+    <div class="honest">
+      <b>Where I was wrong.</b> My first labelling pass marked 36% of reviews S1 and produced no S3 at all: I was grading anger, not consequence — the exact mistake this tool exists to fix. My two passes agreed on only 15 of 53 complaints. Later, reviewing 31 disagreements between me and the model, I changed 26 labels and 25 of them went the model’s way. That is automation bias, and it inflates the score, which is why the headline numbers come from a test set I labelled blind. All 27 decisions, including these, are in the repo.
+    </div>
+    <div class="outlinks">
+      <a class="btn" href="https://github.com/hoanghan-cabong/fintech-review-insights" target="_blank" rel="noopener">Code, taxonomy &amp; decision log <span aria-hidden="true">↗</span></a>
+    </div>
+    <p class="foot-note">Limits: Android only; people who hit a problem write reviews more often, so this compares wallets against each other rather than measuring satisfaction. Seven S1 cases in the test set is a small number — 7 of 7 gives a 65–100% interval. I found no clear case of users being tricked into paying; in reviews, “scam” is almost always anger or shorthand for an unauthorised charge, so that question needs support tickets instead. Personal research on public, anonymised data, not affiliated with any company named.</p>
+  </section>
+
+  <a class="next" href="../zalo-game-center/index.html">
+    <div><p class="eyebrow">Next case</p><h3>Zalo Game Center</h3><p class="muted" style="margin:6px 0 0">Four platform features, from a 16-platform benchmark to limited rollout</p></div>
+    <span class="btn">Read case <span class="arrow" aria-hidden="true">→</span></span>
+  </a>
+</div>
+</main>
+<section class="contact section" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <p class="eyebrow">Open to Associate Product Owner roles · fintech &amp; mobile products · full-time</p>
+    <h2 id="contact-title">Let’s build what users <em>come back to.</em></h2>
+    <p class="lead" style="max-width:620px;margin-top:20px">If you’re hiring for product work where user behaviour, clear trade-offs and measurable outcomes matter, I’d love to talk.</p>
+    <div class="copy-row"><span class="email-text">hanhoueh2005@gmail.com</span><button class="copy-btn" type="button" data-copy="hanhoueh2005@gmail.com">Copy email</button></div>
+    <div class="contact-links">
+      <a class="btn" href="mailto:hanhoueh2005@gmail.com">Write an email <span class="arrow" aria-hidden="true">→</span></a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/han-ho-928779363/" target="_blank" rel="noopener">LinkedIn <span class="sr-only">(opens in a new tab)</span><span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="wrap"><span>© 2026 Hoang Han · Ho Chi Minh City</span><a href="#main">Back to top ↑</a></div>
+</footer>
+<script src="../../assets/site.js?v=5" defer></script>
+<script>
+const APP={momo:"MoMo",zalopay:"ZaloPay",shopeepay:"ShopeePay",viettelmoney:"Viettel Money"};
+const APPS=Object.keys(APP);
+const CAT={TXN_FAILURE:"Transaction failure",AUTH_ACCESS:"Login & access",ONBOARD_EKYC:"Sign-up & identity",
+  FRAUD_SECURITY:"Fraud & security",FEES_LIMITS:"Fees & limits",SUPPORT:"Customer support",
+  PROMO_REWARDS:"Promotions",APP_EXPERIENCE:"App experience",NON_ISSUE:"Not an issue"};
+const FLOW={transfer:"Transfer",payment:"Payment",topup_withdraw:"Top-up / withdraw / link",credit_bnpl:"Pay later",unknown:"Unclear"};
+const S1T={unauthorized_debit:"Charged without agreeing",failed_txn_money_lost:"Transaction failed, money taken",
+  refund_delay:"Refund never arrived",account_frozen:"Account frozen",account_takeover:"Account taken over",
+  scam:"Tricked into paying",other:"Other"};
+const SEVN={S1:"Money lost or at risk",S2:"Can't do a core job",S3:"Annoying but usable",S4:"Minor"};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const pc=p=>(p==null||isNaN(p))?"–":Math.round(p*100)+"%";
+let D=null,byId={},sample=null;
+
+/* Keyword + star baseline, ported from the Python version */
+const KW=[["FRAUD_SECURITY",/lừa đảo|lua dao|mạo danh|hack|chiếm|lấy cắp|bảo mật|bao mat|lộ thông tin/i],
+  ["TXN_FAILURE",/trừ tiền|tru tien|chưa hoàn|chua hoan|hoàn tiền|hoan tien|giao dịch|giao dich|chuyển tiền|chuyen tien|thanh toán|thanh toan|nạp|nap tien|rút|rut tien|treo|tự động trừ|gia hạn/i],
+  ["ONBOARD_EKYC",/ekyc|cccd|căn cước|can cuoc|xác minh|xac minh|xác thực|xac thuc|khuôn mặt|khuon mat|nfc|đăng ký|dang ky|liên kết|lien ket/i],
+  ["AUTH_ACCESS",/otp|đăng nhập|dang nhap|mật khẩu|mat khau|bị khoá|bị khóa|khoá tài khoản|khóa tài khoản|không vào được/i],
+  ["FEES_LIMITS",/phí|phi dich vu|hạn mức|han muc/i],
+  ["SUPPORT",/cskh|tổng đài|tong dai|hỗ trợ|ho tro|chăm sóc|nhân viên/i],
+  ["PROMO_REWARDS",/khuyến mãi|khuyen mai|voucher|ưu đãi|uu dai|hoàn xu|điểm thưởng|tặng/i],
+  ["APP_EXPERIENCE",/lag|lỗi|loi|văng|crash|đơ|chậm|quảng cáo|giao diện|cập nhật|load/i]];
+const MONEY=/trừ tiền|tru tien|mất tiền|mat tien|chưa hoàn|chua hoan|không hoàn|lừa|lua dao|treo|bị trừ|tự động trừ|tự trừ|chiếm|hack/i;
+function baseline(text,stars){
+  let category=stars>=4?"NON_ISSUE":"APP_EXPERIENCE";
+  for(let i=0;i<KW.length;i++){if(KW[i][1].test(text)){category=KW[i][0];break;}}
+  const map={1:"S2",2:"S2",3:"S3"};
+  return{category:category,severity:MONEY.test(text)?"S1":(map[stars]||"S4")};
+}
+
+/* Classifier */
+const RULES='You grade reviews of Vietnamese e-wallet apps by financial risk. Reply with JSON only.\n\n'+
+'Severity — ask these in order and stop at the first yes:\n'+
+'1. Has the user lost money, had money held, had money put at risk, or been charged without agreeing (auto-renewal, automatic payment, a linked bank account debited with no OTP, a fee or add-on service they never accepted)? -> "S1"\n'+
+'2. Can they not do a core job: sign up or verify identity, log in, transfer, pay, top up, withdraw? -> "S2"\n'+
+'3. Are they annoyed but still able to use the app: a published fee they find expensive, a promotion that did not apply, lag, slow support? -> "S3"\n'+
+'4. Anything else — suggestions, vague criticism, praise, unclear text -> "S4"\n\n'+
+'Rules: judge ONLY the consequence the text describes. Swearing, question marks, capitals, and the words "lừa đảo" or "scam" used as an insult never raise the level. A complaint about support inherits the severity of the problem underneath it. If the user cannot withdraw money already in the wallet because the account is locked or flagged, that is S1. A review that only insults the app without describing an event is NON_ISSUE and S4.\n\n'+
+'category: one of TXN_FAILURE, AUTH_ACCESS, ONBOARD_EKYC, FRAUD_SECURITY, FEES_LIMITS, SUPPORT, PROMO_REWARDS, APP_EXPERIENCE, NON_ISSUE. Pick the most damaging problem, not the first one mentioned.\n'+
+'flow: only when category is TXN_FAILURE, one of transfer, payment, topup_withdraw, credit_bnpl, unknown. Otherwise null.\n'+
+'evidence: a short VERBATIM span copied from the review, character for character, keeping any typos. Empty string if NON_ISSUE.\n'+
+'rule: which of the four questions decided it — "1", "2", "3" or "4".\n'+
+'why: one sentence in English, at most 20 words, naming the consequence.\n\n'+
+'Reply with only {"category":...,"severity":...,"flow":...,"evidence":...,"rule":...,"why":...}\n\nReview:\n';
+const EXAMPLES=[
+ {t:"Tự động trừ tiền trong khi ko có mật khẩu hay gì của người tiêu dùng? Ko sử dụng vân tay hay mk gì luôn đấy ?",l:"Charged with no confirmation"},
+ {t:"thu phí dịch vụ 10k????",l:"A fee they dislike"},
+ {t:"ứng dụng tiếp tay lừa đảo",l:"“Scam!” with no event"},
+ {t:"bi tru tien ma k nhan dc tien, 3 ngay roi chua hoan",l:"Written without diacritics"},
+ {t:"App dùng ok, chuyển tiền nhanh, nhưng tháng này tự nhiên mất 500k không rõ lý do",l:"Positive tone, S1 content"}
+];
+let clsBusy=false;
+function stepState(k,s){const li=document.querySelector('.trace li[data-s="'+k+'"]');if(li)li.className=s||"";}
+function sevChip(sev){return '<span class="sev '+esc(sev)+'">'+esc(sev)+'</span>';}
+function verdictHTML(v,isAgent){
+  const flow=v.flow&&FLOW[v.flow]?FLOW[v.flow]:null;
+  return '<div class="vd '+(isAgent?"agent":"")+'">'+
+    '<div class="vd-top"><span class="vd-who">'+(isAgent?"AI agent":"Keyword + star baseline")+'</span>'+sevChip(v.severity)+'</div>'+
+    '<dl><dt>Meaning</dt><dd>'+esc(SEVN[v.severity]||"")+'</dd>'+
+    '<dt>Problem</dt><dd>'+esc(CAT[v.category]||v.category)+'</dd>'+
+    (flow?'<dt>Flow</dt><dd>'+esc(flow)+'</dd>':"")+
+    (isAgent&&v.rule?'<dt>Decided by</dt><dd>Question '+esc(v.rule)+' of the severity tree</dd>':"")+'</dl>'+
+    (isAgent&&v.evidence?'<p class="quote">“'+esc(v.evidence)+'”</p>':"")+
+    (isAgent&&v.why?'<p class="why">'+esc(v.why)+'</p>':"")+
+    (isAgent?"":'<p class="why">Matched on keywords and the star rating alone — it never reads the sentence.</p>')+
+    '</div>';
+}
+async function classify(){
+  const text=$("rv").value.trim();
+  if(!text||clsBusy)return;
+  if(!sample){$("cls-err").hidden=false;$("cls-err").textContent="The classifier needs Claude, which isn’t available in this view.";return;}
+  clsBusy=true;$("go").disabled=true;$("cls-err").hidden=true;
+  $("trace").hidden=false;stepState("read","on");stepState("tree","");stepState("quote","");
+  $("verdicts").innerHTML='<p class="empty">Working…</p>';
+  const t1=setTimeout(function(){stepState("read","done");stepState("tree","on");},600);
+  try{
+    const v=await sample.json(RULES+text,{modelTier:"default"});
+    clearTimeout(t1);
+    stepState("read","done");stepState("tree","done");stepState("quote","done");
+    const ev=v.evidence?String(v.evidence):"";
+    const verbatim=ev&&text.toLowerCase().indexOf(ev.toLowerCase())>=0;
+    const b=baseline(text,1);
+    const differ=b.severity!==v.severity||b.category!==v.category;
+    $("verdicts").innerHTML=verdictHTML(v,true)+verdictHTML(b,false)+
+      (differ?'<p class="why" style="color:var(--pink);font-weight:600">The two disagree on this review — the kind of gap that made the agent worth building.</p>'
+             :'<p class="why">Both agree here. On the blind test set they agreed far less often: the baseline caught 2 of 7 money-loss cases.</p>')+
+      (ev&&!verbatim?'<p class="err">Note: that quote isn’t a character-for-character match, which the pipeline counts as an error.</p>':"");
+  }catch(e){
+    clearTimeout(t1);
+    $("trace").hidden=true;
+    $("verdicts").innerHTML='<p class="empty">The agent couldn’t finish this one.</p>';
+    const m={not_granted:"You declined access to Claude, so the classifier can’t run. Everything below still works.",
+      rate_limited:"Too many requests right now — try again in a minute.",
+      invalid_json:"The model returned something unparseable. Try again.",
+      refused:"Claude declined this input.",
+      session_expired:"Your Claude session expired; sign in again."};
+    $("cls-err").hidden=false;$("cls-err").textContent=m[e&&e.code]||"Something went wrong. Try again.";
+  }finally{clsBusy=false;$("go").disabled=false;}
+}
+
+/* Analyst tools */
+const fold=s=>String(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/đ/g,"d");
+function clean(q){const o={};const ks=["app","category","severity","flow","s1_type","keyword"];
+  for(let i=0;i<ks.length;i++){if(q&&q[ks[i]])o[ks[i]]=String(q[ks[i]]);}return o;}
+function matcher(q){const kw=q.keyword?fold(q.keyword):null;
+  return r=>(!q.app||r.app===q.app)&&(!q.category||r.cat===q.category)&&(!q.severity||r.sev===q.severity)
+    &&(!q.flow||r.flow===q.flow)&&(!q.s1_type||r.s1===q.s1_type)&&(!kw||fold(r.text).indexOf(kw)>=0);}
+function weighted(rs,pred){
+  const sw=rs.reduce((s,r)=>s+r.w,0),sw2=rs.reduce((s,r)=>s+r.w*r.w,0);
+  if(!sw)return{share:null,n_base:0};
+  const p=rs.filter(pred).reduce((s,r)=>s+r.w,0)/sw,ne=sw*sw/sw2,z=1.96,d=1+z*z/ne;
+  const c=(p+z*z/(2*ne))/d,h=z*Math.sqrt(p*(1-p)/ne+z*z/(4*ne*ne))/d;
+  return{share:+p.toFixed(3),ci95:[+Math.max(0,c-h).toFixed(3),+Math.min(1,c+h).toFixed(3)],
+    n_matching:rs.filter(pred).length,n_base:rs.length};
+}
+const TOOLS=[
+ {name:"get_overview",description:"Headline numbers for all four wallets: complaint counts, the share of each problem type, how money is lost in S1 reviews, reply rate, reply speed, how much of the replies are boilerplate, and top priorities. Call this first for any broad question.",
+  execute:function(){const S=D.summary,o={period:D.period,findings:D.findings.items.map(f=>f.title+" "+f.body),apps:{}};
+    APPS.forEach(function(a){const x=S.apps[a];
+      o.apps[a]={name:APP[a],complaints_in_sample:x.n_complaints,
+        category_share:Object.keys(x.category_share).reduce((m,k)=>(m[k]=+x.category_share[k][0].toFixed(3),m),{}),
+        s1_mechanism_share:x.s1_type_share?Object.keys(x.s1_type_share).reduce((m,k)=>(m[k]=+x.s1_type_share[k][0].toFixed(3),m),{}):null,
+        reply_rate_all:x.reply_rate_all?+x.reply_rate_all[0].toFixed(3):null,
+        reply_rate_S1:x.reply_rate_S1?+x.reply_rate_S1[0].toFixed(3):null,
+        reply_hours_median:x.reply_hours_all,boilerplate_share:x.reply_template_share,
+        top_priorities:Object.keys(x.priority||{}).slice(0,3)};});
+    return o;}},
+ {name:"compare_wallets",description:"For a filter, return each wallet's weighted share of complaints matching it, with a 95% confidence interval. Use this for any 'which wallet has more X' question.",
+  inputSchema:{type:"object",properties:{category:{type:"string",enum:Object.keys(CAT)},severity:{type:"string",enum:["S1","S2","S3","S4"]},
+    flow:{type:"string",enum:Object.keys(FLOW)},s1_type:{type:"string",enum:Object.keys(S1T)},
+    keyword:{type:"string",description:"Text to look for inside the review, diacritics-insensitive"}}},
+  execute:function(q){const f=clean(q),m=matcher(f),o={filter:f,base:"complaints per wallet",apps:{}};
+    APPS.forEach(function(a){o.apps[a]=weighted(D.reviews.filter(r=>r.app===a&&r.cat!=="NON_ISSUE"),m);});
+    return o;}},
+ {name:"search_reviews",description:"Find individual reviews matching a filter. Returns up to `limit` (default 6, max 10) with id, wallet, date, stars, problem type, severity and text, plus how many matched in total. Use it to quote examples.",
+  inputSchema:{type:"object",properties:{app:{type:"string",enum:APPS},category:{type:"string",enum:Object.keys(CAT)},
+    severity:{type:"string",enum:["S1","S2","S3","S4"]},flow:{type:"string",enum:Object.keys(FLOW)},
+    s1_type:{type:"string",enum:Object.keys(S1T)},keyword:{type:"string"},limit:{type:"integer",minimum:1,maximum:10}}},
+  execute:function(q){const f=clean(q),rs=D.reviews.filter(matcher(f));
+    const lim=Math.min(10,Math.max(1,parseInt(q&&q.limit,10)||6));
+    const pick=rs.slice().sort((a,b)=>(b.sev==="S1")-(a.sev==="S1")||b.text.length-a.text.length).slice(0,lim);
+    return{filter:f,total_matching:rs.length,
+      sample_note:"This corpus holds every S1 review plus a sample of the rest, so use compare_wallets for shares, not these counts.",
+      reviews:pick.map(r=>({id:r.id,app:r.app,date:r.date,stars:r.stars,category:r.cat,severity:r.sev,s1_type:r.s1,text:r.text}))};}}
+];
+function SYS(){return 'You are the analyst for a dataset of Vietnamese e-wallet app reviews (momo, zalopay, shopeepay, viettelmoney) from '+D.period+'. 2,339 reviews were classified by problem type, by severity (S1 money lost or at risk, S2 cannot do a core job, S3 annoying, S4 minor), and for S1 reviews by how the money was lost.\n'+
+'Rules:\n'+
+'- Always call a tool before stating any number. Never estimate or recall figures.\n'+
+'- Shares are weighted and computed WITHIN each wallet\'s complaints, never over all reviews.\n'+
+'- Cite individual reviews by id in square brackets exactly as the tool returns them, e.g. [gp_momo_00123].\n'+
+'- If fewer than about 20 reviews match, or the confidence interval is wide, say the result is uncertain.\n'+
+'- Never rank wallets overall as best or worst; speak only about specific problems. Never speculate about a company\'s internal reasons.\n'+
+'- If the data cannot answer (user numbers, revenue, market share, anything outside these reviews), say so plainly instead of guessing.\n'+
+'- Answer in at most 150 words, in the language the question was asked in. Use bullets for lists.';}
+let ctl=null,turns=[];
+function inline(s){return s.replace(/\*\*(.+?)\*\*/g,"<b>$1</b>")
+  .replace(/\[(gp_[a-z]+_\d{5})\]/g,function(m,id){return byId[id]?'<button class="cite" data-id="'+id+'">'+id+'</button>':m;});}
+function md(s){const out=[];let ul=false;
+  esc(s).split("\n").forEach(function(ln){const li=ln.match(/^\s*[-*•]\s+(.*)/);
+    if(li){if(!ul){out.push("<ul>");ul=true;}out.push("<li>"+inline(li[1])+"</li>");return;}
+    if(ul){out.push("</ul>");ul=false;}
+    if(ln.trim())out.push("<p>"+inline(ln)+"</p>");});
+  if(ul)out.push("</ul>");return out.join("");}
+function addMsg(role,html){const d=document.createElement("div");d.className="msg "+role;d.innerHTML=html;
+  $("log").append(d);$("log").scrollTop=$("log").scrollHeight;return d;}
+function chatBusy(b){$("send").disabled=b;$("stop").hidden=!b;$("q").disabled=b;
+  document.querySelectorAll("#suggest .chip").forEach(c=>{c.disabled=b;});}
+function chatOff(msg){$("chat-status").textContent="Unavailable";
+  $("log").innerHTML='<div class="off">'+esc(msg)+'</div>';$("askf").hidden=true;$("suggest").hidden=true;}
+async function ask(question){
+  if(!sample||!question.trim())return;
+  addMsg("user",esc(question));
+  const bot=addMsg("bot","<p>Thinking…</p>");
+  const calls=document.createElement("div");calls.className="calls";
+  turns.push({role:"user",content:question});
+  const recent=turns.slice(-7);if(recent[0].role!=="user")recent.shift();
+  ctl=new AbortController();chatBusy(true);
+  const traced=TOOLS.map(function(t){return{name:t.name,description:t.description,inputSchema:t.inputSchema,
+    execute:function(inp,c){calls.textContent+="→ "+t.name+"("+JSON.stringify(clean(inp))+")\n";
+      if(!calls.isConnected)bot.append(calls);return t.execute(inp,c);}};});
+  try{
+    const r=await sample([{role:"user",content:SYS()}].concat(recent),
+      {tools:traced,signal:ctl.signal,modelTier:"quick",
+       onText:function(u){bot.innerHTML=md(u.text);bot.append(calls);}});
+    bot.innerHTML=md(r.text);bot.append(calls);
+    turns.push({role:"assistant",content:r.text});
+  }catch(e){
+    const code=e&&e.code;
+    if(["not_granted","sampling_disabled","capability_disabled","not_declared","tools_unavailable"].indexOf(code)>=0){
+      bot.remove();
+      chatOff("This page runs its agents on the reader’s own Claude account, and it isn’t available here. The findings below are the output of a completed run.");
+    }else{
+      const m={cancelled:"Stopped.",rate_limited:"Too many requests — try again shortly.",
+        session_expired:"Your Claude session expired; sign in again.",
+        prompt_too_large:"This conversation got too long — reload the page."};
+      bot.innerHTML=(e&&e.text?md(e.text):"")+'<p class="err">'+esc(m[code]||"Connection problem. Try asking again.")+'</p>';
+    }
+    turns.pop();
+  }finally{chatBusy(false);}
+}
+function showReview(id){const r=byId[id];if(!r)return;const d=$("drawer");d.hidden=false;
+  d.innerHTML='<span class="id">'+esc(r.id)+' · '+APP[r.app]+' · '+esc(r.date)+' · '+"★".repeat(r.stars)+"☆".repeat(5-r.stars)+'</span>'+
+    '<div style="margin:8px 0">'+sevChip(r.sev)+' <span style="font-size:14px">'+esc(CAT[r.cat]||r.cat)+
+    (r.flow?" · "+esc(FLOW[r.flow]||r.flow):"")+(r.s1?" · "+esc(S1T[r.s1]):"")+'</span></div>'+
+    '<p style="margin:0;font-size:14.5px">'+esc(r.text)+'</p>';
+  d.scrollIntoView({block:"nearest",behavior:"smooth"});}
+
+/* Render the completed run */
+function render(){
+  $("m-period").textContent=D.period;
+  $("out-intro").textContent=D.findings.thesis;
+  $("run-meta").textContent=D.corpus.classified.toLocaleString("en")+" reviews · "+D.corpus.minutes+" min · ≈$"+D.corpus.cost_per_1k+" per 1,000";
+  const S=D.summary;
+  $("stats").innerHTML=APPS.map(function(a){
+    const x=S.apps[a],u=x.s1_type_share?x.s1_type_share.unauthorized_debit[0]:null;
+    return '<div><b class="risk">'+pc(u)+'</b><span><b>'+APP[a]+'</b><br>of its money-loss reviews are charges nobody agreed to</span></div>';
+  }).join("");
+  const TYPES=["unauthorized_debit","failed_txn_money_lost","account_frozen","refund_delay"];
+  const COL={unauthorized_debit:"#C7372A",failed_txn_money_lost:"#0071E3",account_frozen:"#8E8E93",refund_delay:"#C7C7CC"};
+  $("bars").innerHTML=APPS.map(function(a){
+    const t=S.apps[a].s1_type_share||{},n=D.reviews.filter(r=>r.app===a&&r.sev==="S1").length;
+    let used=0,segs="";
+    TYPES.forEach(function(k){const p=(t[k]&&t[k][0])||0;used+=p;
+      if(p>0)segs+='<span title="'+S1T[k]+': '+pc(p)+'" style="width:'+(p*100).toFixed(1)+'%;background:'+COL[k]+'"></span>';});
+    segs+='<span style="width:'+Math.max(0,(1-used)*100).toFixed(1)+'%;background:#E5E5EA"></span>';
+    const lab=TYPES.map(k=>S1T[k]+" "+pc((t[k]&&t[k][0])||0)).join(", ");
+    return '<div class="bar-row"><span>'+APP[a]+'</span><div class="bar" role="img" aria-label="'+esc(APP[a]+": "+lab)+'">'+segs+'</div><span class="n">n='+n+'</span></div>';
+  }).join("");
+  const CATS=["TXN_FAILURE","FEES_LIMITS","ONBOARD_EKYC","PROMO_REWARDS","AUTH_ACCESS"];
+  $("cat-table").innerHTML='<thead><tr><th>Share of complaints</th>'+APPS.map(a=>'<th class="n">'+APP[a]+'</th>').join("")+'</tr></thead><tbody>'+
+    CATS.map(function(c){const vals=APPS.map(a=>S.apps[a].category_share[c][0]),max=Math.max.apply(null,vals);
+      return '<tr><td>'+CAT[c]+'</td>'+vals.map(v=>'<td class="n">'+(v===max?'<span class="hi">'+pc(v)+'</span>':pc(v))+'</td>').join("")+'</tr>';}).join("")+'</tbody>';
+  const fmtH=h=>(h==null||isNaN(h))?"–":h<1?Math.round(h*60)+" min":h<48?h.toFixed(1).replace(".",",")+" hrs":(h/24).toFixed(1)+" days";
+  const rows=[["Replies to complaints",a=>pc(S.apps[a].reply_rate_all&&S.apps[a].reply_rate_all[0])],
+    ["Replies to S1 complaints",a=>pc(S.apps[a].reply_rate_S1&&S.apps[a].reply_rate_S1[0])],
+    ["Median time to reply",a=>fmtH(S.apps[a].reply_hours_all)],
+    ["Replies that are boilerplate",a=>pc(S.apps[a].reply_template_share)]];
+  $("reply-table").innerHTML='<thead><tr><th></th>'+APPS.map(a=>'<th class="n">'+APP[a]+'</th>').join("")+'</tr></thead><tbody>'+
+    rows.map(r=>'<tr><td>'+r[0]+'</td>'+APPS.map(a=>'<td class="n">'+r[1](a)+'</td>').join("")+'</tr>').join("")+'</tbody>';
+  $("findings").innerHTML=D.findings.items.map(f=>'<li><b>'+esc(f.title)+'</b>'+esc(f.body)+'</li>').join("");
+  const ev=D.eval.agent_v2_opus,bl=D.eval.baseline;
+  function cell(o,k){const a=o[k][0],b=o[k][1];return b?Math.round(a/b*100)+'% <span style="color:var(--muted)">('+a+'/'+b+')</span>':"–";}
+  const erows=[["s1_recall","Money-loss cases caught"],["s1_precision","…without false alarms"],
+    ["category","Problem type correct"],["severity_pm1","Severity within one level"],["evidence","Quotes matching the source"]];
+  $("eval-table").innerHTML='<thead><tr><th>On 80 unseen reviews</th><th class="n">AI agent</th><th class="n">Keyword baseline</th></tr></thead><tbody>'+
+    erows.map(r=>'<tr><td>'+r[1]+'</td><td class="n">'+cell(ev,r[0])+'</td><td class="n">'+cell(bl,r[0])+'</td></tr>').join("")+'</tbody>';
+}
+
+/* Boot */
+$("examples").innerHTML=EXAMPLES.map((e,i)=>'<button type="button" class="chip" data-i="'+i+'">'+esc(e.l)+'</button>').join("");
+$("rv").value=EXAMPLES[0].t;
+$("examples").addEventListener("click",function(e){const c=e.target.closest(".chip");
+  if(c){$("rv").value=EXAMPLES[+c.dataset.i].t;$("rv").focus();}});
+$("go").addEventListener("click",classify);
+$("log").addEventListener("click",function(e){const b=e.target.closest(".cite");if(b)showReview(b.dataset.id);});
+$("askf").addEventListener("submit",function(e){e.preventDefault();const v=$("q").value;$("q").value="";ask(v);});
+$("q").addEventListener("keydown",function(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();$("askf").requestSubmit();}});
+$("stop").addEventListener("click",function(){if(ctl)ctl.abort();});
+chatBusy(true);$("go").disabled=true;
+
+fetch("data.json").then(r=>r.json()).then(function(d){
+  D=d;D.reviews.forEach(function(r){byId[r.id]=r;});render();
+  const SUG=["Which wallet gets the most complaints about fees?",
+    "What is the most common way MoMo users lose money?",
+    "Show me three reviews about face verification failing",
+    "Which wallet has the most users?"];
+  $("suggest").innerHTML=SUG.map(s=>'<button type="button" class="chip">'+esc(s)+'</button>').join("");
+  $("suggest").addEventListener("click",function(e){const c=e.target.closest(".chip");if(c)ask(c.textContent);});
+}).catch(function(){$("out-intro").textContent="The dataset for this page could not be loaded.";});
+
+(async function(){
+  try{
+    sample=window.claude?await window.claude.use("sample"):null;
+    if(!sample){
+      chatOff("This page runs its agents on the reader’s own Claude account, which isn’t available in this view. The findings below are the output of a completed run.");
+      $("hint").textContent="Open this page on claude.ai to run the classifier";
+      return;
+    }
+    const lim=await sample.limits().catch(()=>null);
+    $("go").disabled=false;
+    if(lim&&!lim.tools){chatOff("This view can’t run the analyst’s tools. The classifier above still works.");}
+    else{
+      $("chat-status").textContent="Ready · 3 tools";
+      addMsg("bot","<p>Ask anything about the 2,339 classified reviews. I’ll call a tool, cite the reviews behind the number, and tell you when the data can’t answer.</p>");
+      chatBusy(false);
+    }
+  }catch(e){chatOff("The analyst isn’t available in this view.");}
+})();
+</script>
+</body>
+</html>

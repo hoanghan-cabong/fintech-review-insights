@@ -11,3 +11,4 @@ data/cache/
 # Tạo lại bằng: src/scrape.py → src/anonymize.py → src/classify_corpus.py → src/build_explorer.py
 data/corpus/sample.csv
 explorer/data.json
+portfolio_tool/data.json

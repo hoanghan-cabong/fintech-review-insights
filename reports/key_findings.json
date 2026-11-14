@@ -29,5 +29,30 @@
     "Cơ chế mất tiền của review S1 do một bước phân loại phụ gán; bước này không có tập đáp án riêng, được kiểm tra bằng cách đọc ngẫu nhiên 23 ca (22 ca đúng).",
     "Giới hạn: chỉ Android; người gặp sự cố có xu hướng viết review nhiều hơn nên chỉ dùng để so sánh tương đối; review dưới 5 từ bị loại; nhãn tay do một người gắn; không có kết luận về lừa đảo kiểu thao túng tâm lý vì gần như không xuất hiện trong review.",
     "Phân tích cá nhân phục vụ portfolio, không đại diện cho quan điểm của doanh nghiệp nào."
-  ]
+  ],
+  "en": {
+    "thesis": "Nearly half of all the cases where users lose money are not failed transactions. They are charges the user never agreed to.",
+    "items": [
+      {
+        "title": "Being charged without agreeing is the number one way money is lost.",
+        "body": "49% of S1 reviews market-wide (95% CI 44–54%): Viettel Money 55%, ZaloPay 54%, ShopeePay 49%, MoMo 42%. The usual shapes: a subscription that renews by itself, a linked bank account debited with no OTP or fingerprint, a service pre-ticked into a bill payment."
+      },
+      {
+        "title": "MoMo and ZaloPay: transaction failures are nearly 40% of complaints.",
+        "body": "MoMo 39% and ZaloPay 37%, against ShopeePay 25% and Viettel Money 22%. MoMo is the only wallet where failed transactions that took money (47%) outnumber charges nobody agreed to (42%)."
+      },
+      {
+        "title": "Each wallet has its own bottleneck.",
+        "body": "Viettel Money: fees are 25% of complaints, 18 points above the other three, almost entirely road-toll account maintenance. ShopeePay: referral bonuses that never arrive (17%) and a face-verification step that crashes during sign-up (17%)."
+      },
+      {
+        "title": "Replying fast is not the same as helping.",
+        "body": "Between 69% and 100% of developer replies are boilerplate. ShopeePay answers 98% of complaints but uses two opening templates, with a median of 40 hours; MoMo replies in 24 minutes, 100% boilerplate. Viettel Money writes more varied replies but answers only about half."
+      },
+      {
+        "title": "This problem needs AI, and I checked.",
+        "body": "On a test set labelled before the model ever saw it, a keyword-and-star filter caught 2 of 7 money-loss reviews. The agent caught 7 of 7 with 88% precision, at roughly $9.60 per thousand reviews."
+      }
+    ]
+  }
 }

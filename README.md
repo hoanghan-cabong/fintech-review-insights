@@ -4,7 +4,9 @@ Agent AI phân tích review công khai trên Google Play của 4 ví điện t�
 
 **Phát hiện chính:** gần một nửa số ca người dùng mất tiền (49%, KTC 44–54%) không đến từ giao dịch lỗi, mà từ việc **bị trừ tiền khi họ không đồng ý**: gói tự gia hạn, trừ từ ngân hàng liên kết không hỏi OTP, phí hay dịch vụ được chèn sẵn. Hiện tượng có ở cả 4 ví. → [PRD đề xuất: Trung tâm thanh toán tự động](docs/PRD_proposal_autopay.md)
 
-**Trang insight có chat hỏi đáp dữ liệu:** https://claude.ai/artifact/DGZwuTtJ9oaWwiB2x7A8iP (hiện ở chế độ riêng tư)
+**Dùng thử:** https://claude.ai/artifact/2JbYahDzxaLHCe26DkJZbX — mục *Fintech & agentic AI*.
+Trang chủ có sẵn ô hỏi đáp chạy agent; bên trong là trang công cụ (chấm thử một review bất kỳ, xem cách đánh giá) và dashboard đầy đủ các biểu đồ.
+Agent chạy bằng tài khoản Claude của chính người xem, nên cần đăng nhập Claude; phần số liệu và phương pháp đọc được mà không cần đăng nhập.
 
 **Repo:** https://github.com/hoanghan-cabong/fintech-review-insights
 

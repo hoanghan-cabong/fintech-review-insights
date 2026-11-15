@@ -144,6 +144,24 @@ details.calls pre{margin:9px 0 0;font:400 13px/1.6 var(--mono);color:var(--muted
 .tiles span{display:block;margin-top:8px;font-size:14px;line-height:1.4;color:var(--muted)}
 .tiles span b{display:inline;font:600 14px/1.4 var(--sf);color:var(--ink);letter-spacing:-.012em}
 @media (max-width:760px){.tiles{grid-template-columns:1fr 1fr}}
+/* The product decision. Deliberately NOT inside a <details>: the whole point
+   is that the thing the data argues for should not need opening. */
+.decide{margin-top:clamp(44px,6vw,72px);background:var(--surface);border-radius:var(--r-lg);
+  padding:clamp(22px,3.2vw,36px)}
+.decide .eyebrow-d{margin:0 0 10px;font:600 12px/1.3 var(--sf);letter-spacing:.1em;
+  text-transform:uppercase;color:var(--blue)}
+.decide h2{font-size:clamp(23px,3vw,31px);color:var(--muted);max-width:26ch;margin:0 0 14px;letter-spacing:-.02em}
+.decide h2 b{color:var(--ink);font-weight:600}
+.decide .lead-d{margin:0 0 20px;font-size:17px;line-height:1.6;color:var(--ink-2);max-width:62ch}
+.decide ol{margin:0 0 20px;padding-left:20px;max-width:62ch}
+.decide li{margin-bottom:9px;font-size:16px;line-height:1.55;color:var(--ink-2)}
+.decide li b{color:var(--ink);font-weight:600}
+.decide .guard-d{margin:0 0 20px;padding:13px 15px;border-left:3px solid var(--s1);
+  background:var(--bg);border-radius:0 var(--r) var(--r) 0;font-size:15.5px;line-height:1.55;color:var(--ink-2)}
+.decide .guard-d b{color:var(--ink)}
+.decide .cta-d{margin:0;font-size:16px}
+.decide .cta-d a{color:var(--blue);text-decoration:none;font-weight:500}
+.decide .cta-d a:hover{text-decoration:underline}
 .bars{display:grid;gap:12px;margin-top:20px;background:var(--surface);border-radius:var(--r);padding:22px}
 .legend{display:flex;flex-wrap:wrap;gap:7px 18px;font-size:14px;color:var(--muted);margin-bottom:4px}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
@@ -247,6 +265,20 @@ details.calls pre{margin:9px 0 0;font:400 13px/1.6 var(--mono);color:var(--muted
       </div>
       <div id="bars"></div>
     </div>
+  </section>
+
+  <section class="decide" aria-labelledby="decide-h">
+    <p class="eyebrow-d">The product decision</p>
+    <h2 id="decide-h"><b>So I wrote the PRD</b> for what this data argues for.</h2>
+    <p class="lead-d">If half of money-loss complaints are charges nobody agreed to, the fix is not better error handling. It is consent and visibility around automatic payments &#8212; and every wallet in the market has the problem, so whoever fixes it first can make a claim out of it.</p>
+    <ol>
+      <li><b>Warn before charging.</b> 24 hours ahead, with "skip this one" and "turn it off".</li>
+      <li><b>One Autopay screen.</b> Every party that can charge, which linked bank it uses, last and next charge. Cancel in one tap.</li>
+      <li><b>Confirm the first charge</b> from a new party, or above a threshold the user sets.</li>
+      <li><b>Nothing pre-ticked.</b> Bundled add-ons default to off.</li>
+    </ol>
+    <p class="guard-d"><b>What would stop it:</b> steps 3 and 4 add friction to paying, so payment success and legitimate recurring revenue are guardrails, with the threshold agreed before the test. And step 0 is checking this against internal tickets &#8212; if it is under ~10% of money-related tickets, it gets deprioritised.</p>
+    <p class="cta-d"><a href="proposal/index.html">Read the full proposal <span class="arrow" aria-hidden="true">&#8594;</span></a></p>
   </section>
 
   <div class="more">

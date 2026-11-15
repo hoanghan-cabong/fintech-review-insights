@@ -288,4 +288,15 @@ Số liệu 90 ngày (14/08–12/11/2026):
 
 ---
 
-<!-- Quyết định tiếp theo: D030 ... -->
+### D030 · Đưa quyết định sản phẩm lên mặt trước trang công cụ · 2026-11-15
+- **Bối cảnh:** D028 đã ghi đây là đánh đổi nặng nhất của việc bỏ case study — `PRD_proposal_autopay.md` chỉ nằm trong repo, không xuất hiện ở đâu trên trang công cụ. Hệ quả: trang đọc ra như một dự án đánh giá mô hình, trong khi phần đáng giá với vai trò product là quyết định rút ra từ dữ liệu.
+- **Lựa chọn:** (1) thêm một mục `<details>` nữa; (2) một khối hiện sẵn giữa phần số liệu và phần phương pháp; (3) chỉ để link sang GitHub.
+- **Quyết định:** chọn (2), và dựng bản đọc được trong portfolio tại `proposal/index.html` thay vì bắt người xem mở file markdown trên GitHub.
+- **Lý do:** (1) là chôn lại đúng thứ vừa nói là bị chôn — mục thu gọn chỉ hợp với phần phương pháp, không hợp với kết luận. (3) đẩy người xem ra khỏi portfolio và sang một tài liệu tiếng Việt.
+- **Ngôn ngữ:** bản trên portfolio viết tiếng Anh vì toàn bộ portfolio là tiếng Anh và đây là phần người tuyển dụng đọc để đánh giá tư duy sản phẩm. Giữ nguyên văn trích dẫn tiếng Việt của người dùng kèm chú thích ngắn, vì dịch đi thì mất chất liệu. Bản tiếng Việt vẫn là bản gốc trong repo, có link sang.
+- **Chọn nội dung đưa lên:** bốn tính năng MVP, chỉ số chặn, và điều kiện dừng (dưới ~10% ticket thì xếp lại ưu tiên). Đưa cả phần "cái gì sẽ chặn việc này" lên mặt trước, vì một đề xuất không nói rõ nó có thể sai ở đâu thì không đáng tin.
+- **Cách kiểm chứng sau:** xem người xem có bấm vào "Read the full proposal" không. Nếu gần như không ai bấm, nghĩa là khối tóm tắt đã đủ, hoặc đặt sai chỗ.
+
+---
+
+<!-- Quyết định tiếp theo: D031 ... -->

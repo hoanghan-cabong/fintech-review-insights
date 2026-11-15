@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Autopay Centre — proposal · Hoang Han</title>
+<meta name="description" content="A product proposal built from 2,339 labelled e-wallet reviews: nearly half of money-loss complaints are charges nobody agreed to. Problem, hypothesis, MVP, guardrail metrics and what would have to be true.">
+<meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/site.css?v=5">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<style>
+/* A document, not a tool: one readable column, tables only where a table earns it.
+   Same palette as the Review Risk Agent page this is reached from. */
+.prd{
+  --bg:#F5F5F7; --surface:#FFFFFF; --ink:#1D1D1F; --ink-2:#424245; --muted:#86868B;
+  --line:#D2D2D7; --blue:#0066CC; --blue-soft:#E8F1FC; --s1:#D7262B;
+  --sf:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Be Vietnam Pro",system-ui,sans-serif;
+  --r:14px;
+  background:var(--bg); color:var(--ink); font-family:var(--sf); font-size:17px;
+}
+:root[data-theme="dark"] .prd{
+  --bg:#000000; --surface:#1C1C1E; --ink:#F5F5F7; --ink-2:#D1D1D6; --muted:#98989D;
+  --line:#38383A; --blue:#4DA3FF; --blue-soft:#13293F; --s1:#FF6B63;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .prd{
+    --bg:#000000; --surface:#1C1C1E; --ink:#F5F5F7; --ink-2:#D1D1D6; --muted:#98989D;
+    --line:#38383A; --blue:#4DA3FF; --blue-soft:#13293F; --s1:#FF6B63;
+  }
+}
+.prd .site-header{background:var(--surface)!important;border-bottom:1px solid var(--line)}
+.prd .site-header a,.prd .site-header .brand span{color:var(--ink)}
+.prd .site-footer{background:var(--bg)!important;color:var(--muted)}
+.prd .site-footer .wrap{border-top:1px solid var(--line)}
+.prd .site-footer a{color:var(--blue)}
+.prd .doc{max-width:720px;margin-inline:auto;padding:clamp(28px,5vw,60px) max(20px,env(safe-area-inset-left,0px)) clamp(48px,7vw,88px)}
+.prd .crumb{display:inline-block;font-size:15px;color:var(--blue);text-decoration:none;margin-bottom:26px}
+.prd .crumb:hover{text-decoration:underline}
+.prd h1{font:600 clamp(32px,5.2vw,48px)/1.08 var(--sf);letter-spacing:-.03em;color:var(--ink);margin:0 0 14px}
+.prd .status{margin:0 0 34px;padding:14px 16px;background:var(--blue-soft);border-radius:var(--r);
+  font-size:15px;line-height:1.5;color:var(--ink-2)}
+.prd h2{font:600 clamp(21px,2.6vw,26px)/1.2 var(--sf);letter-spacing:-.02em;color:var(--muted);
+  margin:44px 0 14px;max-width:30ch}
+.prd h2 b{color:var(--ink);font-weight:600}
+.prd h3{font:600 16px/1.3 var(--sf);color:var(--ink);margin:26px 0 8px}
+.prd p{margin:0 0 14px;line-height:1.62;color:var(--ink-2)}
+.prd .key{font-size:19px;line-height:1.5;color:var(--ink);font-weight:500}
+.prd ul,.prd ol{margin:0 0 14px;padding-left:22px;line-height:1.62;color:var(--ink-2)}
+.prd li{margin-bottom:7px}
+.prd li b{color:var(--ink)}
+.prd .quotes{list-style:none;padding:0;margin:0 0 18px;display:grid;gap:10px}
+.prd .quotes li{background:var(--surface);border-radius:var(--r);padding:13px 15px;margin:0;font-size:15.5px}
+.prd .quotes q{color:var(--ink);font-style:italic}
+.prd .quotes .id{display:block;margin-top:6px;font:500 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
+.prd .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 16px}
+.prd table{border-collapse:collapse;width:100%;min-width:460px;font-size:15px;background:var(--surface);border-radius:var(--r);overflow:hidden}
+.prd th,.prd td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
+.prd th{font-weight:600;color:var(--ink);white-space:nowrap}
+.prd tr:last-child td{border-bottom:0}
+.prd .num{color:var(--s1);font-weight:600;white-space:nowrap}
+.prd .note{font-size:14.5px;color:var(--muted);line-height:1.55}
+.prd .guard{background:var(--surface);border-left:3px solid var(--s1);border-radius:0 var(--r) var(--r) 0;
+  padding:14px 16px;margin:0 0 16px;font-size:15.5px;line-height:1.55;color:var(--ink-2)}
+.prd .guard b{color:var(--ink)}
+.prd .back{margin-top:46px;padding-top:22px;border-top:1px solid var(--line);font-size:15px}
+.prd .back a{color:var(--blue);text-decoration:none}
+.prd .back a:hover{text-decoration:underline}
+</style>
+</head>
+<body class="prd">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../../index.html" aria-label="Hoang Han — home"><span class="brand-mark" aria-hidden="true">HH</span><span>Hoang Han</span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span class="bars" aria-hidden="true"></span><span class="label">Menu</span></button>
+    <nav id="site-nav" class="nav" aria-label="Main">
+      <a href="../../../index.html#agent">Live agent</a><a href="../../../index.html#work">Work</a><a href="../../../index.html#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="doc">
+  <a class="crumb" href="../index.html">&#8592; Review Risk Agent</a>
+
+  <h1>Autopay Centre</h1>
+  <p class="status"><b>Proposal, v0.1.</b> Written from public Google Play reviews, not from internal data. Step&nbsp;0 of the plan below is checking it against support tickets before anyone commits roadmap to it. I am not claiming this is validated — I am claiming it is worth two weeks of someone's time to find out.</p>
+
+  <h2><b>The problem.</b> People are not losing money to broken payments.</h2>
+  <p class="key">Across 435 money-loss reviews of MoMo, ZaloPay, ShopeePay and Viettel Money, <b>49% describe being charged without agreeing</b> (95% CI 44–54%) — more than failed transactions that took money (35%).</p>
+  <p>It is not one wallet's defect. Viettel Money 55%, ZaloPay 54%, ShopeePay 49%, MoMo 42%. Every wallet in the market has it.</p>
+
+  <ul class="quotes">
+    <li><q>áp này tự động liên kết ngân hàng rồi trừ tiền của kh</q><span class="id">gp_shopeepay_00636 · "the app linked my bank by itself then took money"</span></li>
+    <li><q>nó tự nạo tiền đt mà t kh cài nạo tự động</q><span class="id">gp_zalopay_00729 · "it top-ups by itself, I never set up auto top-up"</span></li>
+    <li><q>thu phí hàng tháng là 11k mà ko thông báo cho kh biết</q><span class="id">gp_viettelmoney_00261 · "charges 11k a month without telling the customer"</span></li>
+  </ul>
+
+  <h3>The four shapes it takes</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>Shape</th><th>Reviews / 217</th></tr></thead>
+    <tbody>
+      <tr><td>A third-party plan renewing itself (app-store subscriptions, data packs)</td><td class="num">~79</td></tr>
+      <tr><td>A linked bank account debited with no OTP or biometrics</td><td class="num">~49</td></tr>
+      <tr><td>Fees and maintenance charges never announced</td><td class="num">~16</td></tr>
+      <tr><td>Insurance or add-ons pre-ticked into a payment</td><td class="num">~9</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Counted by keyword with overlap allowed, so these are direction, not measurement. The 49% headline comes from the classifier, which was evaluated on a blind test set.</p>
+
+  <h2><b>Why it is worth prioritising</b> over a longer bug list.</h2>
+  <p>This is the most severe tier in the taxonomy. The user does not only lose money — they lose confidence in bank linking, which is the thing a wallet needs in order to keep them. And because every wallet has it, <b>whoever fixes it first can make it a competitive claim</b>: the wallet that never takes money you did not know about.</p>
+
+  <h2><b>The hypothesis.</b> Nobody is being robbed.</h2>
+  <p>Most of these people set up the payment themselves, or an app did it on their behalf, and then could not remember it, see it, or find where to cancel it. Three gaps:</p>
+  <ol>
+    <li><b>No warning.</b> The charge happens with nothing before it.</li>
+    <li><b>No overview.</b> There is no one place listing every automatic charge and which linked bank each one uses.</li>
+    <li><b>No explicit consent.</b> A first charge from a new party, or a pre-ticked add-on, needs no deliberate action.</li>
+  </ol>
+
+  <h2><b>The MVP.</b> Four features, one per gap.</h2>
+  <div class="scroll"><table>
+    <thead><tr><th>#</th><th>Feature</th><th>Gap</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><b>Warn before charging.</b> Every recurring or automatic charge is announced 24 hours ahead, with "skip this one" and "turn it off".</td><td>No warning</td></tr>
+      <tr><td>2</td><td><b>One Autopay screen.</b> Every plan and every party that can charge, the linked bank each uses, last and next charge. Cancel in one tap.</td><td>No overview</td></tr>
+      <tr><td>3</td><td><b>Confirm the first charge</b> from a new party, or any charge above a user-set threshold, with OTP or biometrics.</td><td>No consent</td></tr>
+      <tr><td>4</td><td><b>Nothing pre-ticked.</b> Bundled services and insurance default to off.</td><td>No consent</td></tr>
+    </tbody>
+  </table></div>
+  <p><b>Not in the MVP:</b> automatic refunds, changing a third party's own payment flow (Google Play), or general spend management.</p>
+
+  <h2><b>How it would be judged</b> — including what would stop it.</h2>
+  <div class="scroll"><table>
+    <thead><tr><th>Kind</th><th>Metric</th><th>Direction</th></tr></thead>
+    <tbody>
+      <tr><td>North star</td><td>Share of money-loss reviews of the "charged without agreeing" kind, measured monthly by the agent on this site</td><td>Down</td></tr>
+      <tr><td>Operational</td><td>Support tickets for "unexplained charge" per 10,000 active users</td><td>Down</td></tr>
+      <tr><td>Usage</td><td>Share of users with automatic payments who open the new screen; charges cancelled from a warning</td><td>Up</td></tr>
+      <tr><td>Guardrail</td><td>Payment success rate and legitimate recurring revenue</td><td>Must not fall</td></tr>
+    </tbody>
+  </table></div>
+  <div class="guard"><b>The guardrail is the honest part.</b> Features 3 and 4 add friction to paying, and friction costs money. The threshold for "must not fall" gets agreed before the test starts, not after the results come in.</div>
+
+  <h2><b>What could go wrong</b>, and what I would do about it.</h2>
+  <div class="scroll"><table>
+    <thead><tr><th>Risk</th><th>Response</th></tr></thead>
+    <tbody>
+      <tr><td>Extra confirmation lowers payment success</td><td>Apply only to a first charge from a new party, or above a threshold. A/B test against the guardrail.</td></tr>
+      <tr><td>Partners and app stores object that warnings raise cancellations</td><td>Start with charges the wallet itself controls. Bring the trust data to that conversation.</td></tr>
+      <tr><td>Public reviews do not represent all users</td><td>Step 0 is internal validation. People who have a problem write reviews more than people who do not.</td></tr>
+      <tr><td>Transaction-authentication compliance</td><td>Design with legal to meet or exceed the current requirement.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2><b>The plan</b>, with a point where it stops.</h2>
+  <ol>
+    <li><b>Validate, 2 weeks.</b> Check against internal support tickets and transaction disputes. <b>If this group is under roughly 10% of money-related tickets, deprioritise it</b> — that is the kill condition, written before the work starts.</li>
+    <li><b>MVP, 6–8 weeks.</b> Features 1 and 2, A/B tested on users who have automatic payments.</li>
+    <li><b>Extend.</b> Features 3 and 4, once the guardrail reads clean.</li>
+    <li><b>Monitor.</b> Run the review agent monthly and compare against the other three wallets.</li>
+  </ol>
+
+  <h2><b>What I still do not know.</b></h2>
+  <ul>
+    <li>How much of the disputed charging is app-store billing, where the wallet is only the payment method, versus charges the wallet itself starts?</li>
+    <li>Which channel can carry a pre-charge warning without becoming a nuisance?</li>
+    <li>MoMo is the only wallet where failed transactions outnumber unagreed charges in the money-loss tier. Does MoMo already do something here? Worth studying as a model — but not a conclusion I can draw from reviews alone.</li>
+  </ul>
+
+  <p class="back"><a href="../index.html">&#8592; Back to the agent</a> &#183; <a href="../explorer/index.html">Data dashboard</a> &#183; <a href="https://github.com/hoanghan-cabong/fintech-review-insights/blob/main/docs/PRD_proposal_autopay.md">Vietnamese original on GitHub</a></p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&#169; 2026 Hoang Han &#183; Ho Chi Minh City</span>
+    <a href="#main">Back to top &#8593;</a>
+  </div>
+</footer>
+<script src="../../../assets/site.js?v=5" defer></script>
+</body>
+</html>

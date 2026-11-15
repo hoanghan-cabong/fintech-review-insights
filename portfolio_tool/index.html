@@ -603,16 +603,16 @@ fetch("data.json").then(r=>r.json()).then(function(d){
   try{
     sample=window.claude?await window.claude.use("sample"):null;
     if(!sample){
-      chatOff("This tool runs on the reader’s own Claude account, which isn’t available in this view. The findings below come from a completed run.");
+      chatOff("This tool runs on your own Claude account. Sign in to Claude — a free account works — then reload this page. The findings below are from a completed run and need no sign-in.");
       $("gradef").hidden=true;$("examples").hidden=true;
-      $("cls-err").hidden=false;$("cls-err").textContent="Open this page on claude.ai to run the tools.";
+      $("cls-err").hidden=false;$("cls-err").textContent="Sign in to Claude to run the grader. A free account works.";
       return;
     }
     const lim=await sample.limits().catch(()=>null);
     ready=true;$("go").disabled=false;
-    if(lim&&!lim.tools){chatOff("This view can’t run the analyst’s tools. The classifier still works.");}
+    if(lim&&!lim.tools){chatOff("This view can’t run the analyst’s tools, so the chat is off. The grader still works.");}
     else chatBusy(false);
-  }catch(e){chatOff("The analyst isn’t available in this view.");}
+  }catch(e){chatOff("The analyst could not start. Sign in to Claude and reload, or read the findings below.");}
 })();
 </script>
 </body>

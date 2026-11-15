@@ -1,6 +1,7 @@
 # PRD — Fintech Review Insights Agent
 
-> Phiên bản: v1.0 · Cập nhật: 2026-11-13 · Trạng thái: Hoàn thành tuần 1–4 (còn tuần 5: case study)
+> Phiên bản: v1.1 · Cập nhật: 2026-11-15 · Trạng thái: Hoàn thành tuần 1–4; tuần 5 còn video demo.
+> Case study đã được thay bằng công cụ chạy được, có chủ đích (D028); dashboard đã công khai (D029).
 > Phạm vi: MoMo · ZaloPay · ShopeePay · Viettel Money (ví điện tử, review công khai trên Google Play, 14/08–12/11/2026)
 > v1.0: chốt kết quả eval trên tập kiểm tra (D022), chạy trên mẫu 2.339 review, thêm thanh chat hỏi đáp dữ liệu (D023–D025)
 > v0.4: điều chỉnh theo dữ liệu thực tế: thay VNPAY bằng Viettel Money, so sánh trong nhóm review phàn nàn (D014–D016)
@@ -51,7 +52,7 @@ Mọi tỷ lệ đều báo cáo **kèm khoảng tin cậy 95%**, vì cỡ mẫu
 
 ### 3.3 Tiêu chí thất bại (giả thuyết bị bác bỏ khi…)
 
-- Baseline từ khoá đạt **≥ 90%** chất lượng của agent: LLM không đáng dùng cho bài toán này. Khi đó kết luận được viết thẳng trong case study.
+- Baseline từ khoá đạt **≥ 90%** chất lượng của agent: LLM không đáng dùng cho bài toán này. Khi đó kết luận được viết thẳng trong mục "Limits, and where I got it wrong" của trang công cụ.
 - Sau 3 vòng cải tiến, recall S1 vẫn **< 85%**: agent chưa đủ tin cậy cho việc phát hiện rủi ro.
 - Kết quả so sánh đảo thứ hạng hoàn toàn khi chỉnh trọng số trong khoảng hợp lý: kết luận so sánh không bền vững và không nên công bố.
 
@@ -161,7 +162,7 @@ Các giới hạn này sẽ được nêu rõ trong mọi báo cáo:
 | 2 | Bộ lấy dữ liệu và ẩn danh (29.078 review); gắn nhãn tập ngẫu nhiên 100 review và tập ca khó 57 review ✅ |
 | 3 | Baseline; agent v1 → v2; so sánh model; báo cáo eval kèm khoảng tin cậy ✅ (D022) |
 | 4 | Chạy trên mẫu phân tầng 2.339 review; so sánh đối thủ; kiểm tra độ nhạy; trang insight có chat; PRD đề xuất ✅ (D023–D026) |
-| 5 | **Case study, dashboard và báo cáo eval** (bắt buộc); video demo; skill là phần làm thêm |
+| 5 | Báo cáo eval ✅ · Dashboard ✅ (D029) · ~~Case study~~ → thay bằng công cụ chạy được, có chủ đích (D028) · **Video demo** còn lại · skill là phần làm thêm |
 
 ## 10. Câu hỏi còn mở
 

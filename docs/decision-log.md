@@ -264,4 +264,28 @@ Số liệu 90 ngày (14/08–12/11/2026):
 
 ---
 
-<!-- Quyết định tiếp theo: D028 ... -->
+### D028 · Công cụ chạy được thay cho bài case study · 2026-11-15
+- **Bối cảnh:** PRD §9 ghi case study là kết quả bắt buộc của tuần 5. Tuần 4 đã viết bản tiếng Anh (`docs/case-study-en.html`, commit `9e45431`) và đăng lên portfolio. Sau đó trang này bị thay bằng một công cụ chạy được, và file bị xoá ở commit `4f20323`, nên PRD và thực tế lệch nhau: tài liệu vẫn đòi một thứ đã bị gỡ có chủ đích.
+- **Lựa chọn:**
+  1. Đưa case study trở lại làm trang con, công cụ là trang chính — giữ đúng PRD.
+  2. Giữ nguyên chỉ công cụ, sửa PRD ghi rõ là thay thế có chủ đích.
+  3. Quay lại hẳn định dạng case study.
+- **Quyết định:** chọn (2). Công cụ thay cho case study. Bài viết cũ không khôi phục vào cây làm việc; vẫn lấy lại được bằng `git show 9e45431:docs/case-study-en.html` nếu đổi ý.
+- **Lý do:** vai trò nhắm tới là AI product. Một agent người đọc gõ được câu hỏi vào và thấy nó gọi công cụ, trích dẫn review, từ chối khi dữ liệu không trả lời được — chứng minh năng lực trực tiếp hơn một bài tường thuật lại cùng nội dung đó. Phần cốt lõi của case study (vấn đề, cách chấm mức nghiêm trọng, kết quả eval so với baseline, giới hạn và chỗ làm sai) không bị mất: nó nằm trong 4 mục thu gọn của trang công cụ và trong dashboard (D029 về dashboard công khai). Giữ cả hai bản sẽ tạo thêm một chỗ phải đồng bộ mỗi lần số liệu đổi.
+- **Đánh đổi đã biết:** người đọc quen định dạng case study sẽ không có một mạch kể tuyến tính. Nặng hơn: **quyết định sản phẩm rút ra từ phát hiện chính — `docs/PRD_proposal_autopay.md` — hiện không xuất hiện ở đâu trên trang công cụ**, nên trang đang nghiêng về phần đánh giá mô hình hơn là phần sản phẩm. Đây là việc còn lại, không phải hệ quả chấp nhận được của quyết định này.
+- **Cách kiểm chứng sau:** nếu người xem thật phản hồi rằng chỉ nhìn công cụ thì không nắm được bối cảnh, phương pháp hay kết quả, thì đưa case study trở lại làm trang con theo lựa chọn (1). Tín hiệu cần theo dõi: người xem có mở các mục thu gọn không, có bấm sang dashboard không.
+
+---
+
+### D029 · Gộp dashboard vào artifact portfolio thay vì đổi quyền chia sẻ · 2026-11-15
+- **Bối cảnh:** dashboard (`explorer/`) được đăng thành một artifact riêng và vẫn ở chế độ riêng tư, nên mục "dashboard" của tuần 5 coi như chưa giao. README còn trỏ vào link đó, người ngoài mở không được.
+- **Lựa chọn:** (1) đổi quyền chia sẻ của artifact riêng sang công khai, giữ hai artifact; (2) gộp dashboard vào artifact portfolio vốn đã ở chế độ "ai có link đều xem được".
+- **Quyết định:** chọn (2).
+- **Lý do:** công khai ngay, không cần thao tác chia sẻ nào; chỉ còn một link để quản thay vì hai; người xem đi thẳng từ trang công cụ sang dashboard trong cùng một site thay vì nhảy sang một artifact khác.
+- **Phải sửa khi đổi vị trí:** trang này trước là *trang chính* của artifact riêng nên được skeleton của artifact bọc sẵn `<!doctype html>` và `<meta viewport>`. Làm *file phụ* thì không được bọc — thiếu doctype là rơi vào quirks mode, thiếu viewport là vỡ trên điện thoại. Đã thêm cả hai, cộng breadcrumb về trang công cụ và trang chủ.
+- **Tồn đọng có chủ đích:** portfolio giờ có ba khung chat (trang chủ, trang công cụ, dashboard). Hai khung đầu dùng chung `assets/agent.js`; dashboard vẫn giữ bản riêng với bộ luật tiếng Việt và giới hạn 150 chữ. Chưa hỏng, nhưng cùng một câu hỏi có thể ra hai câu trả lời khác giọng, và đây là chỗ sẽ trôi lệch dần. Gộp nốt khi có dịp.
+- **Cách kiểm chứng sau:** hỏi cùng một câu ở trang chủ và ở dashboard; nếu số liệu lệch nhau thì chuyển dashboard sang dùng `assets/agent.js` ngay.
+
+---
+
+<!-- Quyết định tiếp theo: D030 ... -->

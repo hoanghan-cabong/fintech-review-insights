@@ -143,8 +143,8 @@ const t = spring({ frame: frame - delay, fps, config: bouncy });
 | **Nền** | `#171631` → `#0F0E24` (`smooth`, 15f) |
 | **Chữ chính** | `49%` · `of money-loss complaints` |
 | **Chữ phụ** | `Charged without agreeing` · `95% CI 44–54%` |
-| **Bố cục** | trên cùng: nhãn `Charged without agreeing` (mang từ cảnh 3), hồng 40px · giữa: **`49%`** vàng `#F9E75D` 260px · dưới: `of money-loss complaints` trắng 52px · đáy: `95% CI 44–54%` `#A9A5C4` 26px · một thanh ngang chạy đầy tới 49%, vàng |
-| **Chuyển động** | số đếm 0→49 trong 20f (ease-out) rồi nảy một nhịp `punchy`. `of money-loss complaints` vào 10f sau khi số dừng. CI mờ hiện ở f+40, `smooth`. Giữ yên **ít nhất 45f** sau khi mọi thứ đã vào. |
+| **Bố cục** | trên cùng: nhãn `Charged without agreeing` (mang từ cảnh 3), hồng 40px · giữa: **`49%`** vàng `#F9E75D` 260px · dưới: `of money-loss complaints` trắng 52px · đáy: `95% CI 44–54%` `#A9A5C4` 34px, cách thanh ngang ~70px (26px chỉ còn ~9px khi thu về 390px, không đọc được) · một thanh ngang chạy đầy tới 49%, vàng |
+| **Chuyển động** | số đếm 0→49 trong 20f (ease-out) rồi nảy một nhịp `punchy`. `of money-loss complaints` và CI vào **cùng lúc số bắt đầu đếm** (f+0, `smooth`, xong trong ~8f), để **không khung nào có `49%` đứng một mình** (ràng buộc 1). Sự chú ý vẫn dồn vào số vì chỉ số chuyển động. Giữ yên **ít nhất 45f** sau khi mọi thứ đã vào. |
 | **Chuyển ra** | mặt nạ tròn đóng về tâm số `49%`, mở ra nền trắng cảnh 5 (12f) |
 | **SFX** | một tiếng "thump" trầm đúng lúc số dừng |
 

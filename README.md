@@ -30,6 +30,7 @@ Agent chạy bằng tài khoản Claude của chính người xem, nên cần đ
 | [reports/insights.md](reports/insights.md) | Bảng so sánh 4 ví đầy đủ |
 | [reports/eval_report_test.md](reports/eval_report_test.md) | Kết quả eval cuối trên tập kiểm tra |
 | [reports/eval_report.md](reports/eval_report.md) | Eval trên tập phát triển (Haiku, Opus v1, Opus v2, baseline) |
+| [docs/video-script.md](docs/video-script.md) | Kịch bản video demo 100 giây, kèm chỉ dẫn quay |
 
 ## Cấu trúc
 

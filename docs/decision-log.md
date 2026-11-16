@@ -299,4 +299,17 @@ Số liệu 90 ngày (14/08–12/11/2026):
 
 ---
 
-<!-- Quyết định tiếp theo: D031 ... -->
+### D031 · Gỡ giọng máy khỏi portfolio, bắt đầu từ 3 trang · 2026-11-16
+- **Bối cảnh:** nhận xét "mọi thứ quá AI". Đếm trên 9 trang: 61 nhãn chương đánh số `01 ·`, 57 hộp `.box`, 15 lưới `.grid-N`, 8 sơ đồ `.flow` 4 bước. Nặng nhất là Zalo Game Center (27 hộp, 16 nhãn số).
+- **Chẩn đoán:** nguyên nhân không nằm ở màu hay font. Bảng màu hồng/cobalt/vàng và cặp Fraunces + Be Vietnam Pro vốn đã riêng. Vấn đề là **một khuôn áp cho chín câu chuyện**, cộng một giọng tiêu đề lặp: cấu trúc "N thứ này, M thứ kia" ("Four features, one conversion loop", "Six tools, one 17-node tree"), "A before B", "X without Y", và **20/20 tiêu đề đều là câu kết bằng dấu chấm**.
+- **Quyết định:** gỡ dấu vết và phá nhịp, không thiết kế lại hệ thống thị giác. Làm trước 3 trang: Zalo Game Center, trang chủ, Review Risk Agent.
+- **Điều chỉnh so với kế hoạch ban đầu:** kế hoạch đặt mục tiêu giảm hộp ở Zalo từ 27 xuống dưới 10, dựa trên số đếm thô. Khi đọc kỹ thì **phần lớn hộp nằm trong `<details>` đã thu gọn** (8 hộp ở `research`, 6 ở `prd`) và 2 hộp ở `strategy` là so sánh Phase 1 / Phase 2 thật sự cần cạnh nhau. Cắt xuống dưới 10 sẽ phá nội dung đang hoạt động tốt. Chỉ chuyển `reflection` (4 hộp **hiện ra**, nhét chiêm nghiệm vào thẻ) sang văn xuôi. Kết quả 27 → 23, không đạt mục tiêu ban đầu nhưng đúng với thực tế.
+- **Tương tự với phần mở đầu:** kế hoạch định dựng lại hero của Zalo cho khác khuôn. Nhìn kỹ thì hero này đã có khối "The 60-second version" riêng thay cho `tldr` rập khuôn của các trang khác — không sửa.
+- **Đã làm:** bỏ 12/16 nhãn số (giữ 4 số ở sơ đồ vòng lặp vì ở đó đánh số có nghĩa); bỏ hẳn nhãn ở 3 chương mà tiêu đề đã tự nói rõ; viết lại 7 tiêu đề ở Zalo và 3 ở trang chủ; `reflection` thành văn xuôi với ý tự phê bình đưa lên đầu thay vì giấu trong ô vàng cuối; bỏ 1 trong 3 tiêu đề trang chủ kết bằng cụm `<em>` in nghiêng.
+- **Giữ nguyên có chủ đích:** `site.css` không sửa một dòng nào, vì 6 trang chưa rà vẫn dùng chung — chỉ gỡ markup khỏi 3 trang trong phạm vi. Đã kiểm hey-bunney sau khi sửa: vẫn 13 hộp, bo góc 14px, không ảnh hưởng.
+- **Cách kiểm chứng sau:** đếm lại bằng đúng lệnh đã chẩn đoán. Kết quả: nhãn số 16 → 4, hộp 27 → 23, lưới 5 → 4, eyebrow 11 → 8, và tiêu đề kết bằng dấu chấm còn 9/20 thay vì 20/20. Mục tiêu không phải là 0 mà là **có trộn** — một portfolio mà mọi tiêu đề đều cùng một dạng mới là thứ đọc ra như máy.
+- **Còn lại:** 6 trang chưa rà (hey-bunney 13 hộp, keep-my-fire-bigger, phong-than 9 hộp, soucean-studio, tien-nghich, more 3 sơ đồ `.flow` giống hệt nhau). Chờ xem kết quả 3 trang đầu rồi quyết định.
+
+---
+
+<!-- Quyết định tiếp theo: D032 ... -->

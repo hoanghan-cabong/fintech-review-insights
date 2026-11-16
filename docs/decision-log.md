@@ -312,4 +312,17 @@ Số liệu 90 ngày (14/08–12/11/2026):
 
 ---
 
-<!-- Quyết định tiếp theo: D032 ... -->
+### D032 · Gỡ giọng máy: 6 trang còn lại · 2026-11-16
+- **Bối cảnh:** tiếp D031. Sáu trang chưa rà: hey-bunney, keep-my-fire-bigger, phong-than, soucean-studio, tien-nghich, more.
+- **Khác với Zalo Game Center:** ở Zalo phần lớn hộp nằm trong `<details>` đã thu gọn nên người xem không thấy. Trên 6 trang này **không có gì thu gọn cả** — mọi hộp và sơ đồ đều hiện ra. Vì vậy cùng một con số lại nặng hơn nhiều.
+- **Quyết định về chỗ giữ số:** bỏ số ở nhãn chương, nhưng **giữ số ở chỗ đánh dấu trình tự thật** — 4 giai đoạn chiến dịch của hey-bunney và 3 nhóm người chơi của tien-nghich, giống cách đã giữ 4 số ở sơ đồ vòng lặp của Zalo. Đánh số một trình tự là thông tin; tự đánh số chương cho case study của mình là khuôn mẫu.
+- **Quyết định về chỗ giữ hộp:** một lưới hộp chỉ giữ khi các mục song song thật và người đọc cần so sánh cạnh nhau. Giữ: 3 hộp Before/Reframe/After và 3 hộp phân cấp Event/Value/Action ở phong-than, 3 hộp phân khúc người chơi ở tien-nghich, 4 hộp giai đoạn ở hey-bunney. Chuyển sang văn xuôi: các mảng việc phụ trách và quy tắc banner ở hey-bunney, 3 hộp chẩn đoán ở phong-than, và **phần bài học ở cả ba trang** — nhét chiêm nghiệm vào thẻ là chỗ lộ khuôn mẫu nhất, giống hệt chương `reflection` của Zalo ở D031.
+- **Ba sơ đồ `.flow` giống hệt nhau** trong trang `more` (ba automation n8n, cùng một hình 4 bước) là chỗ lặp rõ nhất còn lại trên toàn portfolio. Thay bằng một đoạn **nói thẳng rằng cả ba cùng một hình dạng**, kèm danh sách ba dòng. Trung thực hơn là vẽ ba lần cùng một thứ.
+- **21 tiêu đề viết lại**, bỏ cấu trúc "N thứ này, M thứ kia" ("Four principles, two loops", "Six tools, one 17-node tree", "Six games on the store, four with my design end to end", "One declining game. Three player contexts"), bỏ "A before B" và "From X to Y". Giữ nguyên những tiêu đề vốn đã cụ thể và có chủ kiến: "Pressure rises in a readable sawtooth", "Revenue stays outside the win/lose equation", "Testing for player quality, not clicks".
+- **Phát hiện kèm theo:** 3 blurb "next case" cũng dùng "from X to Y", và một blurb còn trích nguyên tiêu đề vừa đổi. Đã sửa cả ba — đổi tiêu đề mà quên chỗ trích dẫn chéo là lỗi dễ sót.
+- **Kết quả:** nhãn chương 45 → 7 (7 số còn lại đều đánh dấu trình tự thật), hộp 30 → 15, lưới 10 → 5, sơ đồ `.flow` 6 → 3.
+- **Vẫn không sửa `site.css`.** Toàn bộ là gỡ markup. Đã kiểm 6 trang sau khi sửa: doctype, charset, viewport đủ (đều là file phụ nên phải tự khai), số chương = số h2 = số mục TOC, không tràn ngang ở 1100px và 375px, dark mode đúng.
+
+---
+
+<!-- Quyết định tiếp theo: D033 ... -->

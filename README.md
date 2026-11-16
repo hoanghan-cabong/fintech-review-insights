@@ -15,7 +15,7 @@ Agent chạy bằng tài khoản Claude của chính người xem, nên cần đ
 - **Chứng minh có cần AI:** trên tập kiểm tra gắn nhãn trước, bộ lọc từ khoá bắt 2/7 ca mất tiền, agent bắt 7/7 (precision 88%), chi phí quy đổi khoảng $9,6 / 1.000 review.
 - **So sánh công bằng:** tính trong nhóm review phàn nàn, có trọng số, kèm khoảng tin cậy; không bị lệch bởi đợt tăng review khen của ZaloPay.
 - **Eval trung thực:** tách tập phát triển và tập kiểm tra; ghi lại cả những lần chính người gắn nhãn sai (D017, D020).
-- **Truy vết được:** mọi nhận định kèm trích dẫn nguyên văn; 31 quyết định thiết kế được ghi lại kèm lý do.
+- **Truy vết được:** mọi nhận định kèm trích dẫn nguyên văn; 32 quyết định thiết kế được ghi lại kèm lý do.
 
 > Dự án portfolio cá nhân, hướng AI Product Management. Chỉ dùng dữ liệu công khai đã ẩn danh. Không đại diện cho quan điểm của doanh nghiệp nào.
 
@@ -25,7 +25,7 @@ Agent chạy bằng tài khoản Claude của chính người xem, nên cần đ
 |---|---|
 | [docs/PRD.md](docs/PRD.md) | Vấn đề, persona, chỉ số thành công và kết quả, tiêu chí thất bại, giới hạn dữ liệu |
 | [docs/taxonomy.md](docs/taxonomy.md) | 9 category, 5 flow, thang S1–S4 với 10 quy tắc, thiết kế tập đáp án, baseline |
-| [docs/decision-log.md](docs/decision-log.md) | 31 quyết định thiết kế và lý do |
+| [docs/decision-log.md](docs/decision-log.md) | 32 quyết định thiết kế và lý do |
 | [docs/PRD_proposal_autopay.md](docs/PRD_proposal_autopay.md) | PRD đề xuất từ phát hiện số 1 |
 | [reports/insights.md](reports/insights.md) | Bảng so sánh 4 ví đầy đủ |
 | [reports/eval_report_test.md](reports/eval_report_test.md) | Kết quả eval cuối trên tập kiểm tra |

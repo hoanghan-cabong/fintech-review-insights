@@ -1,7 +1,11 @@
-# Video promo 35 giây — Review Risk Agent
+# Video promo 35 giây — Review Risk Agent · v2
 
-> Dựng bằng **Remotion**. Tài liệu này đủ chi tiết để đưa thẳng cho người dựng hoặc cho Claude Code.
+> Dựng bằng **Remotion**. Đủ chi tiết để đưa thẳng cho người dựng hoặc cho Claude Code.
 > Phong cách: motion graphics, kinetic typography, mỗi cảnh một ý, chuyển cảnh liền mạch.
+> Video đi kèm, khác nhiệm vụ: [docs/video-script.md](video-script.md) (demo 100 giây, gánh phần chứng minh).
+
+**v2 sửa gì so với v1** (rà soát ngày 16/11/2026):
+con số 49% có mẫu số trên cùng màn hình · thêm nhịp quyết định sản phẩm (PRD) · hook không còn nói với "You" · cảnh sản phẩm cắt cận để đọc được trên điện thoại · cảnh kết có tên người làm, bỏ nút giả · gộp hai cảnh dựng bối cảnh · bỏ câu "every number opens a review" vì nói quá · mọi chữ chính ≤ 5 từ (kiểm bằng script) · bản ngắn tính lại đúng 20 giây.
 
 ---
 
@@ -10,206 +14,239 @@
 | | |
 |---|---|
 | **Nhiệm vụ** | Mồi câu. Giữ người xem 35 giây rồi đẩy họ sang trang công cụ. |
-| **Không phải nhiệm vụ** | Chứng minh phương pháp. Phần đó do video demo 100 giây ([docs/video-script.md](video-script.md)) và chính trang web gánh. |
-| **Người xem** | Nhà tuyển dụng lướt LinkedIn, tắt tiếng, quyết định dừng hay lướt trong 2 giây đầu. |
-| **Độ dài** | 35 giây · 1.050 khung @ 30fps |
-| **Khung hình** | 1080×1080 (vuông). Mọi chữ nằm trong vùng an toàn giữa 1080×1350 để cắt 9:16 không mất chữ. |
-| **Đăng ở** | LinkedIn, đầu trang portfolio, phần mô tả của video demo dài |
+| **Không phải nhiệm vụ** | Chứng minh phương pháp — việc của video demo 100 giây và của chính trang web. |
+| **Người xem** | Nhà tuyển dụng / hiring manager lướt LinkedIn, **tắt tiếng**, quyết định dừng hay lướt trong 2 giây đầu. Họ **không phải** người bị trừ tiền — nên video không xưng "You". |
+| **Độ dài** | 35 giây · 1.050 khung @ 30fps · bản ngắn 20 giây · 600 khung |
+| **Khung hình** | 1080×1080. Mọi chữ nằm trong vùng giữa 1080×960 để cắt 9:16 không mất chữ. |
+| **Đăng ở** | LinkedIn, cạnh trang công cụ trên portfolio |
 
-**Một câu phải đọng lại:** *gần một nửa số ca mất tiền trong ví điện tử không phải bị hack — mà là bị trừ tiền.*
+**Hai câu phải đọng lại:**
+1. *Gần một nửa số khiếu nại mất tiền trong ví điện tử không phải bị hack hay giao dịch lỗi — mà là bị trừ tiền khi người dùng không đồng ý.*
+2. *Người làm ra nó không dừng ở phát hiện — họ viết PRD từ đó.*
 
-**Ràng buộc trung thực.** Video này ngắn nên dễ nói quá. Ba luật:
-- Được nói **49%**, nhưng luôn kèm dòng nhỏ `95% CI 44–54%`. Dự án này lấy khoảng tin cậy làm chữ ký, bỏ đi là tự phản bội.
-- **Không** nói "7 out of 7", "AI-powered", "cutting-edge", hay bất kỳ tuyên bố độ chính xác nào. Tập kiểm tra chỉ có 7 ca S1.
-- Mọi con số trên màn hình phải truy được về `reports/key_findings.json`.
+Câu thứ hai là thứ biến video từ "tôi làm được con bot" thành "tôi ra quyết định sản phẩm từ dữ liệu".
+
+### Ràng buộc trung thực
+
+Video ngắn nên rất dễ nói quá. Năm luật, không ngoại lệ:
+
+1. **49% luôn đi cùng mẫu số** *of money-loss complaints* trên **cùng một màn hình**, kèm dòng `95% CI 44–54%`. Thiếu mẫu số, người xem đọc thành "49% người dùng bị trừ tiền" — sai.
+2. **Không nói "every number cites a review".** Đúng là: agent không được nêu con số nào mà chưa gọi tool, và trích dẫn review khi đưa ví dụ. Video dùng *"Shows its working."* — đúng và vẫn gọn.
+3. **Cảnh 7–9 là bản ghi màn hình thật**, không vẽ lại giao diện. Nếu tua nhanh đoạn chờ thì ghi rõ `sped up 3×` ở góc.
+4. **Không** "7 out of 7", "AI-powered", "cutting-edge", hay bất kỳ tuyên bố độ chính xác nào. Tập kiểm tra chỉ có 7 ca S1.
+5. Mọi con số truy được về `reports/key_findings.json` hoặc `data/corpus/run_meta.json`.
 
 ---
 
 ## 2 · Hệ thiết kế
 
-### Màu — lấy thẳng từ `assets/site.css`, không chế thêm
+### Màu — lấy thẳng từ `assets/site.css`
 
 | Vai trò | Hex | Dùng ở đâu |
 |---|---|---|
-| Nền tối | `#171631` | nền chính của cảnh tối |
-| Nền tối sâu | `#0F0E24` | nền cảnh 7 (con số lớn) |
-| Nền sáng | `#FFFFFF` | cảnh sáng, xen kẽ tạo nhịp |
-| Nền hồng nhạt | `#FFF3FA` | nền cảnh sản phẩm |
-| **Hồng thương hiệu** | `#FF8AD3` | màu nhấn chính trên nền tối |
-| Hồng đậm | `#D92A87` | nhấn trên nền sáng (hồng nhạt không đọc được trên trắng) |
-| **Vàng** | `#F9E75D` | điểm nhấn, đúng một lần ở cảnh 7 |
-| Cobalt | `#1609B7` | chi tiết giao diện, nút |
+| Nền tối | `#171631` | cảnh 1–3, 10 |
+| Nền tối sâu | `#0F0E24` | chỉ cảnh 4 (con số) |
+| Nền sáng | `#FFFFFF` | cảnh 5, 7–9, 11 |
+| Nền hồng nhạt | `#FFF3FA` | cảnh 6 |
+| **Hồng thương hiệu** | `#FF8AD3` | nhấn trên nền tối, nhãn, thẻ |
+| Hồng đậm | `#D92A87` | nhấn trên nền sáng |
+| **Vàng** | `#F9E75D` | **chỉ cảnh 4** — đúng một lần trong cả video |
+| Cobalt | `#1609B7` | ô logo, tên ở cảnh kết |
 | Chữ trên nền tối | `#FFFFFF` | |
-| Chữ phụ | `#A9A5C4` | dòng nhỏ, CI |
+| Chữ phụ trên nền tối | `#A9A5C4` | CI, dòng chặn |
+| Chữ phụ trên nền sáng | `#5D5A73` | |
 
-> **Luật màu:** một cảnh dùng tối đa **2 màu nhấn**. Vàng xuất hiện **đúng một lần** trong cả video — ở cảnh 7. Dùng nhiều hơn là mất tác dụng.
+> **Luật màu:** mỗi cảnh tối đa **2 màu nhấn**. Vàng xuất hiện **một lần** — dùng nhiều là mất tác dụng.
 
 ### Chữ
 
-- Font: **Be Vietnam Pro** — `assets/fonts/be-vietnam-pro-latin-600-normal.woff2` (và 500/400). Đây là font đang dùng trên portfolio, dáng sans tròn hiện đại, đúng phong cách yêu cầu.
-- Cỡ chữ chính: **96–140px** trên khung 1080. Chữ phải to tới mức xem trên điện thoại không cần nhíu mắt.
-- Dòng nhỏ / CI: **26px**, màu `#A9A5C4`, letter-spacing `.04em`.
-- **Tối đa 5 từ một màn hình.** Quá 5 từ là tách cảnh.
-- Chữ hiện **theo từng từ**, không hiện cả câu. Mỗi từ lệch nhau 3 khung (100ms).
+- **Be Vietnam Pro** 600/500/400 — `assets/fonts/be-vietnam-pro-latin-*.woff2`. Font đang dùng trên portfolio, dáng sans tròn hiện đại.
+- **Fraunces** — `assets/fonts/fraunces-latin-opsz-normal.woff2` — **chỉ** cho tên "Hoang Han" ở cảnh kết, giống cách site dùng serif cho tiêu đề lớn.
+- **Chữ chính ≤ 5 từ một màn hình. Chữ phụ ≤ 6 từ.** Quá là tách cảnh. Nhãn ví (MoMo, ZaloPay…) và chip không tính.
+- Cỡ chữ chính **96–150px** trên khung 1080 → khoảng 35–55px trên điện thoại. Chữ phụ không nhỏ hơn **24px**.
+- Chữ hiện **theo từng từ**, lệch nhau 3 khung (100ms). Tên ở cảnh kết hiện **theo từng chữ cái**, lệch 1 khung.
 
-### Chuyển động — thông số Remotion cụ thể
+### Chuyển động — thông số Remotion
 
 ```ts
-// Nảy: dùng cho chữ, con số, icon vào khung
-const bouncy  = { damping: 12,  stiffness: 180, mass: 0.8 };
-// Mượt không nảy: dùng cho nền, mặt nạ, camera
-const smooth  = { damping: 200, stiffness: 100, mass: 1   };
+const bouncy = { damping: 12,  stiffness: 180, mass: 0.8 }; // chữ, số, thẻ vào khung
+const punchy = { damping: 10,  stiffness: 200, mass: 0.8 }; // từ được nhấn mạnh nhất cảnh
+const smooth = { damping: 200, stiffness: 100, mass: 1   }; // nền, mặt nạ, zoom
 
 const t = spring({ frame: frame - delay, fps, config: bouncy });
 ```
 
 | Quy tắc | Giá trị |
 |---|---|
-| Stagger giữa các phần tử anh em | **3 khung** (100ms) |
-| Chữ vào | `translateY: interpolate(t,[0,1],[40,0])` + `opacity` + `scale` từ `0.92` |
-| Overshoot | để `damping: 12` tự tạo, **không** tự viết keyframe vượt đích |
-| Không bao giờ | chuyển động tuyến tính (`linear`). Mọi thứ đều spring hoặc ease-in-out. |
-
-### Chuyển cảnh
-
-Gần như không cắt cứng. Ba kiểu, dùng xen kẽ:
-
-1. **Mặt nạ tròn** — vòng tròn nở từ tâm phần tử vừa nhấn, phủ khung, lộ cảnh sau. 12 khung, `smooth`.
-2. **Match cut** — phần tử cảnh trước biến thành phần tử cảnh sau (chữ → logo, khối tròn → nền).
-3. **Đẩy khối tròn** — khối tròn lớn tràn mép trượt qua khung mang theo cảnh mới.
+| Stagger giữa phần tử anh em | **3 khung** (thẻ lớn: 6 khung) |
+| Chữ vào | `translateY 40→0` + `opacity 0→1` + `scale .92→1` |
+| Overshoot | để spring tự tạo, **không** viết keyframe vượt đích |
+| Không bao giờ | `linear` cho chuyển động vào/ra |
 
 ### Hình khối nền
 
-- Khối tròn lớn (600–900px) tràn ra ngoài mép, `blur(40px)`, `opacity .35`, màu hồng thương hiệu.
-- Nét cong vẽ dần (`strokeDasharray` chạy) màu `#FF8AD3`, nét 8px, bo đầu tròn. Dùng ở cảnh 2 và 9.
-- Icon phẳng, không dùng ảnh chụp.
+- Khối tròn 600–900px tràn mép, `blur(40px)`, `opacity .35`, màu `#FF8AD3`.
+- Nét cong vẽ dần (`strokeDasharray`), nét 8px, đầu tròn, màu `#FF8AD3`. Dùng ở cảnh 3 và cảnh 9.
+- Icon phẳng. Không ảnh chụp.
 
 ---
 
 ## 3 · Storyboard — 11 cảnh
 
-> Ký hiệu: `f` = khung hình @30fps. Chữ in đậm trong cột *Trên màn hình* là từ được tô màu nhấn.
+> `f` = khung @30fps. Mỗi mốc là bội của 15 → rơi đúng phách ở 120 BPM.
+> Cảnh 7, 8, 9 dùng **một** bản ghi màn hình liền mạch (xem mục 6).
 
-### Cảnh 1 · Mồi (f0–90 · 0:00–0:03)
+### Cảnh 1 · Mồi (f0–45 · 0:00–0:01.5)
 
 | | |
 |---|---|
 | **Nền** | `#171631`, khối tròn hồng mờ tràn góc dưới-phải |
-| **Trên màn hình** | `You didn't get hacked.` — chữ trắng `#FFFFFF` |
-| **Chuyển động** | Từng từ một, stagger 3f, `bouncy`. Từ `hacked.` vào trễ thêm 6f để tạo khoảng nghỉ. |
-| **Chuyển ra** | Match cut: chữ `hacked.` co về tâm, biến thành chữ cảnh 2 |
+| **Chữ chính** | `Not hacked.` |
+| **Chữ phụ** | — |
+| **Màu / cỡ** | trắng 140px, giữa khung |
+| **Chuyển động** | hai từ, stagger 4f, `bouncy` |
+| **Chuyển ra** | đẩy dọc — chữ trượt lên khỏi khung, cảnh 2 vào từ dưới (8f) |
 | **SFX** | pop nhẹ mỗi từ |
 
-**Chỉ dẫn:** đây là 2 giây quyết định người ta dừng hay lướt. Không logo, không giới thiệu. Chỉ một câu phủ định gây tò mò.
+**Chỉ dẫn:** không logo, không giới thiệu. Một phủ định ngắn, để người xem tự hỏi "vậy là gì?".
 
-### Cảnh 2 · Lật (f90–180 · 0:03–0:06)
+### Cảnh 2 · Phủ định thứ hai (f45–105 · 0:01.5–0:03.5)
 
 | | |
 |---|---|
-| **Nền** | `#171631` → nét cong hồng vẽ dần từ trái sang, gạch dưới chữ |
-| **Trên màn hình** | `You just got` **`charged.`** — `charged.` màu `#FF8AD3`, cỡ lớn hơn 1,3× |
-| **Chuyển động** | `You just got` vào nhanh (stagger 2f). `charged.` vào sau 10f, `bouncy`, kèm scale `0.8 → 1`. Nét cong vẽ trong 14f. |
-| **Chuyển ra** | Mặt nạ tròn nở từ dấu chấm của `charged.` |
-| **SFX** | whoosh khi nét cong chạy |
+| **Nền** | `#171631` |
+| **Chữ chính** | `Not a failed payment.` |
+| **Chữ phụ** | — |
+| **Màu / cỡ** | trắng 110px |
+| **Chuyển động** | stagger 3f, `bouncy` |
+| **Chuyển ra** | đẩy dọc (8f) |
+| **SFX** | pop nhẹ |
 
-### Cảnh 3 · Thương hiệu (f180–240 · 0:06–0:08)
+**Chỉ dẫn:** hai phủ định liên tiếp loại đi hai cách giải thích mà ai cũng nghĩ tới đầu tiên. Nhịp phải nhanh — 2 giây, không hơn.
+
+### Cảnh 3 · Lật (f105–165 · 0:03.5–0:05.5)
+
+| | |
+|---|---|
+| **Nền** | `#171631`, nét cong hồng vẽ dần gạch dưới chữ |
+| **Chữ chính** | `Charged` · `without agreeing.` |
+| **Chữ phụ** | — |
+| **Màu / cỡ** | `Charged` hồng `#FF8AD3` 150px dòng 1 · `without agreeing.` trắng 90px dòng 2 |
+| **Chuyển động** | `Charged` vào `punchy`, scale `.7→1`. Dòng 2 vào sau 8f. Nét cong vẽ trong 14f. |
+| **Chuyển ra** | **match cut** — cả cụm co lại, bay lên đỉnh khung, thành nhãn của cảnh 4 |
+| **SFX** | pop mạnh ở `Charged` + whoosh khi nét cong chạy |
+
+### Cảnh 4 · Con số đinh ★ (f165–315 · 0:05.5–0:10.5)
+
+| | |
+|---|---|
+| **Nền** | `#171631` → `#0F0E24` (`smooth`, 15f) |
+| **Chữ chính** | `49%` · `of money-loss complaints` |
+| **Chữ phụ** | `Charged without agreeing` · `95% CI 44–54%` |
+| **Bố cục** | trên cùng: nhãn `Charged without agreeing` (mang từ cảnh 3), hồng 40px · giữa: **`49%`** vàng `#F9E75D` 260px · dưới: `of money-loss complaints` trắng 52px · đáy: `95% CI 44–54%` `#A9A5C4` 26px · một thanh ngang chạy đầy tới 49%, vàng |
+| **Chuyển động** | số đếm 0→49 trong 20f (ease-out) rồi nảy một nhịp `punchy`. `of money-loss complaints` vào 10f sau khi số dừng. CI mờ hiện ở f+40, `smooth`. Giữ yên **ít nhất 45f** sau khi mọi thứ đã vào. |
+| **Chuyển ra** | mặt nạ tròn đóng về tâm số `49%`, mở ra nền trắng cảnh 5 (12f) |
+| **SFX** | một tiếng "thump" trầm đúng lúc số dừng |
+
+**Chỉ dẫn:** đỉnh của video, đặt ở **giây thứ 5,5** — ngay sau hook, trước cả logo. Đọc liền ba dòng sẽ ra: *Charged without agreeing — 49% of money-loss complaints.* Mẫu số và CI **không được bỏ** (ràng buộc 1).
+
+### Cảnh 5 · Ai làm, làm gì (f315–375 · 0:10.5–0:12.5)
 
 | | |
 |---|---|
 | **Nền** | `#FFFFFF` (đảo sáng — tạo nhịp) |
-| **Trên màn hình** | Logo `HH` (ô bo tròn cobalt `#1609B7`, chữ trắng) + `Review Risk Agent` màu `#171631` |
-| **Chuyển động** | Ô logo bật vào `bouncy` scale `0 → 1`; chữ trượt ra từ sau logo, stagger 3f |
-| **Chuyển ra** | Khối tròn hồng tràn mép trượt từ phải sang, mang cảnh 4 |
+| **Chữ chính** | `Review Risk Agent` |
+| **Chữ phụ** | `by Hoang Han` |
+| **Bố cục** | ô bo tròn cobalt `#1609B7` chữ `HH` trắng · bên phải: `Review Risk Agent` `#171631` 72px · dưới: `by Hoang Han` `#5D5A73` 36px |
+| **Chuyển động** | ô bật vào `bouncy` scale `0→1`; tên công cụ trượt ra từ sau ô, stagger 3f; `by Hoang Han` vào sau 8f |
+| **Chuyển ra** | khối tròn hồng tràn mép trượt từ phải, mang cảnh 6 (10f) |
 | **SFX** | click |
 
-**Chỉ dẫn:** logo xuất hiện **sớm, giây thứ 6**, đúng khung thể loại. Nhưng chỉ 2 giây — không phải phim giới thiệu công ty.
+**Chỉ dẫn:** cố ý **không** để logo ở giây thứ 5 như quy ước của thể loại. Trên LinkedIn, 3 giây đầu quyết định dừng hay lướt, và logo của một case chưa ai biết thì không giữ chân ai — con số thì có. Dòng `by Hoang Han` bắt buộc: đây là portfolio, người xem cần biết công cụ của ai.
 
-### Cảnh 4 · Cỡ dữ liệu (f240–330 · 0:08–0:11)
+### Cảnh 6 · Cỡ dữ liệu (f375–450 · 0:12.5–0:15)
 
 | | |
 |---|---|
 | **Nền** | `#FFF3FA` |
-| **Trên màn hình** | Số **`2,339`** chạy từ 0 lên, màu `#D92A87`, cỡ 160px · dưới là `Google Play reviews` màu `#171631` cỡ 44px |
-| **Chuyển động** | Số đếm trong 24f theo `ease-out` (nhanh đầu, chậm cuối). Chữ dưới vào ở f+18. |
-| **Chuyển ra** | Số co nhỏ về góc trên-trái, giữ nguyên trên màn hình sang cảnh 5 |
-| **SFX** | tiếng đếm lạch tạch nhỏ, dừng cùng lúc số dừng |
+| **Chữ chính** | `2,339 reviews` |
+| **Chữ phụ** | `Google Play · 90 days` |
+| **Bố cục** | `2,339` hồng đậm `#D92A87` 140px + `reviews` `#171631` 56px · dưới: một hàng 4 chip bo tròn `MoMo` `ZaloPay` `ShopeePay` `Viettel Money` · đáy: chữ phụ `#5D5A73` 28px |
+| **Chuyển động** | số đếm trong 18f (ease-out). Chip bắt đầu vào khi số đếm được nửa (f+9), stagger 3f, `bouncy`, scale `.85→1` |
+| **Chuyển ra** | chip trượt xuống; khung ghi hình của cảnh 7 trồi lên từ dưới (12f) |
+| **SFX** | tiếng đếm lạch tạch nhỏ, dừng cùng lúc số dừng · 4 tiếng pop theo chip |
 
-### Cảnh 5 · Bốn ví (f330–390 · 0:11–0:13)
+**Chỉ dẫn:** v1 tốn 5 giây cho hai cảnh này; giờ gộp còn 2,5 giây. Nó chỉ trả lời "dữ liệu ở đâu ra" — không đáng hơn thế.
 
-| | |
-|---|---|
-| **Nền** | `#FFF3FA`, số `2,339` thu nhỏ còn ở góc |
-| **Trên màn hình** | 4 thẻ bo tròn xếp 2×2: `MoMo` · `ZaloPay` · `ShopeePay` · `Viettel Money` |
-| **Chuyển động** | Stagger 4f theo thứ tự trên-trái → dưới-phải, `bouncy`, scale `0.85 → 1` |
-| **Chuyển ra** | 4 thẻ cùng trượt xuống dưới khung, lộ nền tối cảnh 6 |
-| **SFX** | 4 tiếng pop lệch nhau |
-
-### Cảnh 6 · Câu hỏi (f390–480 · 0:13–0:16)
+### Cảnh 7 · Chạy thật (f450–600 · 0:15–0:20)
 
 | | |
 |---|---|
-| **Nền** | `#171631` |
-| **Trên màn hình** | `Where does the money` **`actually go?`** — `actually go?` màu `#FF8AD3` |
-| **Chuyển động** | Từng từ, stagger 3f. Sau khi đủ chữ, cả cụm nhích lên 20px rồi dừng (`bouncy`, tạo cảm giác hít thở). |
-| **Chuyển ra** | Mặt nạ tròn đóng lại vào giữa, mở ra ở cảnh 7 |
-| **SFX** | drone trầm nhỏ dâng lên |
+| **Nền** | `#FFFFFF`, khối tròn hồng mờ phía sau khung ghi hình |
+| **Chữ chính** | `Live. Not a mockup.` |
+| **Chữ phụ** | `sped up 3×` *(chỉ khi có tua)* |
+| **Bố cục** | khung ghi hình bo 22px, **rộng 1040px**, bóng nhẹ, gần tràn khung. Bên trong: bản ghi thật — bấm chip *"How do MoMo users most often lose money?"* → câu trả lời hiện dần. Nhãn `Live. Not a mockup.` là một viên thuốc hồng `#FF8AD3`, chữ `#171631` 34px, góc trên-trái khung ghi hình |
+| **Chuyển động** | khung trồi lên `bouncy`. **Không cho camera trôi** — chữ trong bản ghi phải đứng yên để đọc được. Nhãn vào ở f+12. |
+| **Tua** | đoạn chờ agent trả lời thường dài 8–15 giây; nén vào cảnh bằng `playbackRate` tối đa 3×. Khi đang tua thì hiện `sped up 3×` 24px `#5D5A73` ở góc dưới-phải |
+| **Chuyển ra** | zoom liền vào vùng dòng "N tool calls" (`scale 1→1.35`, `smooth`, 15f) — chảy thẳng sang cảnh 8, không cắt |
+| **SFX** | gõ phím nhẹ · "ping" khi câu trả lời xong · nhạc nền hạ xuống −8dB từ cảnh này đến hết cảnh 9 |
 
-### Cảnh 7 · Con số đinh (f480–630 · 0:16–0:21) ★
+**Chỉ dẫn:** v1 đặt bản ghi trong laptop nghiêng isometric — đẹp trên màn hình lớn nhưng **trên điện thoại chữ chỉ còn khoảng 3–4px**. Giờ khung ghi hình gần tràn khung và không nghiêng. Cách tính độ đọc được ở mục 6.
 
-| | |
-|---|---|
-| **Nền** | `#0F0E24` — tối nhất cả video |
-| **Trên màn hình** | **`49%`** cỡ 260px, màu `#F9E75D` ← **lần duy nhất dùng vàng** · dưới: `charged without agreeing to it` trắng 48px · dòng nhỏ `95% CI 44–54%` màu `#A9A5C4` 26px |
-| **Chuyển động** | `49%` đếm 0→49 trong 20f rồi **nảy một nhịp** (`bouncy`). Thanh ngang dưới chạy đầy 49% trong 24f, màu `#F9E75D`. Dòng CI mờ hiện ở f+40, chậm, `smooth`. |
-| **Chuyển ra** | Chữ `49%` co lại thành một chấm tròn vàng, chấm đó nở thành nút gửi của cảnh 8 (match cut) |
-| **SFX** | một tiếng "thump" trầm đúng lúc số dừng |
-
-**Chỉ dẫn:** đây là đỉnh của video, cảnh dài nhất (5 giây). Để con số đứng yên ít nhất 1,5 giây sau khi nảy xong. Dòng CI **không được bỏ** — nó nhỏ, không ai bắt buộc phải đọc, nhưng nó có mặt.
-
-### Cảnh 8 · Sản phẩm chạy (f630–780 · 0:21–0:26)
+### Cảnh 8 · Cho xem cách nó làm (f600–675 · 0:20–0:22.5)
 
 | | |
 |---|---|
-| **Nền** | `#FFFFFF`, khối tròn hồng mờ sau thiết bị |
-| **Trên màn hình** | Mockup laptop nghiêng isometric, trên màn là trang công cụ: ô nhập → câu trả lời hiện dần → dòng `3 tool calls` bung ra |
-| **Chuyển động** | Camera trôi chậm sang phải 40px suốt cảnh (`smooth`, tuyến tính nhẹ). Bên trong màn: chữ trả lời hiện từng dòng stagger 4f; dòng `tool calls` trượt xuống ở f+70. |
-| **Chuyển ra** | Khối tròn sau thiết bị phóng to thành nền cảnh 9 |
-| **SFX** | tiếng gõ phím nhẹ, rồi một tiếng "ping" khi tool calls bung |
+| **Nền** | tiếp bản ghi, đang zoom 1.35× |
+| **Chữ chính** | `Shows its working.` |
+| **Chữ phụ** | — |
+| **Bố cục** | dải hồng `#FF8AD3` cao 120px trượt xuống từ đỉnh khung, chữ `#171631` 64px · bên dưới, trong bản ghi: dòng "3 tool calls" bung ra, rồi bấm một mã review → review gốc mở |
+| **Chuyển động** | dải trượt xuống `smooth` 10f; chữ stagger 3f |
+| **Chuyển ra** | zoom ra về 1× (`smooth`, 12f); dải trượt lên — chảy sang cảnh 9 |
+| **SFX** | click khi bấm mã review |
 
-**Chỉ dẫn:** **quay màn hình thật**, đừng vẽ lại giao diện. Cả điểm mạnh của dự án là nó chạy được — dựng giả là tự bắn vào chân.
+**Chỉ dẫn:** v1 viết *"Every number opens the review behind it"* — vừa quá 5 từ, vừa nói quá (xem ràng buộc 2). *"Shows its working"* đúng với cả hai thứ đang hiện trên màn hình: danh sách tool đã gọi và review được trích.
 
-### Cảnh 9 · Truy được (f780–870 · 0:26–0:29)
+### Cảnh 9 · Nó biết nói không ★ (f675–780 · 0:22.5–0:26)
 
 | | |
 |---|---|
-| **Nền** | `#FF8AD3` (hồng đặc — cảnh duy nhất nền hồng) |
-| **Trên màn hình** | `Every number opens the` **`review behind it.`** — chữ `#171631`, cụm nhấn gạch chân bằng nét cong trắng vẽ dần |
-| **Chuyển động** | Chữ vào từng từ stagger 3f. Nét cong vẽ 12f sau khi chữ xong. |
-| **Chuyển ra** | Mặt nạ tròn đóng về giữa |
-| **SFX** | whoosh |
+| **Nền** | tiếp bản ghi |
+| **Chữ chính** | `Ask what it can't answer.` · `It says so.` |
+| **Chữ phụ** | — |
+| **Bố cục** | **f0–45:** bản ghi rõ nét — bấm chip *"Which wallet has the most users?"*, agent trả lời rằng review không cho biết số người dùng; một nét cong hồng vẽ gạch dưới câu từ chối trong bản ghi. Dòng `Ask what it can't answer.` trắng 56px trên dải tối `#171631` ở đáy khung. **f45–105:** bản ghi tối đi còn 40%, `It says so.` hồng `#FF8AD3` 130px giữa khung |
+| **Chuyển động** | dòng 1 vào stagger 3f. `It says so.` vào `punchy`, scale `.7→1` |
+| **Chuyển ra** | mặt nạ tròn nở từ dấu chấm của `so.` → nền tối cảnh 10 (12f) |
+| **SFX** | pop rõ ở `It says so.` |
 
-### Cảnh 10 · Điểm nhấn — nó biết nói không (f870–960 · 0:29–0:32) ★
+**Chỉ dẫn:** 1,5 giây đầu phải để người xem **thấy câu từ chối thật** trong bản ghi trước khi chữ lớn che lên. Nếu chữ lớn vào ngay, cảnh này chỉ còn là lời tự khen.
+
+### Cảnh 10 · Quyết định sản phẩm ★ (f780–930 · 0:26–0:31)
 
 | | |
 |---|---|
 | **Nền** | `#171631` |
-| **Trên màn hình** | Dòng 1: `Ask what it can't answer.` trắng 72px · Dòng 2 (vào sau 14f): **`It says so.`** màu `#FF8AD3` 110px |
-| **Chuyển động** | Dòng 1 vào bình thường. Dòng 2 vào `bouncy` mạnh hơn (damping 10), scale `0.7 → 1`. |
-| **Chuyển ra** | Cả hai dòng trượt lên khỏi khung |
-| **SFX** | một tiếng pop rõ ở `It says so.` |
+| **Chữ chính** | `So I wrote the PRD.` |
+| **Chữ phụ** | `Guardrail: payment success can't drop` |
+| **Bố cục** | câu chính trắng 96px, chữ `PRD` hồng `#FF8AD3` · sau 30f câu lùi lên nửa trên (`smooth`), 3 thẻ bo tròn xếp dọc vào lần lượt: `Warn before charging` · `One autopay screen` · `Confirm first charges` — thẻ viền hồng 2px, nền trong suốt, chữ trắng 44px · dòng chặn `#A9A5C4` 28px ở đáy, vào ở f+90 |
+| **Chuyển động** | câu chính stagger 3f `bouncy` · thẻ stagger **6f**, `bouncy`, trượt từ phải `60→0` · dòng chặn `smooth` |
+| **Chuyển ra** | quét dọc nền tối → trắng (10f) |
+| **SFX** | 3 tiếng pop theo thẻ |
 
-**Chỉ dẫn:** đây là cảnh phân biệt dự án này với mọi demo chatbot khác. Nếu phải cắt video xuống 20 giây, cắt cảnh 4, 5, 9 — **giữ cảnh này**.
+**Chỉ dẫn:** nhịp mà v1 thiếu hẳn. Chọn **3 trong 4** tính năng của PRD theo cỡ vấn đề mà nó xử lý: gói tự gia hạn (~79/217 ca) → *warn before charging*; trừ từ ngân hàng liên kết không OTP (~49) → *confirm first charges*; không thấy toàn cảnh → *one autopay screen*. Bỏ *nothing pre-ticked* vì chỉ ~9 ca. Dòng chặn ngắn nhưng nói được điều PM nào cũng bị hỏi: tính năng này có thể làm hại cái gì.
 
-### Cảnh 11 · Kết (f960–1050 · 0:32–0:35)
+### Cảnh 11 · Kết (f930–1050 · 0:31–0:35)
 
 | | |
 |---|---|
 | **Nền** | `#FFFFFF` |
-| **Trên màn hình** | Logo `HH` + `Review Risk Agent` · dưới: nút bo tròn cobalt `#1609B7` chữ trắng `Open the tool` · dòng nhỏ `Runs on your own Claude account` màu `#5D5A73` 24px |
-| **Chuyển động** | Logo bật vào `bouncy`; nút vào sau 6f; dòng nhỏ mờ hiện sau 12f. Giữ yên 40f cuối. |
+| **Chữ chính** | `Hoang Han` · `Link in the post` |
+| **Chữ phụ** | `Runs on your own Claude account` |
+| **Bố cục** | `Hoang Han` **Fraunces** 120px cobalt `#1609B7` · dưới: `Link in the post` `#171631` 44px · đáy: chữ phụ `#5D5A73` 24px |
+| **Chuyển động** | tên hiện **từng chữ cái**, stagger 1f, `bouncy` · dòng 2 vào sau 10f · chữ phụ mờ hiện sau 20f · giữ yên **45f** cuối |
 | **SFX** | tiếng kết nhẹ |
 
-**Chỉ dẫn:** dòng `Runs on your own Claude account` **bắt buộc có**. Thiếu nó, người xem bấm link, gặp màn đăng nhập và tưởng trang hỏng.
+**Chỉ dẫn:** v1 có nút `Open the tool` — trong video không bấm được, và không có tên người làm. Giờ tên là thứ to nhất. Dòng `Runs on your own Claude account` bắt buộc — thiếu nó người xem bấm link, gặp màn đăng nhập và tưởng trang hỏng.
 
 ---
 
@@ -217,78 +254,129 @@ Gần như không cắt cứng. Ba kiểu, dùng xen kẽ:
 
 | Giữa | Kiểu | Khung |
 |---|---|---|
-| 1 → 2 | Match cut (chữ → chữ) | 8f |
-| 2 → 3 | Mặt nạ tròn nở từ dấu chấm | 12f |
-| 3 → 4 | Khối tròn trượt từ phải | 10f |
-| 4 → 5 | Giữ phần tử (số thu nhỏ về góc) | 10f |
-| 5 → 6 | Thẻ trượt xuống lộ nền | 10f |
-| 6 → 7 | Mặt nạ tròn đóng rồi mở | 14f |
-| 7 → 8 | Match cut (số → nút gửi) | 12f |
-| 8 → 9 | Khối tròn phóng thành nền | 12f |
-| 9 → 10 | Mặt nạ tròn đóng | 10f |
-| 10 → 11 | Trượt lên | 8f |
+| 1 → 2 | Đẩy dọc | 8 |
+| 2 → 3 | Đẩy dọc | 8 |
+| 3 → 4 | **Match cut** — cụm chữ bay lên thành nhãn | 12 |
+| 4 → 5 | Mặt nạ tròn đóng về `49%` rồi mở | 12 |
+| 5 → 6 | Khối tròn trượt từ phải | 10 |
+| 6 → 7 | Chip trượt xuống, khung ghi hình trồi lên | 12 |
+| 7 → 8 | **Zoom liền** vào tool calls | 15 |
+| 8 → 9 | **Zoom liền** ra | 12 |
+| 9 → 10 | Mặt nạ tròn nở từ `so.` | 12 |
+| 10 → 11 | Quét dọc tối → trắng | 10 |
 
-**Nhịp nền nhạc:** cắt cảnh rơi vào phách. Ở 120 BPM, một phách = 15 khung. Mọi mốc chuyển cảnh ở trên đều là bội của 15 tính từ f0 — giữ nguyên để khớp nhạc.
+Ba cảnh 7–8–9 là **một bản ghi liền**, nối bằng zoom — người xem cảm thấy đang nhìn một phiên dùng thật chứ không phải ba clip ghép.
 
 ---
 
 ## 5 · Âm thanh
 
-- Nhạc nền: electronic / lo-fi vui, 120 BPM, không lời. Vào từ f0, hạ nhỏ ở cảnh 8 để nghe tiếng gõ phím, dâng lại ở cảnh 10.
-- SFX theo bảng từng cảnh ở trên.
-- **Xuất thêm một bản không nhạc nền**, chỉ sfx — LinkedIn phát tắt tiếng mặc định, và nhiều người thích bản không nhạc.
-- **Phụ đề cứng cho mọi chữ thoại.** Thực ra video này đã toàn chữ trên màn hình nên không cần thoại — đó là lợi thế, giữ nguyên.
+- Nhạc nền electronic / lo-fi vui, **120 BPM** (một phách = 15 khung), không lời. Vào từ f0, hạ −8dB ở cảnh 7–9 để nghe tiếng thao tác, dâng lại ở cảnh 10.
+- SFX theo bảng từng cảnh.
+- **Xuất thêm một bản không nhạc nền**, chỉ sfx. LinkedIn phát tắt tiếng mặc định — video này toàn chữ trên màn hình nên tắt tiếng vẫn hiểu đủ; đó là chủ đích.
 
 ---
 
-## 6 · Dựng bằng Remotion
+## 6 · Quay bản ghi cho cảnh 7–9
 
-```ts
-// remotion.config.ts → Composition
-<Composition
-  id="ReviewRiskAgentPromo"
-  component={Promo}
-  durationInFrames={1050}
-  fps={30}
-  width={1080}
-  height={1080}
-/>
+Một take liền, chừng 40–60 giây thật, sau đó nén vào 11 giây.
+
+### Trước khi bấm ghi
+
+1. **Cấp quyền Claude trước.** Gõ thử một câu, bấm đồng ý. Không thì hộp thoại xin quyền nhảy ra giữa take.
+2. **Làm nóng dữ liệu:** bấm vào ô nhập, đợi 2–3 giây. File 397 KB chỉ tải ở lần chạm đầu.
+3. **Cửa sổ trình duyệt rộng đúng 600px CSS**, màn hình Retina (DPR 2), zoom 100%, chế độ sáng, ẩn thanh bookmark.
+
+### Vì sao là 600px — phép tính độ đọc được
+
+| Bước | Hệ số |
+|---|---|
+| Trang rộng 600px CSS lấp khung ghi hình rộng 1040px | ×1,73 |
+| Chữ thân trang 17px → trong khung video | ≈ 29px |
+| LinkedIn trên điện thoại hiện video vuông rộng ~390px | ×0,36 |
+| **Chữ thân trang trên điện thoại** | **≈ 10–11px — đọc được** |
+
+So với v1 (laptop nghiêng): ≈ 3–4px. Ghi ở DPR 2 để khi phóng 1,73× vẫn nét. **Nếu quay ở cửa sổ rộng hơn 630px thì chữ rơi xuống dưới 10px** — đừng.
+
+### Thao tác trong take, theo thứ tự
+
+1. Bấm chip *"How do MoMo users most often lose money?"*
+2. Đợi câu trả lời chạy **hết**.
+3. Bấm dòng **"N tool calls"** cho bung ra. Dừng 2 giây.
+4. Bấm **một mã review** trong câu trả lời. Review gốc mở ra. Dừng 2 giây.
+5. Bấm chip *"Which wallet has the most users?"*
+6. Đợi câu trả lời chạy hết. Dừng 3 giây.
+
+Quay **ít nhất 3 take**. Câu trả lời mỗi lần một khác. Chọn take mà ở bước 6 agent **từ chối rõ ràng**. Nếu take nào agent bịa ra số người dùng — đừng dùng, và báo lại: đó là lỗi prompt cần sửa, không phải lỗi quay.
+
+---
+
+## 7 · Dựng bằng Remotion
+
+```tsx
+<Composition id="ReviewRiskAgentPromo" component={Promo}
+  durationInFrames={1050} fps={30} width={1080} height={1080} />
+<Composition id="ReviewRiskAgentPromo20" component={PromoShort}
+  durationInFrames={600}  fps={30} width={1080} height={1080} />
 ```
-
-**Cấu trúc đề xuất**
 
 ```
 src/
-  Promo.tsx              // <Series> gồm 11 <Series.Sequence>
-  scenes/S01Hook.tsx … S11End.tsx
+  Promo.tsx · PromoShort.tsx   // <Series> các cảnh
+  scenes/S01NotHacked.tsx … S11End.tsx
   components/
-    KineticLine.tsx      // nhận words[], màu nhấn, stagger -> hiện từng từ
-    CountUp.tsx          // số chạy + nảy một nhịp khi dừng
-    CircleMask.tsx       // chuyển cảnh mặt nạ tròn
-    BlobBg.tsx           // khối tròn mờ tràn mép
-    DrawStroke.tsx       // nét cong vẽ dần bằng strokeDasharray
-  theme.ts               // toàn bộ hex ở mục 2, không hardcode rải rác
+    KineticLine.tsx   // words[], màu nhấn theo từ, stagger
+    CountUp.tsx       // số chạy + nảy một nhịp khi dừng
+    CircleMask.tsx    // chuyển cảnh mặt nạ tròn
+    BlobBg.tsx        // khối tròn mờ tràn mép
+    DrawStroke.tsx    // nét cong vẽ dần
+    ScreenCard.tsx    // khung ghi hình bo góc + OffthreadVideo + zoom
+    Pill.tsx          // nhãn viên thuốc
+  theme.ts            // toàn bộ hex và spring config ở mục 2
+public/
+  take.mp4            // MỘT bản ghi cho cảnh 7–9
+  fonts/              // chép từ assets/fonts/ của portfolio
 ```
 
-**Bốn chỗ dễ sai**
+**Năm chỗ dễ sai**
 
-1. **Font phải nhúng bằng `staticFile()`**, dùng chính các `.woff2` trong `assets/fonts/`. Để Remotion tự lấy font hệ thống là mỗi máy render ra một kiểu chữ khác.
-2. **Cảnh 8 là video thật**, nhúng bằng `<OffthreadVideo>`, không phải `<Video>` — `<Video>` hay rớt khung khi render.
-3. **Mọi `spring()` phải nhận `fps` từ `useVideoConfig()`**, không hardcode 30. Đổi fps mà quên là toàn bộ nhịp lệch.
-4. **Đừng dùng `interpolate` với `linear` cho chuyển động vào/ra.** Cả phong cách này sống nhờ nảy; một cảnh tuyến tính lộ ra ngay.
+1. **Font nhúng bằng `staticFile()`** từ `public/fonts/`. Để Remotion lấy font hệ thống là mỗi máy render ra một kiểu chữ.
+2. **Bản ghi dùng `<OffthreadVideo>`**, không phải `<Video>` — `<Video>` hay rớt khung khi render.
+3. **Cảnh 7–9 cắt từ cùng một `take.mp4`** bằng `startFrom` (tính theo khung của file nguồn) và `playbackRate`. Đừng xuất ba clip riêng — mất tính liền mạch của zoom.
+4. **Mọi `spring()` lấy `fps` từ `useVideoConfig()`**, không hardcode 30.
+5. **Không dùng `linear`** cho chuyển động vào/ra. Phong cách này sống nhờ độ nảy.
 
 **Render**
 
 ```bash
-npx remotion render ReviewRiskAgentPromo out/promo.mp4 --codec=h264 --crf=18
+npx remotion render ReviewRiskAgentPromo out/promo-35s.mp4 --codec=h264 --crf=18
 ```
 
-Xuất thêm bản 9:16 bằng cách đổi `height={1920}` và kiểm lại vùng an toàn — mọi chữ đã được đặt trong vùng giữa nên về lý thuyết không mất, nhưng **phải xem lại từng cảnh**, nhất là cảnh 5 (lưới 2×2) và cảnh 8 (mockup nghiêng).
+```bash
+npx remotion render ReviewRiskAgentPromo20 out/promo-20s.mp4 --codec=h264 --crf=18
+```
+
+Bản 9:16: đổi `height={1920}` rồi **xem lại từng cảnh** — nhất là cảnh 6 (hàng chip) và cảnh 7–9 (khung ghi hình).
 
 ---
 
-## 7 · Nếu phải cắt ngắn
+## 8 · Bản ngắn — đúng 20 giây
 
-Bản 20 giây: bỏ cảnh **4, 5, 9**. Giữ 1, 2, 3, 6, 7, 8, 10, 11.
+Giữ cảnh **1, 3, 4, 9, 10, 11** (cảnh 11 rút còn 3 giây):
 
-Lý do giữ cảnh 10 bằng mọi giá: ai cũng quay được một con bot trả lời đúng. Rất ít người quay cảnh nó **từ chối**.
+| Cảnh | Giây | Khung |
+|---|---|---|
+| 1 · Not hacked. | 1,5 | 45 |
+| 3 · Charged without agreeing. | 2 | 60 |
+| 4 · 49% | 5 | 150 |
+| 9 · It says so. | 3,5 | 105 |
+| 10 · So I wrote the PRD. | 5 | 150 |
+| 11 · Hoang Han (rút gọn) | 3 | 90 |
+| **Tổng** | **20** | **600** |
+
+Bỏ gì và vì sao:
+- **Cảnh 2** — hook vẫn chạy với hai nhịp *Not hacked → Charged*.
+- **Cảnh 5, 6** — tên đã có ở cảnh kết; cỡ dữ liệu là chi tiết, không phải câu chuyện.
+- **Cảnh 7, 8** — cảnh 9 vẫn là bản ghi thật nên video ngắn vẫn chứng minh được nó chạy.
+
+**Không bao giờ cắt cảnh 9 và 10.** Ai cũng quay được con bot trả lời đúng; rất ít người quay cảnh nó **từ chối**, và càng ít người đi tiếp tới **quyết định sản phẩm**.
